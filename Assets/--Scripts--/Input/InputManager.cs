@@ -87,7 +87,7 @@ public class InputManager : MonoBehaviour
         if(jump_Input)
         {
             jump_Input = false;
-            playerLocomotion.HandleJumping();
+            //playerLocomotion.HandleJumping();
         }
     }
 }
