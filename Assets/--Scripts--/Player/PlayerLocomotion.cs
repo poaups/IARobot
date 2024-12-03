@@ -10,7 +10,7 @@ public class PlayerLocomotion : MonoBehaviour
     Rigidbody playerRigidbody;
 
     public bool isSprinting;
-    public bool isGrounded; // Pour d�tecter si le joueur est au sol
+    private bool _isGrounded; 
 
     [Header("Movement Speeds")]
     public float walkingSpeed = 1.5f;
@@ -19,7 +19,10 @@ public class PlayerLocomotion : MonoBehaviour
     public float rotationSpeed = 15;
 
     [Header("Jump Settings")]
+    public float jumpHeight = 3;
+    public float gravityIntensity = -15;
     public bool isJumping;
+    [SerializeField] private LayerMask _layerMask;
 
     private void Awake()
     {
@@ -37,6 +40,9 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (isJumping)
+            return;
+
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection += cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
@@ -58,6 +64,9 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleRotation()
     {
+        if (isJumping)
+            return;
+
         Vector3 targetDirection = cameraObject.forward * inputManager.verticalInput +
                                   cameraObject.right * inputManager.horizontalInput;
 
@@ -75,5 +84,24 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleJumping()
     {
+        if (inputManager.jump_Input && IsGrounded()) // Assurez-vous que le joueur est au sol.
+        {
+            GetComponent<Rigidbody>().AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            inputManager.jump_Input = false; // Réinitialisation pour éviter plusieurs sauts d'affilée.
+        }
+    }
+
+    bool IsGrounded()
+    {
+        float rayLength = 1.0f; // Ajuste cette valeur selon la hauteur du joueur.
+        Vector3 origin = transform.position + Vector3.down * 0.1f; // Position légèrement abaissée.
+        Vector3 direction = Vector3.down;
+
+        RaycastHit hit;
+        bool isGrounded = Physics.Raycast(origin, direction, out hit, rayLength);
+
+        Debug.DrawRay(origin, direction * rayLength, Color.red);
+
+        return isGrounded;
     }
 }

@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        if(playerControls == null)
+        if (playerControls == null)
         {
             playerControls = new PlayerControls();
 
@@ -43,6 +43,11 @@ public class InputManager : MonoBehaviour
         }
 
         playerControls.Enable();
+    }
+
+    private void HandleSpacebarInput()
+    {
+        Debug.Log("Spacebar pressed!");
     }
 
     private void OnDisable()
@@ -84,10 +89,9 @@ public class InputManager : MonoBehaviour
 
     private void HandleJumpingInput()
     {
-        if(jump_Input)
+        if (jump_Input)
         {
-            jump_Input = false;
-            playerLocomotion.HandleJumping();
+            playerLocomotion.HandleJumping(); // Assurez-vous que cette fonction gère le saut.
         }
     }
 }

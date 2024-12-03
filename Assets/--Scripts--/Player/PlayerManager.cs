@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     InputManager inputManager;
-    //CameraManager cameraManager;
+    CameraManager cameraManager;
     PlayerLocomotion playerLocomotion;
     public bool isInteracting;
     private Animator animator;
@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
-        //cameraManager = FindObjectOfType<CameraManager>();
+        cameraManager = FindObjectOfType<CameraManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
     }
 
@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        //cameraManager.HandleAllCameraMovement();
-        playerLocomotion.isJumping = animator.GetBool("isJumping");
+        cameraManager.HandleAllCameraMovement();
     }
+
 }
