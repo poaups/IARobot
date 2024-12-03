@@ -73,7 +73,7 @@ public class PlayerLocomotion : MonoBehaviour
         transform.rotation = playerRotation;
     }
 
-    private void HandleJumping()
+    public void HandleJumping()
     {
     }
 }
