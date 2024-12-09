@@ -2849,13 +2849,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3560a56e97ad64a4fab0db166d652af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPivot: {fileID: 0}
+  cameraPivot: {fileID: 2142890550}
   targetTransform: {fileID: 0}
   cameraFollowSpeed: 0.2
   cameraLookSpeed: 2
   cameraPivotSpeed: 2
   lookAngle: 0
   pivotAngle: 0
+  minimumPivotAngle: -35
+  maximumPivotAngle: 35
 --- !u!1 &614790271
 GameObject:
   m_ObjectHideFlags: 0
