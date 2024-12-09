@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
     InputManager inputManager;
     CameraManager cameraManager;
     PlayerLocomotion playerLocomotion;
-    public bool isInteracting;
+    //public bool isInteracting;
     private Animator animator;
     private void Awake()
     {
