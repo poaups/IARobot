@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
     public bool jump_Input;
 
     public bool rightClickHeld;
-    public bool PhotoInput;
+    public bool LeftClickHeld;
 
 
     private void Awake()
@@ -47,6 +47,9 @@ public class InputManager : MonoBehaviour
 
             playerControls.PlayerAction.MouseRight.performed += i => rightClickHeld = true;
             playerControls.PlayerAction.MouseRight.canceled += i => rightClickHeld = false;
+
+            playerControls.PlayerAction.MouseLeft.performed += i => LeftClickHeld = true;
+            playerControls.PlayerAction.MouseLeft.canceled += i => LeftClickHeld = false;
         }
 
         playerControls.Enable();
