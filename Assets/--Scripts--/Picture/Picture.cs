@@ -46,9 +46,10 @@ public class Picture : MonoBehaviour
     void Update()
     {
         print(_photoUi.activeSelf + " _photoUi.activeSelf " + !isFlashing + " !isFlashing false " + CanZoomAndFlash + " CanZoomAndFlash");
-        if (_photoUi.activeSelf && Input.GetMouseButtonDown(0) && !isFlashing && CanZoomAndFlash)
+        if (_photoUi.activeSelf && Input.GetMouseButtonDown(0)/* && !isFlashing && CanZoomAndFlash*/)
         {
-            StartCoroutine(CapturePhoto()); //Screen
+            print("if reussi");
+            StartCoroutine(CapturePhoto());
             StartCoroutine(FlashEffectCoroutine());
         }
 
@@ -100,6 +101,7 @@ public class Picture : MonoBehaviour
 
     private IEnumerator FlashEffectCoroutine()
     {
+        print("Flash Effect");
         isFlashing = true;
 
         // Transition vers alpha = 1
@@ -134,6 +136,7 @@ public class Picture : MonoBehaviour
 
     IEnumerator CapturePhoto()
     {
+        print("Capture photo");
         yield return new WaitForEndOfFrame();
         Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
 
