@@ -23,17 +23,25 @@ public class ControllerManager : MonoBehaviour
 
     public void DisableAbleController()
     {
-        //if (_Controller1)
-        //{
-        //    _cameraManagerScripts.ChangeTarget(_Controller2);
-        //}
-        //else
-        //{
-        //    _cameraManagerScripts.ChangeTarget(_Controller1);
-        //}
-
         _Controller1.SetActive(!_Controller1.activeSelf);
         _Controller2.SetActive(!_Controller2.activeSelf);
+
+        print(!_Controller1.activeSelf + " _Controller1.SetActive(!_Controller1.activeSelf);");
+        print(!_Controller2.activeSelf + " _Controller1.SetActive(!_Controller1.activeSelf);");
+
+        if (_Controller1.activeSelf == true)
+        {
+            print("if");
+            _cameraManagerScripts.ChangeTarget(_Controller1);
+        }
+        
+        if((_Controller2.activeSelf == true))
+        {
+            print("else");
+            _cameraManagerScripts.ChangeTarget(_Controller2);
+        }
+
+
 
     }
 }
