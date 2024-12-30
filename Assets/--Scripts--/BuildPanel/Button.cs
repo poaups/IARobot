@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int _cost;
+    [SerializeField] private DogInteraction _dogInteraction;
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void CheckForCost()
+    {
+        if(Gamemanager.instance.Scraps >= _cost)
+        {
+            print("Tu peux acheter");
+            Gamemanager.instance.Scraps -= _cost;
+            //_dogInteraction.Impulsion = 1;
+
+        }
     }
 }
