@@ -8,7 +8,8 @@ public class DogInteraction : MonoBehaviour
     public enum DogBehaviors
     {
         None = 0,          // Aucun comportement sélectionné
-        Impulsion = 1 << 0  // 1 (binaire 0001)
+        Impulsion = 1 << 0,
+        Vision = 1 << 1
     }
     public DogBehaviors currentBehaviors;
 

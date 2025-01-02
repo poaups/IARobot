@@ -20,6 +20,11 @@ public class Gamemanager : MonoBehaviour
     public bool CanMovePlayer;
     public bool CanMoveDog;
 
+    [Header("Foots")]
+    public float TimeBeforeDisableFoot;
+    public float TimeBeforeAbleEachFoot;
+    public float FadeTime;
+
     [SerializeField] private TextMeshProUGUI _textScraps;
 
     private void Awake()
