@@ -21,19 +21,16 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     { 
-        if(Gamemanager.instance.CanMove)
             inputManager.HandleAllInputs();
     }
 
     private void FixedUpdate()
     {
-        if (Gamemanager.instance.CanMove)
             playerLocomotion.HandleAllMovement();
     }
 
     private void LateUpdate()
     {
-        if (Gamemanager.instance.CanMove)
             cameraManager.HandleAllCameraMovement();
     }
 

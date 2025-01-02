@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ControllerManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _Controller0;
     [SerializeField] private GameObject _Controller1;
-    [SerializeField] private GameObject _Controller2;
     [SerializeField] private CameraManager _cameraManagerScripts;
     void Start()
     {
@@ -23,22 +24,22 @@ public class ControllerManager : MonoBehaviour
 
     public void DisableAbleController()
     {
-        _Controller1.SetActive(!_Controller1.activeSelf);
-        _Controller2.SetActive(!_Controller2.activeSelf);
+        //_Controller1.SetActive(!_Controller1.activeSelf);
+        //_Controller2.SetActive(!_Controller2.activeSelf);
 
-        print(!_Controller1.activeSelf + " _Controller1.SetActive(!_Controller1.activeSelf);");
-        print(!_Controller2.activeSelf + " _Controller1.SetActive(!_Controller1.activeSelf);");
+        Gamemanager.instance.AbleDisableControllers();
 
-        if (_Controller1.activeSelf == true)
+
+        if (Gamemanager.instance._manager[0].enabled == true)
         {
             print("if");
-            _cameraManagerScripts.ChangeTarget(_Controller1);
+            _cameraManagerScripts.ChangeTarget(_Controller0);
         }
         
-        if((_Controller2.activeSelf == true))
+        if(Gamemanager.instance._manager[1].enabled == true)
         {
             print("else");
-            _cameraManagerScripts.ChangeTarget(_Controller2);
+            _cameraManagerScripts.ChangeTarget(_Controller1);
         }
 
 

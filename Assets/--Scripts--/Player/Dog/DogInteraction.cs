@@ -24,11 +24,7 @@ public class DogInteraction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && (currentBehaviors & DogBehaviors.Impulsion) != 0)
         {
             print("E");
-
-            // Activer le trigger pour 1 frame
             _trigger.enabled = true;
-
-            // Désactiver le trigger après 1 frame
             StartCoroutine(DisableTriggerAfterOneFrame());
         }
     }
@@ -40,8 +36,6 @@ public class DogInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("trigger");
-        // Si le trigger entre en collision avec un objet qui a le composant CanBreakable
         if (other.gameObject.GetComponent<CanBreakable>() != null)
         {
             other.gameObject.GetComponent<CanBreakable>().Impulsion(transform.position);
@@ -52,10 +46,7 @@ public class DogInteraction : MonoBehaviour
     private IEnumerator DisableTriggerAfterOneFrame()
     {
         print("couroutine");
-        // Attendre une frame avant de désactiver le trigger
         yield return null;
-
-        // Désactiver le trigger
         _trigger.enabled = false;
     }
 }
