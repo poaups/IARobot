@@ -9,13 +9,15 @@ public class DogInteraction : MonoBehaviour
     {
         None = 0,          // Aucun comportement sélectionné
         Impulsion = 1 << 0,
-        Vision = 1 << 1
+        Vision = 1 << 1,
+        Overloading = 1 << 2
     }
     public DogBehaviors currentBehaviors;
 
     [SerializeField] private BoxCollider _trigger;
 
     private TriggerVision _triggerVision;
+    [SerializeField] private Machine _machine;
 
     private void Awake()
     {
@@ -25,7 +27,8 @@ public class DogInteraction : MonoBehaviour
     void Update()
     {
         ImpulstionFct();
-        VisionEffect();
+        VisionFct();
+        OverloadingFct();
     }
 
     void ImpulstionFct()
@@ -38,7 +41,7 @@ public class DogInteraction : MonoBehaviour
         }
     }
 
-    void VisionEffect()
+    void VisionFct()
     {
         if (Input.GetKeyDown(KeyCode.R) && (currentBehaviors & DogBehaviors.Vision) != 0 && !Gamemanager.instance.IsFading)
         {
@@ -53,6 +56,15 @@ public class DogInteraction : MonoBehaviour
             }
         }
 
+    }
+
+    void OverloadingFct()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && (currentBehaviors & DogBehaviors.Overloading) != 0)
+        {
+            print("F");
+            _machine.OverLoadingMachine();
+        }
     }
 
     public void ResetBehaviors()
