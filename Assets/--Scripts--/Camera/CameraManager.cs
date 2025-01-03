@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 public class CameraManager : MonoBehaviour
 {
     //[SerializeField] private GameObject _defaultController;
+    public Camera _cam;
     InputManager inputManager;
     public Transform cameraPivot;
     public Transform cameraTransform; 
@@ -48,7 +49,12 @@ public class CameraManager : MonoBehaviour
     public void HandleAllCameraMovement()
     {
         FollowTarget();
-        RotateCamera();
+        if(_cam == Camera.main)
+            RotateCamera();
+        else
+        {
+            print("no");
+        }
         HandleCameraCollision();
     }
     public void FollowTarget()

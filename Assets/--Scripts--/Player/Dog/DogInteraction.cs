@@ -17,7 +17,9 @@ public class DogInteraction : MonoBehaviour
     [SerializeField] private BoxCollider _trigger;
 
     private TriggerVision _triggerVision;
+    private bool _endActiviy = false;
     [SerializeField] private Machine _machine;
+
 
     private void Awake()
     {
@@ -60,9 +62,9 @@ public class DogInteraction : MonoBehaviour
 
     void OverloadingFct()
     {
-        if (Input.GetKeyDown(KeyCode.F) && (currentBehaviors & DogBehaviors.Overloading) != 0)
+        if (Input.GetKeyDown(KeyCode.F) && (currentBehaviors & DogBehaviors.Overloading) != 0 && !_endActiviy)
         {
-            print("F");
+            _endActiviy = true; // ca va marcher que sur une activité 
             _machine.OverLoadingMachine();
         }
     }
