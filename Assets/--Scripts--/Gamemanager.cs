@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -20,11 +21,19 @@ public class Gamemanager : MonoBehaviour
     public bool CanMovePlayer;
     public bool CanMoveDog;
 
+    [Space(10)]
+
     [Header("Foots")]
     public float TimeBeforeDisableFoot;
     public float TimeBeforeAbleEachFoot;
-    public float FadeTime;
 
+    [Header("Fade")]
+    public bool IsFading = false;
+    public float TimeBeforebetweenFade;
+    public float FadeTime;
+    [SerializeField] private Image _visionUI;
+
+    [Header("Scraps")]
     [SerializeField] private TextMeshProUGUI _textScraps;
 
     private void Awake()
@@ -62,5 +71,47 @@ public class Gamemanager : MonoBehaviour
     public bool GetManager()
     {
         return _manager[0].enabled;
+    }
+
+
+    public IEnumerator FadeIn()
+    {
+        IsFading = true;
+        float elapsedTime = 0f;
+        Color initialColor = _visionUI.color;
+
+        while (elapsedTime < Gamemanager.instance.FadeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Clamp01(elapsedTime / Gamemanager.instance.FadeTime);
+            _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, newAlpha);
+
+            yield return null;
+        }
+        _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
+        StartCoroutine(WaitBeforeFadeOut());
+    }
+    IEnumerator WaitBeforeFadeOut()
+    {
+        yield return new WaitForSeconds(TimeBeforebetweenFade);
+        StopCoroutine(FadeIn());
+        StartCoroutine(FadeOut());
+
+    }
+    public IEnumerator FadeOut()
+    {
+        float elapsedTime = 0f;
+        Color initialColor = _visionUI.color;
+
+        while (elapsedTime < Gamemanager.instance.FadeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Clamp01(1f - (elapsedTime / Gamemanager.instance.FadeTime));
+            _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, newAlpha);
+
+            yield return null;
+        }
+        _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
+        IsFading = false;
     }
 }

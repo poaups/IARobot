@@ -44,7 +44,7 @@ public class CanVision : MonoBehaviour
             _isActivated = true;
             print("Coroutine");
             StartCoroutine(WaitBeforeAble());
-            StartCoroutine(FadeIn());
+            StartCoroutine(Gamemanager.instance.FadeIn());
         }
         else
         {
@@ -52,46 +52,11 @@ public class CanVision : MonoBehaviour
         }
        
     }
-
-
-    IEnumerator FadeIn()
-    {
-        float elapsedTime = 0f;
-        Color initialColor = _visionUI.color;
-
-        while (elapsedTime < Gamemanager.instance.FadeTime)
-        {
-            elapsedTime += Time.deltaTime;
-            float newAlpha = Mathf.Clamp01(elapsedTime / Gamemanager.instance.FadeTime);
-            _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, newAlpha);
-
-            yield return null;
-        }
-        _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
-    }
-
-    IEnumerator FadeOut()
-    {
-        float elapsedTime = 0f;
-        Color initialColor = _visionUI.color;
-
-        while (elapsedTime < Gamemanager.instance.FadeTime)
-        {
-            elapsedTime += Time.deltaTime;
-            float newAlpha = Mathf.Clamp01(1f - (elapsedTime / Gamemanager.instance.FadeTime));
-            _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, newAlpha);
-
-            yield return null;
-        }
-        _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
-    }
-
-
     IEnumerator WaitBeforeDisable()
     {
         yield return new WaitForSeconds(Gamemanager.instance.TimeBeforeDisableFoot);
         StartCoroutine(WaitBeforeDisableEach());
-        StartCoroutine(FadeOut());
+        //StartCoroutine(Gamemanager.instance.FadeOut());
     }
 
     IEnumerator WaitBeforeDisableEach()

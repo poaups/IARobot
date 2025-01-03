@@ -15,9 +15,17 @@ public class DogInteraction : MonoBehaviour
 
     [SerializeField] private BoxCollider _trigger;
 
+    private TriggerVision _triggerVision;
+
+    private void Awake()
+    {
+        _triggerVision = GetComponentInChildren<TriggerVision>();
+    }
+
     void Update()
     {
         ImpulstionFct();
+        VisionEffect();
     }
 
     void ImpulstionFct()
@@ -28,6 +36,23 @@ public class DogInteraction : MonoBehaviour
             _trigger.enabled = true;
             StartCoroutine(DisableTriggerAfterOneFrame());
         }
+    }
+
+    void VisionEffect()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && (currentBehaviors & DogBehaviors.Vision) != 0 && !Gamemanager.instance.IsFading)
+        {
+            StartCoroutine(Gamemanager.instance.FadeIn());
+            
+            if(_triggerVision._goDetected.Count >= 1)
+            {
+                foreach (GameObject _goHasBeenDetected in _triggerVision._goDetected)
+                {
+                    _goHasBeenDetected.gameObject.GetComponent<CanVision>().AbleFoot();
+                }
+            }
+        }
+
     }
 
     public void ResetBehaviors()

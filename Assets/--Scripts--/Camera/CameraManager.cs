@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _defaultController;
+    //[SerializeField] private GameObject _defaultController;
     InputManager inputManager;
     public Transform cameraPivot;
     public Transform cameraTransform; 
@@ -33,7 +33,7 @@ public class CameraManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindAnyObjectByType<InputManager>();
-        targetTransform = _defaultController.transform;
+        //targetTransform = _defaultController.transform;
         cameraTransform = Camera.main.transform;
         defaultPosition = cameraTransform.localPosition.z;
 
@@ -42,7 +42,9 @@ public class CameraManager : MonoBehaviour
     public void ChangeTarget(GameObject _controllerToTarget)
     {
         targetTransform = _controllerToTarget.transform;
+        inputManager = _controllerToTarget.GetComponent<InputManager>();
     }
+
     public void HandleAllCameraMovement()
     {
         FollowTarget();
@@ -97,6 +99,8 @@ public class CameraManager : MonoBehaviour
         cameraVectorPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, 0.2f);
         cameraTransform.localPosition = cameraVectorPosition;
     }
+
+
 }
 
 //public class CameraManager : MonoBehaviour

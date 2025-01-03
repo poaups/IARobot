@@ -1,24 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static DogInteraction;
 
 public class TriggerVision : MonoBehaviour
 {
     private DogInteraction _dogInteraction;
+    private bool _canVision = false;
+    [HideInInspector] public List<GameObject> _goDetected;
+
     private void Awake()
     {
+        _goDetected = new List<GameObject>();
         _dogInteraction = GetComponentInParent<DogInteraction>();
     }
-    private void OnTriggerStay(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other != null && other.gameObject.GetComponent<CanVision>() != null &&
-            (_dogInteraction.currentBehaviors & DogBehaviors.Vision) != 0 && Input.GetKeyDown(KeyCode.R))
+        if (other != null && other.gameObject.GetComponent<CanVision>() != null)
         {
-            print("R");
-            other.gameObject.GetComponent<CanVision>().AbleFoot();
+            if (!_goDetected.Contains(other.gameObject))
+            {
+                _goDetected.Add(other.gameObject);
+            }
         }
     }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other != null && other.gameObject.GetComponent<CanVision>() != null)
+        {
+            if (_goDetected.Contains(other.gameObject))
+            {
+                _goDetected.Remove(other.gameObject);
+            }
+        }
+    }
 }
