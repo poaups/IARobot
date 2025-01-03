@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour
+public class Machine : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
