@@ -22,6 +22,10 @@ public class ImpulsionPanel : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            LowerAlpha();
+        }
         if(test == 2)
         {
             return;
@@ -52,14 +56,17 @@ public class ImpulsionPanel : MonoBehaviour
         if (other != null && Input.GetMouseButtonDown(0))
         {
             test = 2;
+            LowerAlpha();
+            GetComponentInParent<PanelManager>().AddEnd();
             other.gameObject.GetComponent<Image>().color = Color.green;
             _dogInteraction._canImpulse = true;
-            //LowerAlpha();
+           
         }
     }
 
     void LowerAlpha()
     {
+        print("loweralpha");
         if (_allImage == null || _allImage.Count == 0)
         {
             Debug.LogWarning("The _allImage list is empty or not assigned.");
@@ -71,7 +78,7 @@ public class ImpulsionPanel : MonoBehaviour
             if (image != null)
             {
                 Color color = image.color;
-                color.a = 100f / 255f;
+                color.a = 0.5f;
                 image.color = color;
             }
             else

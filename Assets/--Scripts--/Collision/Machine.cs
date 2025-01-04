@@ -11,6 +11,7 @@ public class Machine : MonoBehaviour
     [SerializeField] private Transform _endPos;
     [SerializeField] private GameObject _camForBridge;
     [SerializeField] private GameObject _mainCamera;
+    [SerializeField] private DogInteraction _dogInteraction;
 
     private bool _canMove = false;
 
@@ -18,7 +19,11 @@ public class Machine : MonoBehaviour
     {
         if(other != null && other.gameObject.GetComponent<PlayerLocomotion>() != null)
         {
-            print("Collision");
+            _dogInteraction._canOverloading = true;
+        }
+        else
+        {
+            _dogInteraction._canOverloading = false;
         }
     }
     private void Update()

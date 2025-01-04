@@ -20,7 +20,9 @@ public class DogInteraction : MonoBehaviour
     private TriggerVision _triggerVision;
     private bool _endActiviy = false;
     [HideInInspector] public bool _canImpulse = false;
+    [HideInInspector] public bool _canOverloading = false;
     [SerializeField] private Machine _machine;
+    [SerializeField] private GameObject _panelBreakableUI;
 
 
     private void Awake()
@@ -39,7 +41,7 @@ public class DogInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && (currentBehaviors & DogBehaviors.Impulsion) != 0)
         {
-            _canImpulse = true;
+            _panelBreakableUI.SetActive(true);
         }
 
         if(Input.GetKeyUp(KeyCode.E))
@@ -72,9 +74,9 @@ public class DogInteraction : MonoBehaviour
 
     void OverloadingFct()
     {
-        if (Input.GetKeyDown(KeyCode.F) && (currentBehaviors & DogBehaviors.Overloading) != 0 && !_endActiviy)
+        if (Input.GetKeyDown(KeyCode.F) && (currentBehaviors & DogBehaviors.Overloading) != 0 && !_endActiviy && _canOverloading)
         {
-            _endActiviy = true; // ca va marcher que sur une activité 
+            _endActiviy = true;
             _machine.OverLoadingMachine();
         }
     }
