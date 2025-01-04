@@ -17,6 +17,9 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _dog;
 
+    [Header("Reference Scrips")]
+    public DogInteraction _dogInteractionGM;
+
     [Header("Who move at begining")]
     public bool CanMovePlayer;
     public bool CanMoveDog;

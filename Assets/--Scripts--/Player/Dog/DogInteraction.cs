@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class DogInteraction : MonoBehaviour
@@ -14,10 +15,11 @@ public class DogInteraction : MonoBehaviour
     }
     public DogBehaviors currentBehaviors;
 
-    [SerializeField] private BoxCollider _trigger;
+    [SerializeField] private GameObject _trigger;
 
     private TriggerVision _triggerVision;
     private bool _endActiviy = false;
+    [HideInInspector] public bool _canImpulse = false;
     [SerializeField] private Machine _machine;
 
 
@@ -37,12 +39,19 @@ public class DogInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && (currentBehaviors & DogBehaviors.Impulsion) != 0)
         {
-            print("E");
-            _trigger.enabled = true;
-            StartCoroutine(DisableTriggerAfterOneFrame());
+            _canImpulse = true;
+        }
+
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            InverseImpulse();
         }
     }
 
+    public void InverseImpulse()
+    {
+        _canImpulse =! _canImpulse;
+    }
     void VisionFct()
     {
         if (Input.GetKeyDown(KeyCode.R) && (currentBehaviors & DogBehaviors.Vision) != 0 && !Gamemanager.instance.IsFading)
@@ -57,6 +66,7 @@ public class DogInteraction : MonoBehaviour
                 }
             }
         }
+     
 
     }
 
@@ -74,19 +84,11 @@ public class DogInteraction : MonoBehaviour
         currentBehaviors = DogBehaviors.None;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<CanBreakable>() != null)
-        {
-            other.gameObject.GetComponent<CanBreakable>().Impulsion(transform.position);
-        }
-    }
-
     // Coroutine pour désactiver le trigger après 1 frame
     private IEnumerator DisableTriggerAfterOneFrame()
     {
         print("couroutine");
         yield return null;
-        _trigger.enabled = false;
+        _trigger.SetActive(false);
     }
 }
