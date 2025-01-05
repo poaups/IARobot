@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -59,9 +60,22 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
-    public void AddScrap()
+    private void Update()
     {
-        Scraps++;
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+    public void AddScrap(int _newScarp)
+    {
+        Scraps += _newScarp;
+        _textScraps.text = "Scraps : " + Scraps.ToString();
+    }
+
+    public void RemoveScrap(int _newScrap)
+    {
+        Scraps -= _newScrap;
         _textScraps.text = "Scraps : " + Scraps.ToString();
     }
 
@@ -116,5 +130,11 @@ public class Gamemanager : MonoBehaviour
         }
         _visionUI.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
         IsFading = false;
+    }
+
+    public void ReloadCurrentScene()
+    {
+        // Recharge la scène active
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -23,7 +23,7 @@ public class DogInteraction : MonoBehaviour
     [HideInInspector] public bool _canOverloading = false;
     [SerializeField] private Machine _machine;
     [SerializeField] private GameObject _panelBreakableUI;
-
+    [SerializeField] private CanBreakable _canBreakable;
 
     private void Awake()
     {
@@ -32,27 +32,35 @@ public class DogInteraction : MonoBehaviour
 
     void Update()
     {
+        print("can impulse" + _canImpulse);
         ImpulstionFct();
         VisionFct();
         OverloadingFct();
     }
+    public void ChangeBehavior(DogBehaviors behavior)
+    {
+        currentBehaviors |= behavior;
+    }
+    public void DisableBehavior(DogBehaviors behavior)
+    {
+        currentBehaviors &= ~behavior;
+    }
 
     void ImpulstionFct()
     {
-        if (Input.GetKeyDown(KeyCode.E) && (currentBehaviors & DogBehaviors.Impulsion) != 0)
+        if (Input.GetKeyDown(KeyCode.E) && (currentBehaviors & DogBehaviors.Impulsion) != 0 && _canBreakable._alreadyBreak == false)
         {
+            print("E");
             _panelBreakableUI.SetActive(true);
         }
 
-        if(Input.GetKeyUp(KeyCode.E))
-        {
-            InverseImpulse();
-        }
+
     }
 
     public void InverseImpulse()
     {
-        _canImpulse =! _canImpulse;
+        print("InverseImpulse");
+        _canImpulse = true;
     }
     void VisionFct()
     {

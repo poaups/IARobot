@@ -12,6 +12,7 @@ public class TriggerBreakable : MonoBehaviour
         {
             if (other.gameObject.GetComponent<CanBreakable>()._alreadyBreak == false)
             {
+                print("Trigger TriggerBreakable");
                 other.gameObject.GetComponent<CanBreakable>().Impulsion(_parentPos.position);
             }
          
