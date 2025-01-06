@@ -32,7 +32,7 @@ public class Machine : MonoBehaviour
         {
             _camForBridge.SetActive(true);
             _mainCamera.SetActive(false);
-            _bridge.transform.position = Vector3.MoveTowards(_bridge.transform.position, _endPos.position, 1.5f);
+            _bridge.transform.position = Vector3.MoveTowards(_bridge.transform.position, _endPos.position, 0.01f);
             if(_bridge.transform.position == _endPos.position)
             {
                 _mainCamera.SetActive(true);
