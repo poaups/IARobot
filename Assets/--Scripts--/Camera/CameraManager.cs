@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
+
 
 
 public class CameraManager : MonoBehaviour
