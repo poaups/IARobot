@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerVision : MonoBehaviour
 {
     private DogInteraction _dogInteraction;
-    private bool _canVision = false;
+    //private bool _canVision = false;
     [HideInInspector] public List<GameObject> _goDetected;
 
     private void Awake()
