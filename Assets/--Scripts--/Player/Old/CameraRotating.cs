@@ -2,32 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseCameraController : MonoBehaviour
+public class TPSCameraController : MonoBehaviour
 {
-    [Header("Réglages de la sensibilité")]
-    [SerializeField] private float _sensibility;
+    [Header("Réglages de la caméra")]
+    [SerializeField] private float _sensitivity = 100f;  // Sensibilité de la souris
+    [SerializeField] private Transform _target;         // Le joueur à suivre
+    [SerializeField] private Vector3 _offset;           // Décalage de la caméra par rapport au joueur
+    [SerializeField] private float _distance = 5f;      // Distance de la caméra par rapport au joueur
 
-    private float _rotationX = 0;
-    private float _rotationY = 0;
+    private float _rotationX = 0f;  // Rotation autour de l'axe horizontal
+    private float _rotationY = 0f;  // Rotation autour de l'axe vertical
 
     void Start()
     {
+        // Verrouiller le curseur de la souris
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    void LateUpdate()
     {
-        float _mouseX = Input.GetAxis("Mouse X") * _sensibility * Time.deltaTime;
-        float _mouseY = Input.GetAxis("Mouse Y") * _sensibility * Time.deltaTime;
+        HandleCameraRotation();
+        UpdateCameraPosition();
+    }
 
-        // Calculer la rotation verticale (haut/bas) en limitant les angles
-        _rotationY -= _mouseY;
-        _rotationY = Mathf.Clamp(_rotationY, -90, 90);  // Apply clamp to _rotationY
+    void HandleCameraRotation()
+    {
+        // Obtenir les déplacements de la souris
+        float mouseX = Input.GetAxis("Mouse X") * _sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * _sensitivity * Time.deltaTime;
 
-        // Calculer la rotation horizontale (gauche/droite)
-        _rotationX += _mouseX;
+        // Ajuster les angles de rotation
+        _rotationX += mouseX;
+        _rotationY -= mouseY;
+        _rotationY = Mathf.Clamp(_rotationY, -45f, 60f);  // Limiter l'angle de la caméra
 
         // Appliquer la rotation à la caméra
-        transform.localRotation = Quaternion.Euler(_rotationY, _rotationX, 0);
+        Quaternion rotation = Quaternion.Euler(_rotationY, _rotationX, 0f);
+        transform.rotation = rotation;
+    }
+
+    void UpdateCameraPosition()
+    {
+        // Calculer la position désirée de la caméra en fonction de la position du joueur
+        //La soustraction permet de mettre la camera derriere le joueur et non devant lui 
+        //Le Time.deltaTime empeche le fait que ce soit instantane
+
+        //Vector3 desiredPosition = _target.position - transform.forward * _distance + _offset;
+        //transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * 10f);
+
+        Vector3 _desiredPosition = _target.position - transform.forward * _distance + _offset;
+        transform.position = Vector3.Lerp(transform.position, _desiredPosition, Time.deltaTime * 10f);
     }
 }
