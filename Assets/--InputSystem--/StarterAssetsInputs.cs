@@ -75,6 +75,13 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
-	}
+        public void OnPrintR(InputValue value)
+        {
+            if (value.isPressed)
+            {
+                Debug.Log("Action PrintR déclenchée !");
+            }
+        }
+    }
 	
 }
