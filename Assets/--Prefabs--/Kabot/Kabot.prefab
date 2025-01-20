@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4703436229770977327}
   - component: {fileID: 4682043840110471550}
   - component: {fileID: 8200760049863245771}
+  - component: {fileID: 8473643383174085012}
   m_Layer: 0
   m_Name: Kabot
   m_TagString: Untagged
@@ -132,11 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8298bd6e0c69b834a989254e6b440c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  target: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 4294967295
   rayLength: 1.5
+  Speed: 0
 --- !u!114 &8200760049863245771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +158,33 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!54 &8473643383174085012
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8126491982069940442}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &6218030683274102937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,3 +306,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0d69ba7b5ad884eb2278d920e8e8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kabotMovement: {fileID: 4682043840110471550}
