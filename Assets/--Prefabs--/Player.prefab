@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326080535509956454}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.49, y: 0.262, z: -5.074}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.33616877, y: 1.8866551, z: -0.009515762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3785861358929636441}
-  m_Father: {fileID: 1870354992676957032}
+  m_Father: {fileID: 8618458450342373969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2412422320329225984
 GameObject:
@@ -64,7 +64,6 @@ Transform:
   - {fileID: 795453585526559066}
   - {fileID: 1514378590345277290}
   - {fileID: 8618458450342373969}
-  - {fileID: 7745853871682687963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4363690050484025931
@@ -77,6 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3785861358929636441}
   - component: {fileID: 3468566617382053211}
+  - component: {fileID: 7440355782872731485}
   - component: {fileID: 8078648272109152179}
   m_Layer: 0
   m_Name: ForwardTrigger
@@ -121,6 +121,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.29178905, y: 0.30012107, z: 0.9653292}
   m_Center: {x: 0.15042841, y: 0.023031354, z: 0.36667585}
+--- !u!54 &7440355782872731485
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363690050484025931}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 0
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &8078648272109152179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7745853871682687963}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}

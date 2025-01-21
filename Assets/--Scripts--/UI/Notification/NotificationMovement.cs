@@ -29,15 +29,15 @@ public class NotificationMovement : MonoBehaviour
         }
 
         #region Input Test Function
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            canReturn = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    canReturn = true;
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            canReturn = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Y))
+        //{
+        //    canReturn = false;
+        //}
 
         //if (Input.GetKeyDown(KeyCode.U))
         //{
@@ -76,9 +76,4 @@ public class NotificationMovement : MonoBehaviour
             canMove = true;
         }
     }
-
-    //void DisableSelf()
-    //{
-    //    this.GetComponent<GameObject>().SetActive(this.GetComponent<GameObject>().activeSelf);
-    //}
 }

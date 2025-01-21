@@ -1,11 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    void Update()
+    [SerializeField] private Transform finalPositionItem;
+    [SerializeField] private ItemTP ItemTPScript;
+
+    private bool alreadyUse;
+    private void Awake()
     {
-        
+        alreadyUse = false;
+    }
+    public void UseObject()
+    {
+        if (!alreadyUse)
+        {
+            alreadyUse = true;
+            ItemTPScript.TpItemToSetPosition(finalPositionItem);
+        }
     }
 }
