@@ -1,68 +1,50 @@
-using StarterAssets;
 using UnityEngine;
 
 public class TraversableObject : MonoBehaviour
 {
     [SerializeField] private Transform finalPosition; // Position cible
-    [SerializeField] private float speed; // Vitesse de déplacement
+    [SerializeField] private float speed = 5f; // Vitesse de déplacement
 
-    [HideInInspector] public bool isTriggerFront = false;
-    [HideInInspector] public bool CanTraverse;
-    [HideInInspector] public bool test;
+    public Transform playerTransform; // Transform du joueur
 
-    private Transform playerTransform;
-
-    private void Awake()
-    {
-        test = false;
-        CanTraverse = false;
-        isTriggerFront = false;
-        playerTransform = LocalManager.instance.player.GetComponent<Transform>();
-    }
-
-    public void IsTrigger()
-    {
-        isTriggerFront = !isTriggerFront;
-        print("isTrigger apres changement: " + isTriggerFront);
-    }
+    private bool isMoving = false; // Indique si le joueur est en train de se déplacer
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // Vérifier si la touche H est appuyée
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            CanTraverse = true;
-            print(CanTraverse + " : CanTraverse apres changement");
+            StartMovement();
         }
 
-        CanMovementForward();
-
-        if (test)
+        // Effectuer le mouvement si activé
+        if (isMoving)
         {
-            MovementForward();
-        }
-    }
-
-    void CanMovementForward()
-    {
-        if (isTriggerFront && CanTraverse)
-        {
-            LocalManager.instance.AbleDisableControllerLM();
-            test = true;
+            MovePlayerTowardsTarget();
         }
     }
 
-    void MovementForward()
+    private void StartMovement()
     {
-        print("MovemForward");
-        Vector3 direction = (finalPosition.position - playerTransform.position).normalized;
-        playerTransform.position += direction * speed * Time.deltaTime;
-        playerTransform.transform.forward = direction;
+        // Activer le mouvement
+        isMoving = true;
+        Debug.Log("Début du déplacement vers la cible.");
+    }
 
+    private void MovePlayerTowardsTarget()
+    {
+        // Déplacer le joueur vers la cible
+        playerTransform.position = Vector3.MoveTowards(
+            playerTransform.position,
+            finalPosition.position,
+            speed * Time.deltaTime
+        );
+
+        // Vérifier si le joueur est proche de la cible
         if (Vector3.Distance(playerTransform.position, finalPosition.position) < 0.1f)
         {
-            test = false;
-            LocalManager.instance.AbleDisableControllerLM();
-            print("Fin arrive");
+            isMoving = false; // Arrêter le mouvement
+            Debug.Log("Arrivé à la cible !");
         }
     }
 }

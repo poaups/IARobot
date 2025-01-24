@@ -163,9 +163,16 @@ namespace StarterAssets
             }
         }
 
-        public void AbleDisableController()
+        public void DisableController()
         {
-            CanMove = !CanMove;
+            CanMove = false;
+            _controller.enabled = false;
+        }
+
+        public void AbleController()
+        {
+            CanMove = true;
+            _controller.enabled = true;
         }
 
         //Appel la fct apres les calcul de de rotation
@@ -377,6 +384,11 @@ namespace StarterAssets
                 GroundedRadius);
         }
 
+        void TurnCollider()
+        {
+            print("TurnCollider");
+            _controller.enabled = false;
+        }
         private void OnFootstep(AnimationEvent animationEvent)
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)

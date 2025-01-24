@@ -15,9 +15,14 @@ public class LocalManager : MonoBehaviour
         instance = this;
     }
 
-    public void AbleDisableControllerLM()
+    public void DisableControllerLM()
     {
-        player.GetComponentInChildren<ThirdPersonController>().AbleDisableController();
+        player.GetComponentInChildren<ThirdPersonController>().DisableController();
+    }
+
+    public void AbleControllerLM()
+    {
+        player.GetComponentInChildren<ThirdPersonController>().AbleController();
     }
 
 }
