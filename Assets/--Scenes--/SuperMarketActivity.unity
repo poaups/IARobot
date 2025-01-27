@@ -1294,6 +1294,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2019456896}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1191754466 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1870354992676957032, guid: 7cecf011d35917f4c8187d08f94bf29d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2019456896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1271143805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,13 +2626,18 @@ PrefabInstance:
     - target: {fileID: 1963555368216184300, guid: f05f7f6437a24a149872b14544b2696e,
         type: 3}
       propertyPath: speed
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1963555368216184300, guid: f05f7f6437a24a149872b14544b2696e,
         type: 3}
       propertyPath: finalPosition
       value: 
       objectReference: {fileID: 2012039725}
+    - target: {fileID: 1963555368216184300, guid: f05f7f6437a24a149872b14544b2696e,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1191754466}
     - target: {fileID: 3393721037931046883, guid: f05f7f6437a24a149872b14544b2696e,
         type: 3}
       propertyPath: m_IsTrigger
