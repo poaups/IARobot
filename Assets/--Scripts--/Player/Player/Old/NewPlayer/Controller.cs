@@ -1,33 +1,50 @@
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class TPSController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _rotationSpeed = 10f;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float multiplySpeedRunning;
+    [SerializeField] private float rotationSpeed;
 
     [Header("Camera Settings")]
     [SerializeField] private Transform _cameraTransform;
 
     private Rigidbody _rb;
+    private PlayerInput playerInput;
+    private StarterAssetsInputs input;
+    private float currentRunSpeed;
 
-    void Start()
+    private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
-        // Verrouiller le curseur de la souris
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        currentRunSpeed = multiplySpeedRunning;
 
+        playerInput = GetComponent<PlayerInput>();
+        input = GetComponent<StarterAssetsInputs>();
+        _rb = GetComponent<Rigidbody>();
+    }
     void Update()
     {
-        HandleMovement();
+        if (!IsRunning()) multiplySpeedRunning = 1;
+        else { multiplySpeedRunning = currentRunSpeed; }
+
+        if (input.move == Vector2.zero) _rb.velocity = Vector2.zero;
+        else { HandleMovement(); }
+       
     }
 
+    bool IsRunning()
+    {
+        return input.sprint;
+    }
     void HandleMovement()
     {
         // Obtenir les entrées clavier
-        float inputX = Input.GetAxisRaw("Horizontal");
-        float inputZ = Input.GetAxisRaw("Vertical");
+        float inputX = input.move.x;
+        float inputZ = input.move.y;
 
         // Calculer le vecteur de déplacement en fonction de l'orientation de la caméra
         Vector3 forward = _cameraTransform.forward;
@@ -44,7 +61,7 @@ public class TPSController : MonoBehaviour
         Vector3 moveDirection = (forward * inputZ + right * inputX).normalized;
 
         // Appliquer la vitesse de déplacement
-        Vector3 movement = moveDirection * _moveSpeed;
+        Vector3 movement = (moveDirection * _moveSpeed) * multiplySpeedRunning;
         _rb.velocity = new Vector3(movement.x, _rb.velocity.y, movement.z);
 
         // Faire tourner le joueur vers la direction de déplacement
@@ -53,7 +70,7 @@ public class TPSController : MonoBehaviour
         if(moveDirection.magnitude >= 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection,Vector3.up);
-            transform.rotation =  Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            transform.rotation =  Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 }
