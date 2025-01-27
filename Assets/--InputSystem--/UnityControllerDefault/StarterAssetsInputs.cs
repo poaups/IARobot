@@ -34,12 +34,30 @@ namespace StarterAssets
 			}
 		}
 
-		public void OnJump(InputValue value)
-		{
-			JumpInput(value.isPressed);
-		}
+        private bool isJumpPressed = false;  // Variable interne pour vérifier l'état du saut
 
-		public void OnSprint(InputValue value)
+        public void OnJump(InputValue value)
+        {
+            if (value.isPressed && !isJumpPressed)
+            {
+                // La touche de saut vient juste d'être pressée
+                JumpInput(true);
+                isJumpPressed = true;  // Empêche de déclencher à nouveau le saut tant que la touche est maintenue
+            }
+            else if (!value.isPressed)
+            {
+                // Réinitialisation lorsque la touche est relâchée
+                isJumpPressed = false;
+                JumpInput(false);
+            }
+        }
+
+        private void Update()
+        {
+			print(jump + "ici");
+        }
+
+        public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
 		}
@@ -54,12 +72,21 @@ namespace StarterAssets
 			look = newLookDirection;
 		}
 
-		public void JumpInput(bool newJumpState)
-		{
-			jump = newJumpState;
-		}
+        public void JumpInput(bool newJumpState)
+        {
+            // On met à jour jump avec l'état de la touche
+            if (newJumpState)
+            {
+                jump = true;
+            }
+            else
+            {
+                jump = false;
+            }
+        }
 
-		public void SprintInput(bool newSprintState)
+
+        public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
 		}

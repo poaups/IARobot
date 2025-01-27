@@ -1,6 +1,8 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class TPSCameraController : MonoBehaviour
 {
@@ -12,7 +14,12 @@ public class TPSCameraController : MonoBehaviour
 
     private float _rotationX = 0f;  // Rotation autour de l'axe horizontal
     private float _rotationY = 0f;  // Rotation autour de l'axe vertical
+    private StarterAssetsInputs inputCamera;
 
+    private void Awake()
+    {
+        inputCamera = PManager.Instance.inputPM;
+    }
     void Start()
     {
         // Verrouiller le curseur de la souris
@@ -28,8 +35,8 @@ public class TPSCameraController : MonoBehaviour
     void HandleCameraRotation()
     {
         // Obtenir les déplacements de la souris
-        float mouseX = Input.GetAxis("Mouse X") * _sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * _sensitivity * Time.deltaTime;
+        float mouseX = inputCamera.look.x * _sensitivity * Time.deltaTime;
+        float mouseY = inputCamera.look.y * _sensitivity * Time.deltaTime;
 
         // Ajuster les angles de rotation
         _rotationX += mouseX;
