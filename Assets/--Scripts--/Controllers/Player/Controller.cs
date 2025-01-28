@@ -129,7 +129,7 @@ public class TPSController : MonoBehaviour
     private void HandleMovement()
     {
         if (input.move == Vector2.zero)
-        { _rb.velocity = new Vector2(0, _rb.velocity.y);/* _rb.drag = dragrb;*/ return; }
+        { /*_rb.velocity = new Vector2(0, 0);*//* _rb.drag = dragrb;*/ return; }
 
         dragrb = savedrag;
         float inputX = input.move.x;

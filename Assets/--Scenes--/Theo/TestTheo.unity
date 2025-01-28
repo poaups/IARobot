@@ -328,7 +328,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.34, y: -1, z: 6.26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.0319, y: 1, z: 1.8979}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -669,6 +669,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3447921575039182955, guid: 599e0a926e715a5498b7cbd1de99d7d2,
+        type: 3}
+      propertyPath: _sensitivity
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589302867845991436, guid: 599e0a926e715a5498b7cbd1de99d7d2,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4206472949076219042, guid: 599e0a926e715a5498b7cbd1de99d7d2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -677,12 +687,12 @@ PrefabInstance:
     - target: {fileID: 4206472949076219042, guid: 599e0a926e715a5498b7cbd1de99d7d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.15
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4206472949076219042, guid: 599e0a926e715a5498b7cbd1de99d7d2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.7
+      value: 4.99
       objectReference: {fileID: 0}
     - target: {fileID: 4206472949076219042, guid: 599e0a926e715a5498b7cbd1de99d7d2,
         type: 3}
@@ -719,6 +729,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4649298203569627533, guid: 599e0a926e715a5498b7cbd1de99d7d2,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.9396931
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649298203569627533, guid: 599e0a926e715a5498b7cbd1de99d7d2,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.0018354058
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649298203569627533, guid: 599e0a926e715a5498b7cbd1de99d7d2,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ad41f4b3297bb9a41950d95412137b28,
+        type: 2}
     - target: {fileID: 6488686180897872733, guid: 599e0a926e715a5498b7cbd1de99d7d2,
         type: 3}
       propertyPath: m_Name
