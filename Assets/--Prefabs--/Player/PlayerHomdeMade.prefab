@@ -100,6 +100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1870649231903256828, guid: 655f23438ae614e48b9153c0154b3a0f,
         type: 3}
+      propertyPath: jumpForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870649231903256828, guid: 655f23438ae614e48b9153c0154b3a0f,
+        type: 3}
       propertyPath: rotationSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -108,6 +113,11 @@ PrefabInstance:
       propertyPath: _cameraTransform
       value: 
       objectReference: {fileID: 4320706450109419797}
+    - target: {fileID: 1870649231903256828, guid: 655f23438ae614e48b9153c0154b3a0f,
+        type: 3}
+      propertyPath: groundCheckDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1870649231903256828, guid: 655f23438ae614e48b9153c0154b3a0f,
         type: 3}
       propertyPath: multiplySpeedRunning
@@ -168,11 +178,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7091247641202680825, guid: 655f23438ae614e48b9153c0154b3a0f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4280772869022159486, guid: 655f23438ae614e48b9153c0154b3a0f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4649298203569627533}
   m_SourcePrefab: {fileID: 100100000, guid: 655f23438ae614e48b9153c0154b3a0f, type: 3}
+--- !u!1 &7740999405605801468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4280772869022159486, guid: 655f23438ae614e48b9153c0154b3a0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5766245573356609410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &4649298203569627533
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740999405605801468}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.2151093
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.13954356, z: 0}
 --- !u!4 &7934694846589031755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4474435219345705673, guid: 655f23438ae614e48b9153c0154b3a0f,

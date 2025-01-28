@@ -34,27 +34,15 @@ namespace StarterAssets
 			}
 		}
 
-        private bool isJumpPressed = false;  // Variable interne pour vérifier l'état du saut
-
         public void OnJump(InputValue value)
         {
-            if (value.isPressed && !isJumpPressed)
-            {
-                // La touche de saut vient juste d'être pressée
-                JumpInput(true);
-                isJumpPressed = true;  // Empêche de déclencher à nouveau le saut tant que la touche est maintenue
-            }
-            else if (!value.isPressed)
-            {
-                // Réinitialisation lorsque la touche est relâchée
-                isJumpPressed = false;
-                JumpInput(false);
-            }
+			//print("OnJump");
+			JumpInput(true);
         }
 
         private void Update()
         {
-			print(jump + "ici");
+			//print(jump + "ici");
         }
 
         public void OnSprint(InputValue value)
@@ -74,17 +62,8 @@ namespace StarterAssets
 
         public void JumpInput(bool newJumpState)
         {
-            // On met à jour jump avec l'état de la touche
-            if (newJumpState)
-            {
-                jump = true;
-            }
-            else
-            {
-                jump = false;
-            }
+			jump = newJumpState;
         }
-
 
         public void SprintInput(bool newSprintState)
 		{
@@ -104,7 +83,7 @@ namespace StarterAssets
         {
             if (value.isPressed)
             {
-                Debug.Log("Action PrintR déclenchée !");
+                Debug.Log("Action PrintR declenchee !");
             }
         }
     }
