@@ -18,7 +18,7 @@ public class TPSCameraController : MonoBehaviour
 
     private void Awake()
     {
-        inputCamera = PManager.Instance.inputPM;
+        inputCamera = GetComponentInParent<StarterAssetsInputs>();
     }
     void Start()
     {

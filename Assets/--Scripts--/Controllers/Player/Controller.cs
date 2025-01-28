@@ -28,7 +28,7 @@ public class TPSController : MonoBehaviour
     {
         currentRunSpeed = multiplySpeedRunning;
 
-        input = PManager.Instance.inputPM;
+        input = GetComponentInParent<StarterAssetsInputs>();
         _rb = GetComponent<Rigidbody>();
     }
 
