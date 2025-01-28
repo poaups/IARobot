@@ -14,6 +14,7 @@ public class TPSController : MonoBehaviour
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundCheckDistance;
+    [SerializeField] private float gravity;
 
     [Header("Slide Settings")]
     [SerializeField] private bool enableSliding = true; // Active/désactive la glisse
@@ -32,7 +33,7 @@ public class TPSController : MonoBehaviour
     {
         savedrag = dragrb;
         currentRunSpeed = multiplySpeedRunning;
-        input = GetComponentInParent<StarterAssetsInputs>();
+        input = GetComponent<StarterAssetsInputs>();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -60,16 +61,20 @@ public class TPSController : MonoBehaviour
 
         IsGrounded();
         InputGroundCheck();
+        if(!GetGround())
+        {
+            _rb.AddForce(Vector3.down * 2 * 2 * Time.deltaTime, ForceMode.Force);
+        }
 
-        print("x : "+ _rb.velocity.x + " | y : "    + _rb.velocity.y);
+        //print("x : "+ _rb.velocity.x + " | y : "    + _rb.velocity.y);
     }
 
     private bool IsSliding()
     {
-        print(isGrounded + "isgrounded");
+        //print(isGrounded + "isgrounded");
         if (!enableSliding || !isGrounded) return false;
 
-        print("ici");
+        //print("ici");
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundCheckDistance))
         {
             hitPointNormal = hit.normal;
@@ -129,7 +134,11 @@ public class TPSController : MonoBehaviour
     private void HandleMovement()
     {
         if (input.move == Vector2.zero)
-        { /*_rb.velocity = new Vector2(0, 0);*//* _rb.drag = dragrb;*/ return; }
+        {
+            _rb.velocity =  new Vector2(0,_rb.velocity.y);
+
+           //return;
+        }
 
         dragrb = savedrag;
         float inputX = input.move.x;
@@ -146,12 +155,20 @@ public class TPSController : MonoBehaviour
 
         Vector3 moveDirection = (forward * inputZ + right * inputX).normalized;
         Vector3 movement = (moveDirection * _moveSpeed) * multiplySpeedRunning;
+
+        // Garder la vitesse Y intacte, ne pas la remplacer, elle doit être influencée par la gravité
         _rb.velocity = new Vector3(movement.x, _rb.velocity.y, movement.z);
 
         if (moveDirection.magnitude >= 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
+        // Appliquer la gravité manuellement si nécessaire
+        if (!isGrounded)
+        {
+            _rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Force);
         }
     }
 }
