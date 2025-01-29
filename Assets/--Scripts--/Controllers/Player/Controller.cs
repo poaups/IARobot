@@ -1,7 +1,7 @@
 using StarterAssets;
 using UnityEngine;
 
-public class TPSController : MonoBehaviour
+public class Controller : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float _moveSpeed;
