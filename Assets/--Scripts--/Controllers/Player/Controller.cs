@@ -33,7 +33,7 @@ public class Controller : MonoBehaviour
     {
         savedrag = dragrb;
         currentRunSpeed = multiplySpeedRunning;
-        input = GetComponent<StarterAssetsInputs>();
+        input = GetComponentInParent<StarterAssetsInputs>();
         _rb = GetComponent<Rigidbody>();
     }
 
