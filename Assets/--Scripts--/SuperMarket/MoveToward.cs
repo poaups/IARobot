@@ -39,12 +39,14 @@ public class MoveToward : MonoBehaviour
     }
     void Movement()
     {
+        print("target position"+target.position + "player position" + player.position);
         print("Movement");
         Vector3 direction = (target.position - player.position).normalized;
         player.position += direction * speed * Time.deltaTime;
 
-        if (Vector3.Distance(player.position, target.position) < 0.01f)
+        if (Vector3.Distance(player.position, target.position) < 0.50f)
         {
+            print("Fin");
             canMove = false;
             currentlyMove = true;
             InverseColliderActivation();
