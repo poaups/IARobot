@@ -20,13 +20,9 @@ public class TPSCameraController : MonoBehaviour
 
     private float _rotationX = 0f;  // Rotation autour de l'axe horizontal
     private float _rotationY = 0f;  // Rotation autour de l'axe vertical
-    private StarterAssetsInputs inputCamera;
+    public StarterAssetsInputs inputCamera;
     private float _cameraRotationX;
 
-    private void Awake()
-    {
-        inputCamera = GetComponentInParent<StarterAssetsInputs>();
-    }
     void Start()
     {
         // Verrouiller le curseur de la souris
