@@ -21,7 +21,7 @@ public class MoveToward : MonoBehaviour
     }
     private void Update()
     {
-        print(currentlyMove + "currentlyMove");
+        //print(currentlyMove + "currentlyMove");
         //if(Input.GetKeyUp(KeyCode.Escape))
         //{
         //    ChangeDirectionMovement();
