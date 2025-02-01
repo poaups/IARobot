@@ -12,8 +12,9 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+        public bool isInteracting { get; private set; }
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
 		public bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
@@ -79,13 +80,22 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
-        public void OnPrintR(InputValue value)
+        public void OnInteraction(InputValue value)
         {
             if (value.isPressed)
             {
-                Debug.Log("Action PrintR declenchee !");
+                Debug.Log("Interaction déclenchée !");
+                isInteracting = true;
             }
+            else
+            {
+                isInteracting = false;
+            }
+			print(isInteracting + " oui");
+			print("Probleme ici c'est jamais faux");
+
         }
+
     }
-	
+
 }

@@ -1,5 +1,5 @@
 {
-    "name": "StarterAssets",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PrintR",
+                    "name": "Interaction",
                     "type": "Button",
                     "id": "8f2c5c51-8227-4741-9b53-1a4c5dc917f1",
                     "expectedControlType": "Button",
@@ -235,18 +235,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrintR",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "0b628a86-e2d9-4abf-a495-269e7559dcbd",
-                    "path": "<Keyboard>/#(R)",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrintR",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
