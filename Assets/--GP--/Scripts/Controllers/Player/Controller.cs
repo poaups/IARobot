@@ -1,4 +1,5 @@
-using StarterAssets;
+
+
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -41,24 +42,8 @@ public class Controller : MonoBehaviour
     {
         if (!IsRunning()) multiplySpeedRunning = 1;
         else multiplySpeedRunning = currentRunSpeed;
-        /*
-        if (IsSliding())
-        {
-            // Si glisse, désactiver les mouvements horizontaux
-            input.move = Vector2.zero;
-
-            // Appliquer un mouvement dans la direction de la pente
-            Vector3 slideDirection = new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z).normalized;
-            _rb.velocity += slideDirection * slideSpeed * Time.deltaTime;
-        }
-        else*/
-        {
-            /*if (input.move == Vector2.zero)
-                _rb.velocity = new Vector2(0, _rb.velocity.y);
-            else*/
-            HandleMovement();
-        }
-
+        
+        HandleMovement();
         IsGrounded();
         InputGroundCheck();
         if(!GetGround())

@@ -1,4 +1,3 @@
-using StarterAssets;
 using UnityEngine;
 
 public class ForwardPlayer : MonoBehaviour
@@ -7,6 +6,11 @@ public class ForwardPlayer : MonoBehaviour
     [SerializeField] private PlayerInteraction interactionScript;
 
     private GameObject goTriggered;
+    private bool alreadyTaken;
+    private void Awake()
+    {
+        alreadyTaken = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,10 +35,11 @@ public class ForwardPlayer : MonoBehaviour
 
     private void Update()
     {
-        if(inputScript.isInteracting && goTriggered != null)
+        if(inputScript.isInteracting && goTriggered != null && !alreadyTaken)
         {
-            print(inputScript.isInteracting);
-            print("La caisse doit se mettre sur leplayer");
+            alreadyTaken = true;
+            goTriggered.GetComponent<FollowingGO>().enabled = true;
+            print("La caisse doit se mettre sur le player");
         }
     }
 }
