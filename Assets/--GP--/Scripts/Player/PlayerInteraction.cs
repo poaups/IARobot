@@ -1,15 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
     private bool canTakeBox;
+    private void Awake()
+    {
+        canTakeBox = false;
+    }
 
     public void SetTakeBox(bool newBool)
     {
-        print("SetTakeBox" + canTakeBox);
         canTakeBox = newBool;
-        print(canTakeBox + " apres fct");
+    }
+    public bool GetCanTakeBox()
+    {
+        print(canTakeBox + "canTakeBox");
+        return canTakeBox;
     }
 }

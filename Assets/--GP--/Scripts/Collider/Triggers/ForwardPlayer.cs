@@ -4,6 +4,8 @@ public class ForwardPlayer : MonoBehaviour
 {
     [SerializeField] private StarterAssetsInputs inputScript;
     [SerializeField] private PlayerInteraction interactionScript;
+    [SerializeField] private ShelfManager shelfManagerScript;
+    [SerializeField] private PlayerInteraction playerInteractionScript;
 
     private GameObject goTriggered;
     private bool alreadyTaken;
@@ -16,7 +18,6 @@ public class ForwardPlayer : MonoBehaviour
     {
         if(other != null && other.GetComponent<ItemTP>() != null)
         {
-            print("Collision int " + other.name);
             goTriggered = other.gameObject;
             interactionScript.SetTakeBox(true);
         }
@@ -26,7 +27,6 @@ public class ForwardPlayer : MonoBehaviour
     {
         if (other != null && other.GetComponent<ItemTP>() != null)
         {
-            print("Collision out " + other.name);
             goTriggered = null;
             interactionScript.SetTakeBox(false);
 
@@ -37,9 +37,16 @@ public class ForwardPlayer : MonoBehaviour
     {
         if(inputScript.isInteracting && goTriggered != null && !alreadyTaken)
         {
-            alreadyTaken = true;
-            goTriggered.GetComponent<FollowingGO>().enabled = true;
-            print("La caisse doit se mettre sur le player");
+            print("E");
+            SetBoxOnPLayer();
         }
+    }
+    void SetBoxOnPLayer()
+    {
+        print("SetBoxOnPLayer");
+        alreadyTaken = true;
+        goTriggered.GetComponent<FollowingGO>().StartFollowing();
+        shelfManagerScript.SetObjectMesh(true);
+        playerInteractionScript.SetTakeBox(true);
     }
 }

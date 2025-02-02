@@ -6,12 +6,30 @@ public class ItemTP : MonoBehaviour
     [SerializeField] private List<GameObject> items;
     [SerializeField] private List<Transform> positionForItems;
 
+    private FollowingGO followingGOScript;
+
+    private bool listEmpty;
     private int lowerNumber = 0;
     private void Awake()
     {
+        followingGOScript = GetComponent<FollowingGO>();
+        if (items.Count >0)
+        {
+            listEmpty = false;
+        }
+        else
+        {
+            listEmpty = true;
+        }
+
         TpItemToInitialPosition();
     }
 
+    public bool IsEmpty()
+    {
+        if (items.Count > 0) return true;
+        else return false;
+    }
     //Tp item transform to holder transform
     void TpItemToInitialPosition()
     {
@@ -38,8 +56,14 @@ public class ItemTP : MonoBehaviour
     public void TpItemToSetPosition(Transform newPosForItem)
     {
         items[items.Count - 1].transform.SetParent(null);
-        items[items.Count-1].transform.position = newPosForItem.position;
-        items.Remove(items[items.Count-1]);
+        items[items.Count - 1].transform.position = newPosForItem.position;
+        items.Remove(items[items.Count - 1]);
+        
+        if(!IsEmpty())
+        {
+            print("Plus rien dans la liste");
+            followingGOScript.SetActivity();
+        }
     }
 
     public bool ItemsIsEmpty()
