@@ -5,6 +5,7 @@ public class ItemTP : MonoBehaviour
 {
     [SerializeField] private List<GameObject> items;
     [SerializeField] private List<Transform> positionForItems;
+    [SerializeField] private EndActivity endActivityScript;
 
     private FollowingGO followingGOScript;
 
@@ -61,11 +62,17 @@ public class ItemTP : MonoBehaviour
         
         if(!IsEmpty())
         {
-            print("Plus rien dans la liste");
-            followingGOScript.SetActivity();
+            EndActivity();
+
         }
     }
 
+    void EndActivity()
+    {
+        print("Plus rien dans la liste");
+        followingGOScript.SetActivity();
+        endActivityScript.StartCoroutine();
+    }
     public bool ItemsIsEmpty()
     {
         if(items.Count == 0) return true;

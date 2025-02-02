@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class EndActivity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float TimeBedoreDog;
+
+    public void StartCoroutine()
     {
-        
+        StartCoroutine(WaitBeforeDog());
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator WaitBeforeDog()
     {
-        
+        yield return new WaitForSeconds(TimeBedoreDog);
+        SoundDog();
+    }
+
+    void SoundDog()
+    {
+        print("Chien arrive");
     }
 }

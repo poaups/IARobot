@@ -37,13 +37,13 @@ public class ForwardPlayer : MonoBehaviour
     {
         if(inputScript.isInteracting && goTriggered != null && !alreadyTaken)
         {
-            print("E");
+           // print("E");
             SetBoxOnPLayer();
         }
     }
     void SetBoxOnPLayer()
     {
-        print("SetBoxOnPLayer");
+       // print("SetBoxOnPLayer");
         alreadyTaken = true;
         goTriggered.GetComponent<FollowingGO>().StartFollowing();
         shelfManagerScript.SetObjectMesh(true);

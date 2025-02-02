@@ -17,7 +17,7 @@ public class LitleForward : MonoBehaviour
         if(other != null && other.GetComponent<Shelf>() != null)
         {
             shelfScript = other.GetComponent<Shelf>();
-            print(shelfScript + " shelfScript");
+            //print(shelfScript + " shelfScript");
         }
     }
 
@@ -26,7 +26,7 @@ public class LitleForward : MonoBehaviour
         if (other != null && other.GetComponent<Shelf>() != null)
         {
             shelfScript = null;
-            print(shelfScript + " shelfScript");
+            //print(shelfScript + " shelfScript");
         }
     }
 
