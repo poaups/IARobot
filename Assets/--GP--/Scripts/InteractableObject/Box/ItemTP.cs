@@ -69,7 +69,7 @@ public class ItemTP : MonoBehaviour
 
     void EndActivity()
     {
-        print("Plus rien dans la liste");
+        //print("Plus rien dans la liste");
         followingGOScript.SetActivity();
         endActivityScript.StartCoroutine();
     }
