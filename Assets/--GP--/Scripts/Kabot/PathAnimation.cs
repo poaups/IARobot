@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,10 @@ using UnityEngine;
 public class PathAnimation : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    [SerializeField] private KabotMovement kabotMovement;
     private Transform[] waypoints;
     private int currentIndex = -1;
+    private bool isWaiting = false;
 
     void Awake()
     {
@@ -20,23 +23,45 @@ public class PathAnimation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<KabotMovement>() != null)
+        if (!other.isTrigger && other.GetComponent<KabotMovement>() != null)
         {
             MoveToNextPoint();
-            other.GetComponent<KabotMovement>().CurrentState = KabotMovement.KabotState.GuidePlayer;
+            kabotMovement.CurrentState = KabotMovement.KabotState.GuidePlayer;
         }
     }
 
     public void MoveToNextPoint()
     {
-        currentIndex ++;
-        if (currentIndex < waypoints.Length)
+        if (kabotMovement.IsPlayerNear)
         {
-            target.position = waypoints[currentIndex].position;
+            currentIndex++;
+            if (currentIndex < waypoints.Length)
+            {
+                target.position = waypoints[currentIndex].position;
+            }
+            else
+            {
+                kabotMovement.CurrentState = KabotMovement.KabotState.FollowPlayer;
+                Destroy(gameObject);
+            }
         }
         else
         {
-            Destroy(gameObject);
+            if (!isWaiting)
+            {
+                StartCoroutine(WaitForPlayer());
+            }
         }
+    }
+
+    private IEnumerator WaitForPlayer()
+    {
+        isWaiting = true;
+        while (!kabotMovement.IsPlayerNear)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        isWaiting = false;
+        MoveToNextPoint();
     }
 }

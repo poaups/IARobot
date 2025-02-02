@@ -13,7 +13,7 @@ public class PathPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<KabotMovement>() != null)
+        if (!other.isTrigger && other.GetComponent<KabotMovement>() != null)
         {
             pathAnimation.MoveToNextPoint();
         }
