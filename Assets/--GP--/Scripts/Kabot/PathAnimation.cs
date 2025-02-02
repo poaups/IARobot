@@ -23,6 +23,7 @@ public class PathAnimation : MonoBehaviour
         if (other.GetComponent<KabotMovement>() != null)
         {
             MoveToNextPoint();
+            other.GetComponent<KabotMovement>().CurrentState = KabotMovement.KabotState.GuidePlayer;
         }
     }
 

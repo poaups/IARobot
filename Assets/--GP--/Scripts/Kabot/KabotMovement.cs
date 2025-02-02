@@ -5,11 +5,13 @@ using UnityEngine.AI;
 public class KabotMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    [SerializeField] private Transform smoothTarget;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength = 1.5f;
     [SerializeField] private GameObject player;
 
     [HideInInspector] public float Speed;
+    public float SmoothSpeed = 5f;
 
     private NavMeshAgent agent;
     private Quaternion lastRotation;
@@ -34,7 +36,14 @@ public class KabotMovement : MonoBehaviour
         {
             target.position = player.transform.position;
 
-            agent.destination = target.position;
+            if (Vector3.Distance(smoothTarget.transform.position, target.position) > 2f)
+            {
+                Vector3 direction = (target.position - smoothTarget.transform.position).normalized;
+
+                smoothTarget.transform.position += direction * SmoothSpeed * Time.deltaTime;
+            }
+
+            agent.destination = smoothTarget.position;
             Speed = agent.velocity.magnitude;
 
             if (Speed > .01f)
@@ -61,7 +70,8 @@ public class KabotMovement : MonoBehaviour
         }
         else
         {
-            print("false");
+            Vector3 direction = (target.position - smoothTarget.transform.position).normalized;
+            smoothTarget.transform.position += direction * SmoothSpeed * Time.deltaTime;
         }
     }
 }
