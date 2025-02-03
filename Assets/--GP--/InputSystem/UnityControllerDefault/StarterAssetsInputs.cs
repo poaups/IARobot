@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
@@ -17,7 +17,7 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 
-    // Référence à l'Action 'Interaction' dans le Input System
+    // RÃ©fÃ©rence Ã  l'Action 'Interaction' dans le Input System
     private InputAction interactionAction;
 
 #if ENABLE_INPUT_SYSTEM
@@ -34,7 +34,7 @@ public class StarterAssetsInputs : MonoBehaviour
         if (interactionAction.triggered)
         {
             isInteracting = true;
-            Debug.Log("Interaction déclenchée !");
+            Debug.Log("Interaction dÃ©clenchÃ©e !");
         }
         else
         {

@@ -71,7 +71,7 @@ public class ItemTP : MonoBehaviour
     {
         //print("Plus rien dans la liste");
         followingGOScript.SetActivity();
-        endActivityScript.StartCoroutine();
+        endActivityScript.EndAction();
     }
     public bool ItemsIsEmpty()
     {

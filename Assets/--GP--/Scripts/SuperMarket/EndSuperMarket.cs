@@ -6,9 +6,17 @@ public class EndActivity : MonoBehaviour
 {
     [SerializeField] private float TimeBedoreDog;
 
-    public void StartCoroutine()
+    [Header("Door")]
+    [SerializeField] private GameObject triggerDoor;
+
+    private void Awake()
+    {
+        triggerDoor.SetActive(false);
+    }
+    public void EndAction()
     {
         StartCoroutine(WaitBeforeDog());
+        triggerDoor.SetActive(true);
     }
 
     public IEnumerator WaitBeforeDog()
