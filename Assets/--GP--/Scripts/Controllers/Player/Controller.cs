@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
         if (!IsRunning()) multiplySpeedRunning = 1;
         else multiplySpeedRunning = currentRunSpeed;
 
-       
+        print(currentVelocityX);
         UpdateVelocity();
         SetAnimation();
         ShowVelocityTxt();
@@ -64,6 +64,7 @@ public class Controller : MonoBehaviour
     void SetAnimation()
     {
         animator.SetBool("Sprint", input.GetSprint());
+        animator.SetBool("Landing", !GetGround());
         animator.SetFloat("Speed", currentVelocityX);
     }
     void UpdateVelocity()
