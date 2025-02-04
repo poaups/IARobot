@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
@@ -19,29 +20,54 @@ public class StarterAssetsInputs : MonoBehaviour
 
     // Référence à l'Action 'Interaction' dans le Input System
     private InputAction interactionAction;
+    private InputAction sprintAction;
 
 #if ENABLE_INPUT_SYSTEM
     private void Awake()
     {
         var playerInput = GetComponent<PlayerInput>();
 
-        //Ajouter une nouvelle input ou on a besoin de savoir si elle est declanche ou non
-        interactionAction = playerInput.actions["Interaction"]; //-> nom de l'input dans l'input system
+        // Obtenir les actions "Sprint" et "Interaction"
+        sprintAction = playerInput.actions["Sprint"];
+        interactionAction = playerInput.actions["Interaction"];
+
+        // S'abonner aux événements "performed" des actions
+        sprintAction.performed += OnSprintPerformed;
+        interactionAction.performed += OnInteractionPerformed;
     }
 
     private void Update()
     {
-        if (interactionAction.triggered)
+        print(sprint);
+        if (sprintAction.ReadValue<float>() > 0)
         {
-            isInteracting = true;
-            Debug.Log("Interaction déclenchée !");
+            //sprint = true;
+            Debug.Log("Sprint en cours !");
         }
-        else
-        {
-            isInteracting = false;
-        }
-        Debug.Log("Interaction actuelle: " + isInteracting);
     }
+
+    public bool GetSprint()
+    {
+        return sprint;
+    }
+
+    private void OnDestroy()
+    {
+        // Se désabonner des événements pour éviter les fuites de mémoire
+        sprintAction.performed -= OnSprintPerformed;
+        interactionAction.performed -= OnInteractionPerformed;
+    }
+
+    private void OnSprintPerformed(InputAction.CallbackContext context)
+    {
+        Debug.Log("Sprint déclenché !");
+    }
+
+    private void OnInteractionPerformed(InputAction.CallbackContext context)
+    {
+        Debug.Log("Interaction déclenchée !");
+    }
+
 
     public void OnMove(InputValue value)
     {

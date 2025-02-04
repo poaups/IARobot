@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -50,7 +49,9 @@ public class Controller : MonoBehaviour
         if (!IsRunning()) multiplySpeedRunning = 1;
         else multiplySpeedRunning = currentRunSpeed;
 
+       
         UpdateVelocity();
+        SetAnimation();
         ShowVelocityTxt();
         HandleMovement();
         IsGrounded();
@@ -60,14 +61,20 @@ public class Controller : MonoBehaviour
             _rb.AddForce(Vector3.down * 2 * 2 * Time.deltaTime, ForceMode.Force);
         }
     }
+    void SetAnimation()
+    {
+        animator.SetBool("Sprint", input.GetSprint());
+        animator.SetFloat("Speed", currentVelocityX);
+    }
     void UpdateVelocity()
     {
-        currentVelocityX = Mathf.Round(_rb.velocity.x * 10) / 10f;
-        currentVelocityY = Mathf.Round(_rb.velocity.y * 10) / 10f;
+       // print("currentVelocityX" + currentVelocityX);
+        currentVelocityX = Mathf.Abs(Mathf.Round((_rb.velocity.x + _rb.velocity.z) * 10) / 10f);
+        currentVelocityY = Mathf.Abs(Mathf.Round(_rb.velocity.y * 10) / 10f);
     }
     void ShowVelocityTxt()
     {
-        txtSpeedhorizontal.text = "Hspeed" + _rb.velocity.z.ToString("F1") + " " + _rb.velocity.x.ToString("F1");
+        txtSpeedhorizontal.text = "Hspeed" + _rb.velocity.x.ToString("F1") + " " + _rb.velocity.z.ToString("F1");
         txtSpeedVertical.text = "Vspeed " + _rb.velocity.y.ToString("F1");
     }
     private bool IsSliding()
