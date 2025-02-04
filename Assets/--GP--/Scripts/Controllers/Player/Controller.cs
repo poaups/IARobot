@@ -1,5 +1,5 @@
-
-
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -8,6 +8,8 @@ public class Controller : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float multiplySpeedRunning;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private TextMeshProUGUI txtSpeedhorizontal;
+    [SerializeField] private TextMeshProUGUI txtSpeedVertical;
 
     [Header("Camera Settings")]
     [SerializeField] private Transform _cameraTransform;
@@ -18,22 +20,27 @@ public class Controller : MonoBehaviour
     [SerializeField] private float gravity;
 
     [Header("Slide Settings")]
-    [SerializeField] private bool enableSliding = true; // Active/désactive la glisse
+    [SerializeField] private bool enableSliding = true;
     [SerializeField] private float slopeLimit = 45f;
     [SerializeField] private float slideSpeed = 8f;
     [SerializeField] private float dragrb;
+
 
     private float savedrag;
     private Rigidbody _rb;
     private StarterAssetsInputs input;
     private float currentRunSpeed;
+    private float currentVelocityX;
+    private float currentVelocityY;
     private bool isGrounded;
     private Vector3 hitPointNormal;
+    private Animator animator;
 
     private void Awake()
     {
         savedrag = dragrb;
         currentRunSpeed = multiplySpeedRunning;
+        animator = GetComponent<Animator>();
         input = GetComponentInParent<StarterAssetsInputs>();
         _rb = GetComponent<Rigidbody>();
     }
@@ -42,7 +49,9 @@ public class Controller : MonoBehaviour
     {
         if (!IsRunning()) multiplySpeedRunning = 1;
         else multiplySpeedRunning = currentRunSpeed;
-        
+
+        UpdateVelocity();
+        ShowVelocityTxt();
         HandleMovement();
         IsGrounded();
         InputGroundCheck();
@@ -50,10 +59,17 @@ public class Controller : MonoBehaviour
         {
             _rb.AddForce(Vector3.down * 2 * 2 * Time.deltaTime, ForceMode.Force);
         }
-
-        //print("x : "+ _rb.velocity.x + " | y : "    + _rb.velocity.y);
     }
-
+    void UpdateVelocity()
+    {
+        currentVelocityX = Mathf.Round(_rb.velocity.x * 10) / 10f;
+        currentVelocityY = Mathf.Round(_rb.velocity.y * 10) / 10f;
+    }
+    void ShowVelocityTxt()
+    {
+        txtSpeedhorizontal.text = "Hspeed" + _rb.velocity.z.ToString("F1") + " " + _rb.velocity.x.ToString("F1");
+        txtSpeedVertical.text = "Vspeed " + _rb.velocity.y.ToString("F1");
+    }
     private bool IsSliding()
     {
         //print(isGrounded + "isgrounded");
