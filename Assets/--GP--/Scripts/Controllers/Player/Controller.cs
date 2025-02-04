@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
         if (!IsRunning()) multiplySpeedRunning = 1;
         else multiplySpeedRunning = currentRunSpeed;
 
-        print(currentVelocityX);
+       // print(currentVelocityX);
         UpdateVelocity();
         SetAnimation();
         ShowVelocityTxt();

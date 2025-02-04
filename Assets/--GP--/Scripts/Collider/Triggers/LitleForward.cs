@@ -16,6 +16,7 @@ public class LitleForward : MonoBehaviour
     {
         if(other != null && other.GetComponent<Shelf>() != null)
         {
+            print(other.gameObject.name);
             shelfScript = other.GetComponent<Shelf>();
             //print(shelfScript + " shelfScript");
         }
@@ -32,8 +33,9 @@ public class LitleForward : MonoBehaviour
 
     private void Update()
     {
-        if(inputScript.isInteracting && shelfScript != null && playerInteraction.GetCanTakeBox())
+        if(inputScript.GetInteraction() && shelfScript != null && playerInteraction.GetCanTakeBox())
         {
+            print("UseObject");
             shelfScript.UseObject();
         }
         

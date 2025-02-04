@@ -9,6 +9,7 @@ public class StarterAssetsInputs : MonoBehaviour
     public Vector2 look;
     public bool jump;
     public bool sprint;
+    public bool interaction;
     public bool isInteracting { get; private set; }  // Track if interaction key is pressed
 
     [Header("Movement Settings")]
@@ -31,14 +32,18 @@ public class StarterAssetsInputs : MonoBehaviour
         sprintAction = playerInput.actions["Sprint"];
         interactionAction = playerInput.actions["Interaction"];
 
-        // S'abonner aux événements "performed" des actions
-        sprintAction.performed += OnSprintPerformed;
+        // S'abonner aux événements "performed" et "canceled" de l'action Interaction
         interactionAction.performed += OnInteractionPerformed;
+        interactionAction.canceled += OnInteractionCanceled;
+
+        // S'abonner aux événements "performed" de l'action Sprint
+        sprintAction.performed += OnSprintPerformed;
     }
 
     private void Update()
     {
-        print(sprint);
+        print(GetInteraction());
+        //print(sprint);
         if (sprintAction.ReadValue<float>() > 0)
         {
             //sprint = true;
@@ -51,11 +56,18 @@ public class StarterAssetsInputs : MonoBehaviour
         return sprint;
     }
 
+    public bool GetInteraction()
+    {
+        return interaction;
+    }
+
     private void OnDestroy()
     {
         // Se désabonner des événements pour éviter les fuites de mémoire
         sprintAction.performed -= OnSprintPerformed;
+
         interactionAction.performed -= OnInteractionPerformed;
+        interactionAction.canceled -= OnInteractionCanceled;
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext context)
@@ -65,7 +77,13 @@ public class StarterAssetsInputs : MonoBehaviour
 
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
+        interaction = true;
         Debug.Log("Interaction déclenchée !");
+    }
+    private void OnInteractionCanceled(InputAction.CallbackContext context)
+    {
+        interaction = false;
+        Debug.Log("Interaction terminée !");
     }
 
 
