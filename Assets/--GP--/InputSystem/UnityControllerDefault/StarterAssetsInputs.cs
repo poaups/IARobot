@@ -1,38 +1,39 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
 {
     [Header("Character Input Values")]
-    public Vector2 move;
-    public Vector2 look;
-    public bool jump;
-    public bool sprint;
-    public bool interaction;
-    public bool isInteracting { get; private set; }  // Track if interaction key is pressed
 
-    [Header("Movement Settings")]
-    public bool analogMovement;
+    public Vector2 Move;
+    public Vector2 Look;
+
+    public bool Jump;
+    public bool Sprint;
+    public bool Interaction;
+    public bool LeftMouse;
 
     [Header("Mouse Cursor Settings")]
-    public bool cursorLocked = true;
-    public bool cursorInputForLook = true;
+    public bool CursorLocked = true;
+    public bool CursorInputForLook = true;
 
     //Each Action
     private InputAction interactionAction;
     private InputAction sprintAction;
     private InputAction jumpAction;
-
+    private InputAction obeyAction;
+    private KabotMovement kabotMovement;
 
 #if ENABLE_INPUT_SYSTEM
     private void Awake()
     {
+        kabotMovement = Gamemanager.instance.KabotMovementScript;
         var playerInput = GetComponent<PlayerInput>();
 
         sprintAction = playerInput.actions["Sprint"];
         interactionAction = playerInput.actions["Interaction"];
         jumpAction = playerInput.actions["Jump"];
+        obeyAction = playerInput.actions["LeftMouse"];
 
         interactionAction.performed += OnInteractionPerformed;
         interactionAction.canceled += OnInteractionCanceled;
@@ -42,44 +43,28 @@ public class StarterAssetsInputs : MonoBehaviour
 
         jumpAction.performed += OnJumpPerformed;
         jumpAction.canceled += OnJumpCanceled;
-    }
 
-    private void Update()
-    {
-        print(sprint);
-    }
-    public bool GetSprint()
-    {
-        return sprint;
-    }
-
-    public bool GetInteraction()
-    {
-        return interaction;
+        obeyAction.performed += OnLeftMousePerformed;
+        obeyAction.canceled += OnLeftMouseCanceled;
     }
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
-        interaction = true;
-        Debug.Log("Interaction déclenchée !");
+        Interaction = true;
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {
-        interaction = false;
-        Debug.Log("Interaction terminée !");
+        Interaction = false;
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext context)
     {
-        sprint = true;
-        Debug.Log("Sprint déclenchée !");
+        Sprint = true;
     }
 
     private void OnSprintCanceled(InputAction.CallbackContext context)
     {
-        sprint = false;
-        Debug.Log("Sprint terminée !");
+        Sprint = false;
     }
-
 
     public void OnMove(InputValue value)
     {
@@ -88,41 +73,48 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        if (cursorInputForLook)
+        if (CursorInputForLook)
         {
             LookInput(value.Get<Vector2>());
         }
     }
     private void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        jump = true;
+        Jump = true;
         //Si on veut un keyDown on met une variable true ici 
         Debug.Log("Saut appuyé");
     }
     private void OnJumpCanceled(InputAction.CallbackContext context)
     {
-        jump = false;
+        Jump = false;
         //Est false ici
         Debug.Log("Saut relâché");
     }
-    
-#endif
 
+    private void OnLeftMousePerformed(InputAction.CallbackContext context)
+    {
+        LeftMouse = true;
+        Debug.Log("LeftMouse appuyé");
+        kabotMovement.Obey();
+    }
+    private void OnLeftMouseCanceled(InputAction.CallbackContext context)
+    {
+        LeftMouse = false;
+        Debug.Log("LeftMouse relâché");
+    }
+#endif
     public void MoveInput(Vector2 newMoveDirection)
     {
-        move = newMoveDirection;
+        Move = newMoveDirection;
     }
-
     public void LookInput(Vector2 newLookDirection)
     {
-        look = newLookDirection;
+        Look = newLookDirection;
     }
-
     private void OnApplicationFocus(bool hasFocus)
     {
-        SetCursorState(cursorLocked);
+        SetCursorState(CursorLocked);
     }
-
     private void SetCursorState(bool newState)
     {
         Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;

@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "LeftMouse",
+                    "type": "Button",
+                    "id": "0ba43c8a-a93e-47ff-b1fb-f93b10cfce93",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interaction",
                     "type": "Button",
                     "id": "8f2c5c51-8227-4741-9b53-1a4c5dc917f1",
@@ -247,6 +256,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f93d1327-89ba-436a-8da5-385e231dc36c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "LeftMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cbeb957f-f8e0-4dfe-bc55-1812525b0f71",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LeftMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

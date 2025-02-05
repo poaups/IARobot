@@ -32,13 +32,13 @@ public class TPSCameraController : MonoBehaviour
     }
     private void UpdateCameraRotation()
     {
-        if (inputCamera.look.sqrMagnitude > 0.001)
+        if (inputCamera.Look.sqrMagnitude > 0.001)
         {
             // Right/left Camera
-            _rotationSide.Rotate(Vector3.up, inputCamera.look.x * _sensitivity);
+            _rotationSide.Rotate(Vector3.up, inputCamera.Look.x * _sensitivity);
 
             // Up/down Camera
-            float mouseY = inputCamera.look.y * _sensitivity;
+            float mouseY = inputCamera.Look.y * _sensitivity;
 
             _cameraRotationX += mouseY;
             _cameraRotationX = Mathf.Clamp(_cameraRotationX, _rotationMaxUp, _rotationMaxDown);

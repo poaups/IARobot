@@ -9,7 +9,6 @@ public class KabotMovement : MonoBehaviour
     [SerializeField] private Transform smoothTarget;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength = 1.5f;
-    [SerializeField] private SphereCollider nearTrigger;
 
     [HideInInspector] public float Speed;
     [HideInInspector] public bool IsPlayerNear;
@@ -18,6 +17,7 @@ public class KabotMovement : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
     private Quaternion lastRotation;
+    private SphereCollider nearTrigger;
 
     public enum KabotState
     {
@@ -31,6 +31,7 @@ public class KabotMovement : MonoBehaviour
     void Start()
     {
         player = Gamemanager.instance.Player;
+        Debug.Log(player.name);
         agent = GetComponent<NavMeshAgent>();
         nearTrigger = GetComponent<SphereCollider>();
     }

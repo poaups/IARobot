@@ -63,7 +63,7 @@ public class Controller : MonoBehaviour
     }
     void SetAnimation()
     {
-        animator.SetBool("Sprint", input.GetSprint());
+        animator.SetBool("Sprint", input.Sprint);
         animator.SetBool("Landing", !GetGround());
         animator.SetFloat("Speed", currentVelocityX);
     }
@@ -96,7 +96,7 @@ public class Controller : MonoBehaviour
 
     private bool IsRunning()
     {
-        return input.sprint;
+        return input.Sprint;
     }
 
     public bool GetGround()
@@ -124,9 +124,9 @@ public class Controller : MonoBehaviour
 
     private void InputGroundCheck()
     {
-        if (input.jump && GetGround())
+        if (input.Jump && GetGround())
         {
-            input.jump = false;
+            input.Jump = false;
             Jump();
         }
     }
@@ -138,7 +138,7 @@ public class Controller : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (input.move == Vector2.zero)
+        if (input.Move == Vector2.zero)
         {
             _rb.velocity =  new Vector2(0,_rb.velocity.y);
 
@@ -146,8 +146,8 @@ public class Controller : MonoBehaviour
         }
 
         dragrb = savedrag;
-        float inputX = input.move.x;
-        float inputZ = input.move.y;
+        float inputX = input.Move.x;
+        float inputZ = input.Move.y;
 
         Vector3 forward = _cameraTransform.forward;
         Vector3 right = _cameraTransform.right;

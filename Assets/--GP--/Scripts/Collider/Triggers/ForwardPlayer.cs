@@ -37,7 +37,7 @@ public class ForwardPlayer : MonoBehaviour
     private void Update()
     {
        // print(goTriggered);
-        if(inputScript.GetInteraction() && goTriggered != null && !alreadyTaken)
+        if(inputScript.Interaction && goTriggered != null && !alreadyTaken)
         {
             print("E");
             SetBoxOnPLayer();

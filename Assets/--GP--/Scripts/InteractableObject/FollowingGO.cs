@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FollowingGO : MonoBehaviour
 {
-    [SerializeField] private Transform transformToFollow; 
+    private Transform transformToFollow; 
     [SerializeField] private float distanceAhead;
 
     private bool canFollow;
@@ -13,8 +13,13 @@ public class FollowingGO : MonoBehaviour
         endActivity = false;
         canFollow = false;
     }
+    private void Start()
+    {
+        transformToFollow = Gamemanager.instance.Player.transform;
+    }
     private void LateUpdate()
     {
+        transformToFollow = Gamemanager.instance.Player.GetComponent<Transform>();
         if (canFollow)
         {
             if (transformToFollow != null)

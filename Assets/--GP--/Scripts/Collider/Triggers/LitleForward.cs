@@ -33,7 +33,7 @@ public class LitleForward : MonoBehaviour
 
     private void Update()
     {
-        if(inputScript.GetInteraction() && shelfScript != null && playerInteraction.GetCanTakeBox())
+        if(inputScript.Interaction && shelfScript != null && playerInteraction.GetCanTakeBox())
         {
             print("UseObject");
             shelfScript.UseObject();
