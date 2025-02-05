@@ -5,7 +5,11 @@ public class ShelfManager : MonoBehaviour
 {
     [SerializeField] private List<MeshRenderer> allMesh;
 
-    public void SetObjectMesh(bool newValue)
+    private void Awake()
+    {
+        SetWireframe(false);
+    }
+    public void SetWireframe(bool newValue)
     {
         for (int i = 0; i < allMesh.Count; ++i)
         {
