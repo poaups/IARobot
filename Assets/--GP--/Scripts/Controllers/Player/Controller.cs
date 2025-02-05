@@ -96,7 +96,7 @@ public class Controller : MonoBehaviour
 
     private bool IsRunning()
     {
-        return input.sprint;
+        return input.sprintDown;
     }
 
     public bool GetGround()

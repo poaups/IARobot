@@ -17,14 +17,17 @@ public class TPSCameraController : MonoBehaviour
 
     public StarterAssetsInputs inputCamera;
     private float _cameraRotationX;
+    private StarterAssetsInputs _cameraRotationY;
 
     void Start()
     {
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void LateUpdate()
     {
+
         UpdateCameraRotation();
     }
     private void UpdateCameraRotation()

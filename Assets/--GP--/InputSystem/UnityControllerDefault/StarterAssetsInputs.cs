@@ -8,7 +8,8 @@ public class StarterAssetsInputs : MonoBehaviour
     public Vector2 move;
     public Vector2 look;
     public bool jump;
-    public bool sprint;
+    public bool sprintDown;
+    public bool sprintKey;
     public bool interaction;
     public bool isInteracting { get; private set; }  // Track if interaction key is pressed
 
@@ -53,7 +54,7 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public bool GetSprint()
     {
-        return sprint;
+        return sprintDown;
     }
 
     public bool GetInteraction()
@@ -73,6 +74,8 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnSprintPerformed(InputAction.CallbackContext context)
     {
         Debug.Log("Sprint déclenché !");
+        sprintKey = true;
+        sprintDown = true;
     }
 
     private void OnInteractionPerformed(InputAction.CallbackContext context)
@@ -85,7 +88,6 @@ public class StarterAssetsInputs : MonoBehaviour
         interaction = false;
         Debug.Log("Interaction terminée !");
     }
-
 
     public void OnMove(InputValue value)
     {
@@ -128,7 +130,7 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public void SprintInput(bool newSprintState)
     {
-        sprint = newSprintState;
+        sprintDown = newSprintState;
     }
 
     private void OnApplicationFocus(bool hasFocus)
