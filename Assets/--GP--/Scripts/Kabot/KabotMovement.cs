@@ -9,7 +9,6 @@ public class KabotMovement : MonoBehaviour
     [SerializeField] private Transform smoothTarget;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength = 1.5f;
-    [SerializeField] private GameObject player;
     [SerializeField] private SphereCollider nearTrigger;
 
     [HideInInspector] public float Speed;
@@ -17,6 +16,7 @@ public class KabotMovement : MonoBehaviour
     public float SmoothSpeed = 5f;
 
     private NavMeshAgent agent;
+    private GameObject player;
     private Quaternion lastRotation;
 
     public enum KabotState
@@ -30,6 +30,7 @@ public class KabotMovement : MonoBehaviour
 
     void Start()
     {
+        player = Gamemanager.instance.Player;
         agent = GetComponent<NavMeshAgent>();
         nearTrigger = GetComponent<SphereCollider>();
     }
@@ -121,5 +122,10 @@ public class KabotMovement : MonoBehaviour
         {
             transform.rotation = lastRotation;
         }
+    }
+
+    public void Obey()
+    {
+        print("Obey");
     }
 }
