@@ -3,18 +3,27 @@ using UnityEngine;
 
 public class ShelfManager : MonoBehaviour
 {
-    [SerializeField] private List<MeshRenderer> allMesh;
+    [SerializeField] private List<MeshRenderer> allMeshs;
+    [SerializeField] private List<TriggerShelf> allTriggers;
 
     private void Awake()
     {
         SetWireframe(false);
     }
+    public void AbleAllShelf()
+    {
+        foreach (TriggerShelf shelfScript in allTriggers)
+        {
+            shelfScript.IsDepositBox();
+        }
+    }
+
     public void SetWireframe(bool newValue)
     {
-        for (int i = 0; i < allMesh.Count; ++i)
+        for (int i = 0; i < allMeshs.Count; ++i)
         {
             //Probablement shader wireframe ici
-            allMesh[i].enabled = newValue;
+            allMeshs[i].enabled = newValue;
         }
     }
 }

@@ -18,7 +18,7 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool CursorInputForLook = true;
 
     [SerializeField] private TriggerBox triggerBox;
-    [SerializeField] private TriggerShelf triggerShelf;
+    [SerializeField] private ShelfManager shelfManager;
 
     //Each Action
     private InputAction interactionAction;
@@ -54,7 +54,7 @@ public class StarterAssetsInputs : MonoBehaviour
     {
         Interaction = true;
         triggerBox.IsTakenBox();
-        triggerShelf.IsDepositBox();
+        shelfManager.AbleAllShelf();
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {

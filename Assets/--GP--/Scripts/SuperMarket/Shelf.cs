@@ -17,6 +17,7 @@ public class Shelf : MonoBehaviour
     }
     void RemoveWireFrame()
     {
+        print("Wireframe changement");
         wireFrame.enabled = false;
     }
 }

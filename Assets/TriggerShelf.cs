@@ -37,17 +37,19 @@ public class TriggerShelf : MonoBehaviour
     }
     public void IsDepositBox()
     {
+        print("already use" + alreadyUse);
         print("Je vais ici");
         bool answer = false;
         if (triggered != null && !alreadyUse && ItemTPScript.IsNotEmpty() && interactionPlayer.HasBox())
         {
+            print("If");
             alreadyUse = true;
             answer = true;
             shelf.UseObject();
         }
         else
         {
-            print("No");
+            print("Nooooooooooooooooooooooo");
         }
         print(answer + "Use object E + collision shelf");
     }
