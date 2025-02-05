@@ -8,8 +8,7 @@ public class StarterAssetsInputs : MonoBehaviour
     public Vector2 move;
     public Vector2 look;
     public bool jump;
-    public bool sprintDown;
-    public bool sprintKey;
+    public bool sprint;
     public bool interaction;
     public bool isInteracting { get; private set; }  // Track if interaction key is pressed
 
@@ -20,64 +19,44 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
 
-    // Référence à l'Action 'Interaction' dans le Input System
+    //Each Action
     private InputAction interactionAction;
     private InputAction sprintAction;
+    private InputAction jumpAction;
+
 
 #if ENABLE_INPUT_SYSTEM
     private void Awake()
     {
         var playerInput = GetComponent<PlayerInput>();
 
-        // Obtenir les actions "Sprint" et "Interaction"
         sprintAction = playerInput.actions["Sprint"];
         interactionAction = playerInput.actions["Interaction"];
+        jumpAction = playerInput.actions["Jump"];
 
-        // S'abonner aux événements "performed" et "canceled" de l'action Interaction
         interactionAction.performed += OnInteractionPerformed;
         interactionAction.canceled += OnInteractionCanceled;
 
-        // S'abonner aux événements "performed" de l'action Sprint
         sprintAction.performed += OnSprintPerformed;
+        sprintAction.canceled += OnSprintCanceled;
+
+        jumpAction.performed += OnJumpPerformed;
+        jumpAction.canceled += OnJumpCanceled;
     }
 
     private void Update()
     {
-        print(GetInteraction());
-        //print(sprint);
-        if (sprintAction.ReadValue<float>() > 0)
-        {
-            //sprint = true;
-            Debug.Log("Sprint en cours !");
-        }
+        print(sprint);
     }
-
     public bool GetSprint()
     {
-        return sprintDown;
+        return sprint;
     }
 
     public bool GetInteraction()
     {
         return interaction;
     }
-
-    private void OnDestroy()
-    {
-        // Se désabonner des événements pour éviter les fuites de mémoire
-        sprintAction.performed -= OnSprintPerformed;
-
-        interactionAction.performed -= OnInteractionPerformed;
-        interactionAction.canceled -= OnInteractionCanceled;
-    }
-
-    private void OnSprintPerformed(InputAction.CallbackContext context)
-    {
-        Debug.Log("Sprint déclenché !");
-        sprintKey = true;
-        sprintDown = true;
-    }
-
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
         interaction = true;
@@ -88,6 +67,19 @@ public class StarterAssetsInputs : MonoBehaviour
         interaction = false;
         Debug.Log("Interaction terminée !");
     }
+
+    private void OnSprintPerformed(InputAction.CallbackContext context)
+    {
+        sprint = true;
+        Debug.Log("Sprint déclenchée !");
+    }
+
+    private void OnSprintCanceled(InputAction.CallbackContext context)
+    {
+        sprint = false;
+        Debug.Log("Sprint terminée !");
+    }
+
 
     public void OnMove(InputValue value)
     {
@@ -101,16 +93,19 @@ public class StarterAssetsInputs : MonoBehaviour
             LookInput(value.Get<Vector2>());
         }
     }
-
-    public void OnJump(InputValue value)
+    private void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        JumpInput(true);
+        jump = true;
+        //Si on veut un keyDown on met une variable true ici 
+        Debug.Log("Saut appuyé");
     }
-
-    public void OnSprint(InputValue value)
+    private void OnJumpCanceled(InputAction.CallbackContext context)
     {
-        SprintInput(value.isPressed);
+        jump = false;
+        //Est false ici
+        Debug.Log("Saut relâché");
     }
+    
 #endif
 
     public void MoveInput(Vector2 newMoveDirection)
@@ -121,16 +116,6 @@ public class StarterAssetsInputs : MonoBehaviour
     public void LookInput(Vector2 newLookDirection)
     {
         look = newLookDirection;
-    }
-
-    public void JumpInput(bool newJumpState)
-    {
-        jump = newJumpState;
-    }
-
-    public void SprintInput(bool newSprintState)
-    {
-        sprintDown = newSprintState;
     }
 
     private void OnApplicationFocus(bool hasFocus)

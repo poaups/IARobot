@@ -11,7 +11,7 @@ public class Balle : MonoBehaviour
 
     public void StartMoving(Transform player)
     {
-        print(player.name);
+        //print(player.name);
         transform.position = player.position;
     }
 }

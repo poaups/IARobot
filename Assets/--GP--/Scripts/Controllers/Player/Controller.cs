@@ -96,7 +96,7 @@ public class Controller : MonoBehaviour
 
     private bool IsRunning()
     {
-        return input.sprintDown;
+        return input.sprint;
     }
 
     public bool GetGround()
@@ -128,10 +128,6 @@ public class Controller : MonoBehaviour
         {
             input.jump = false;
             Jump();
-        }
-        else
-        {
-            input.JumpInput(false);
         }
     }
 
