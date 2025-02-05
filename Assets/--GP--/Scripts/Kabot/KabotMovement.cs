@@ -23,7 +23,7 @@ public class KabotMovement : MonoBehaviour
     {
         FollowPlayer,
         GuidePlayer,
-        Sit
+        Obey
     }
 
     public KabotState CurrentState;
