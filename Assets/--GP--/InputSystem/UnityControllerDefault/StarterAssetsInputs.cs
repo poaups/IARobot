@@ -17,6 +17,9 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool CursorLocked = true;
     public bool CursorInputForLook = true;
 
+    [SerializeField] private TriggerBox triggerBox;
+    [SerializeField] private TriggerShelf triggerShelf;
+
     //Each Action
     private InputAction interactionAction;
     private InputAction sprintAction;
@@ -50,6 +53,8 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
         Interaction = true;
+        triggerBox.IsTakenBox();
+        triggerShelf.IsDepositBox();
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {
@@ -82,25 +87,21 @@ public class StarterAssetsInputs : MonoBehaviour
     {
         Jump = true;
         //Si on veut un keyDown on met une variable true ici 
-        Debug.Log("Saut appuyé");
     }
     private void OnJumpCanceled(InputAction.CallbackContext context)
     {
         Jump = false;
         //Est false ici
-        Debug.Log("Saut relâché");
     }
 
     private void OnLeftMousePerformed(InputAction.CallbackContext context)
     {
         LeftMouse = true;
-        Debug.Log("LeftMouse appuyé");
         kabotMovement.Obey();
     }
     private void OnLeftMouseCanceled(InputAction.CallbackContext context)
     {
         LeftMouse = false;
-        Debug.Log("LeftMouse relâché");
     }
 #endif
     public void MoveInput(Vector2 newMoveDirection)

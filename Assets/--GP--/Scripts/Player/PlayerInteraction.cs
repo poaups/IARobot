@@ -13,9 +13,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         canTakeBox = newBool;
     }
-    public bool GetCanTakeBox()
+    public bool HasBox()
     {
-        print(canTakeBox + "canTakeBox");
         return canTakeBox;
     }
 }

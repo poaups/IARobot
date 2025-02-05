@@ -14,30 +14,30 @@ public class LitleForward : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other != null && other.GetComponent<Shelf>() != null)
-        {
-            print(other.gameObject.name);
-            shelfScript = other.GetComponent<Shelf>();
-            //print(shelfScript + " shelfScript");
-        }
+        //if(other != null && other.GetComponent<Shelf>() != null)
+        //{
+        //    print(other.gameObject.name);
+        //    shelfScript = other.GetComponent<Shelf>();
+        //    //print(shelfScript + " shelfScript");
+        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other != null && other.GetComponent<Shelf>() != null)
-        {
-            shelfScript = null;
-            //print(shelfScript + " shelfScript");
-        }
+        //if (other != null && other.GetComponent<Shelf>() != null)
+        //{
+        //    shelfScript = null;
+        //    //print(shelfScript + " shelfScript");
+        //}
     }
 
     private void Update()
     {
-        if(inputScript.Interaction && shelfScript != null && playerInteraction.GetCanTakeBox())
-        {
-            print("UseObject");
-            shelfScript.UseObject();
-        }
+        //if(inputScript.Interaction && shelfScript != null && playerInteraction.GetCanTakeBox())
+        //{
+        //    print("UseObject");
+        //    shelfScript.UseObject();
+        //}
         
     }
 }

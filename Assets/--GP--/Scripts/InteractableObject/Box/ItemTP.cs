@@ -26,7 +26,7 @@ public class ItemTP : MonoBehaviour
         TpItemToInitialPosition();
     }
 
-    public bool IsEmpty()
+    public bool IsNotEmpty()
     {
         if (items.Count > 0) return true;
         else return false;
@@ -60,10 +60,9 @@ public class ItemTP : MonoBehaviour
         items[items.Count - 1].transform.position = newPosForItem.position;
         items.Remove(items[items.Count - 1]);
         
-        if(!IsEmpty())
+        if(!IsNotEmpty())
         {
             EndActivity();
-
         }
     }
 

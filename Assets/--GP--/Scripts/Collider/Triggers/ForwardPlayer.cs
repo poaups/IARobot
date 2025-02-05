@@ -16,22 +16,22 @@ public class ForwardPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other != null  && other.GetComponent<ItemTP>() != null)
-        {
-            print(other.name);
-            goTriggered = other.gameObject;
-            interactionScript.SetTakeBox(true);
-        }
+        //if(other != null  && other.GetComponent<ItemTP>() != null)
+        //{
+        //    print(other.name);
+        //    goTriggered = other.gameObject;
+        //    interactionScript.SetTakeBox(true);
+        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other != null && other.GetComponent<ItemTP>() != null)
-        {
-            goTriggered = null;
-            interactionScript.SetTakeBox(false);
+        //if (other != null && other.GetComponent<ItemTP>() != null)
+        //{
+        //    goTriggered = null;
+        //    interactionScript.SetTakeBox(false);
 
-        }
+        //}
     }
 
     private void Update()
@@ -48,7 +48,7 @@ public class ForwardPlayer : MonoBehaviour
        print("SetBoxOnPLayer");
         alreadyTaken = true;
         goTriggered.GetComponent<FollowingGO>().StartFollowing();
-        shelfManagerScript.SetObjectMesh(true);
+        shelfManagerScript.SetWireframe(true);
         playerInteractionScript.SetTakeBox(true);
     }
 }

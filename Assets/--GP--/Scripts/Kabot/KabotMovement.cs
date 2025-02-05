@@ -127,6 +127,6 @@ public class KabotMovement : MonoBehaviour
 
     public void Obey()
     {
-        print("Obey");
+        //print("Obey");
     }
 }
