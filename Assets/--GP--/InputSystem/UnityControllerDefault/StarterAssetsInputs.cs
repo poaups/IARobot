@@ -53,8 +53,15 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
         Interaction = true;
-        triggerBox.IsTakenBox();
-        shelfManager.AbleAllShelf();
+        if(triggerBox != null )
+        {
+            triggerBox.IsTakenBox();
+        }
+        if(shelfManager != null )
+        {
+            shelfManager.AbleAllShelf();
+        }
+       
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {
