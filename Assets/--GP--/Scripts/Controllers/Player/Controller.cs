@@ -5,10 +5,13 @@ public class Controller : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private float multiplySpeedRunning;
+    [SerializeField] private float multiplySpeedRunning ;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private TextMeshProUGUI txtSpeedhorizontal;
     [SerializeField] private TextMeshProUGUI txtSpeedVertical;
+
+    [Range(0f, -5f)]
+    [SerializeField] private float attractionForce; // Staying in floor
 
     [Header("Camera Settings")]
     [SerializeField] private Transform _cameraTransform;
@@ -18,113 +21,56 @@ public class Controller : MonoBehaviour
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float gravity;
 
-    [Header("Slide Settings")]
-    [SerializeField] private bool enableSliding = true;
-    [SerializeField] private float slopeLimit = 45f;
-    [SerializeField] private float slideSpeed = 8f;
-    [SerializeField] private float dragrb;
-
-
-    private float savedrag;
-    private Rigidbody _rb;
+    private CharacterController controller;
     private StarterAssetsInputs input;
-    private float currentRunSpeed;
-    private float currentVelocityX;
-    private float currentVelocityY;
-    private bool isGrounded;
-    private Vector3 hitPointNormal;
     private Animator animator;
+
+    private Vector3 velocity;
+    private bool isGrounded;
 
     private void Awake()
     {
-        savedrag = dragrb;
-        currentRunSpeed = multiplySpeedRunning;
         animator = GetComponent<Animator>();
         input = GetComponentInParent<StarterAssetsInputs>();
-        _rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
-        if (!IsRunning()) multiplySpeedRunning = 1;
-        else multiplySpeedRunning = currentRunSpeed;
-
-       // print(currentVelocityX);
-        UpdateVelocity();
-        SetAnimation();
-        ShowVelocityTxt();
+        CheckGround();
         HandleMovement();
-        IsGrounded();
+        HandleAnimations();
+        ShowVelocityTxt();
         InputGroundCheck();
-        if(!GetGround())
-        {
-            _rb.AddForce(Vector3.down * 2 * 2 * Time.deltaTime, ForceMode.Force);
-        }
     }
-    void SetAnimation()
+
+    private void HandleAnimations()
     {
+        float speed = new Vector2(velocity.x, velocity.z).magnitude;
+
         animator.SetBool("Sprint", input.Sprint);
-        animator.SetBool("Landing", !GetGround());
-        animator.SetFloat("Speed", currentVelocityX);
+        animator.SetBool("Landing", !isGrounded);
+        animator.SetFloat("Speed", speed);
     }
-    void UpdateVelocity()
-    {
-       // print("currentVelocityX" + currentVelocityX);
-        currentVelocityX = Mathf.Abs(Mathf.Round((_rb.velocity.x + _rb.velocity.z) * 10) / 10f);
-        currentVelocityY = Mathf.Abs(Mathf.Round(_rb.velocity.y * 10) / 10f);
-    }
-    void ShowVelocityTxt()
-    {
-        txtSpeedhorizontal.text = "Hspeed" + _rb.velocity.x.ToString("F1") + " " + _rb.velocity.z.ToString("F1");
-        txtSpeedVertical.text = "Vspeed " + _rb.velocity.y.ToString("F1");
-    }
-    private bool IsSliding()
-    {
-        //print(isGrounded + "isgrounded");
-        if (!enableSliding || !isGrounded) return false;
 
-        //print("ici");
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundCheckDistance))
+    private void ShowVelocityTxt()
+    {
+        txtSpeedhorizontal.text = $"Hspeed {velocity.x:F1} {velocity.z:F1}";
+        txtSpeedVertical.text = $"Vspeed {velocity.y:F1}";
+    }
+
+    private void CheckGround()
+    {
+        isGrounded = controller.isGrounded;
+        if (isGrounded && velocity.y < 0)
         {
-            hitPointNormal = hit.normal;
-            float slopeAngle = Vector3.Angle(hitPointNormal, Vector3.up);
-            return slopeAngle > slopeLimit;
-        }
-
-        return false;
-    }
-
-    private bool IsRunning()
-    {
-        return input.Sprint;
-    }
-
-    public bool GetGround()
-    {
-        return isGrounded;
-    }
-
-    private void IsGrounded()
-    {
-        float rayLength = groundCheckDistance;
-        Vector3 origin = transform.position;
-        Vector3 direction = Vector3.down;
-
-        if (Physics.Raycast(origin, direction, rayLength))
-        {
-            isGrounded = true;
-            Debug.DrawRay(origin, direction * rayLength, Color.green);
-        }
-        else
-        {
-            isGrounded = false;
-            Debug.DrawRay(origin, direction * rayLength, Color.red);
+            velocity.y = attractionForce;
         }
     }
 
     private void InputGroundCheck()
     {
-        if (input.Jump && GetGround())
+        if (input.Jump && isGrounded)
         {
             input.Jump = false;
             Jump();
@@ -133,19 +79,11 @@ public class Controller : MonoBehaviour
 
     private void Jump()
     {
-        _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
+        velocity.y = jumpForce;
     }
 
     private void HandleMovement()
     {
-        if (input.Move == Vector2.zero)
-        {
-            _rb.velocity =  new Vector2(0,_rb.velocity.y);
-
-           //return;
-        }
-
-        dragrb = savedrag;
         float inputX = input.Move.x;
         float inputZ = input.Move.y;
 
@@ -159,21 +97,23 @@ public class Controller : MonoBehaviour
         right.Normalize();
 
         Vector3 moveDirection = (forward * inputZ + right * inputX).normalized;
-        Vector3 movement = (moveDirection * _moveSpeed) * multiplySpeedRunning;
+        Vector3 movement = moveDirection * _moveSpeed * (input.Sprint ? multiplySpeedRunning : 1f);
 
-        // Garder la vitesse Y intacte, ne pas la remplacer, elle doit être influencée par la gravité
-        _rb.velocity = new Vector3(movement.x, _rb.velocity.y, movement.z);
+        //Movement
+        controller.Move(movement * Time.deltaTime);
 
+        //Then gravity
+        velocity.y -= gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+
+        velocity.x = movement.x;
+        velocity.z = movement.z;
+        
+        //Rotation player
         if (moveDirection.magnitude >= 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-
-        // Appliquer la gravité manuellement si nécessaire
-        if (!isGrounded)
-        {
-            _rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Force);
         }
     }
 }
