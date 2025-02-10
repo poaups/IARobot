@@ -39,8 +39,8 @@ public class MoveToward : MonoBehaviour
     }
     void Movement()
     {
-        print("target position"+target.position + "player position" + player.position);
-        print("Movement");
+        //print("target position"+target.position + "player position" + player.position);
+        //print("Movement");
         Vector3 direction = (target.position - player.position).normalized;
         player.position += direction * speed * Time.deltaTime;
 

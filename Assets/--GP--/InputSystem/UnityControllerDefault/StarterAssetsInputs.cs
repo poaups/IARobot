@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class StarterAssetsInputs : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class StarterAssetsInputs : MonoBehaviour
 
     [SerializeField] private TriggerBox triggerBox;
     [SerializeField] private ShelfManager shelfManager;
+    [SerializeField] private LitleForward forwardTriggerPlayer;
 
     //Each Action
     private InputAction interactionAction;
@@ -26,10 +28,12 @@ public class StarterAssetsInputs : MonoBehaviour
     private InputAction jumpAction;
     private InputAction obeyAction;
     private KabotMovement kabotMovement;
+    private Controller controller;
 
 #if ENABLE_INPUT_SYSTEM
     private void Awake()
     {
+        controller = GetComponent<Controller>();
         kabotMovement = Gamemanager.instance.KabotMovementScript;
         var playerInput = GetComponent<PlayerInput>();
 
@@ -53,6 +57,15 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
         Interaction = true;
+        print("E");
+        print("Qui est stocke ? " + controller.goStocked);
+
+        if(controller.goStocked != null)
+        {
+            print("Stocke nest pas null");
+            controller.goStocked.Interact();
+        }
+
         if(triggerBox != null )
         {
             triggerBox.IsTakenBox();

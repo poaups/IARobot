@@ -37,11 +37,11 @@ public class Controller : MonoBehaviour
 
     private void Update()
     {
-        CheckGround();
+        //CheckGround();
         HandleMovement();
         HandleAnimations();
         ShowVelocityTxt();
-        InputGroundCheck();
+        //InputGroundCheck();
     }
 
     private void HandleAnimations()
@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
         float speed = new Vector2(velocity.x, velocity.z).magnitude;
 
         animator.SetBool("Sprint", input.Sprint);
-        animator.SetBool("Landing", !isGrounded);
+        //animator.SetBool("Landing", !isGrounded);
         animator.SetFloat("Speed", speed);
     }
 
@@ -59,28 +59,49 @@ public class Controller : MonoBehaviour
         txtSpeedVertical.text = $"Vspeed {velocity.y:F1}";
     }
 
-    private void CheckGround()
+    public Interactable goStocked = null;
+
+    private void OnTriggerEnter(Collider other)
     {
-        isGrounded = controller.isGrounded;
-        if (isGrounded && velocity.y < 0)
+        Interactable interactable = other.GetComponent<Interactable>();
+        if(interactable != null)
         {
-            velocity.y = attractionForce;
+            goStocked = interactable;
+            print(goStocked.gameObject);
         }
+        print(other.gameObject + "Entree");
     }
 
-    private void InputGroundCheck()
+    private void OnTriggerExit(Collider other)
     {
-        if (input.Jump && isGrounded)
+        if(goStocked != null && other.GetComponent<Interactable>() == goStocked)
         {
-            input.Jump = false;
-            Jump();
+            goStocked = null;
         }
+        print(other.gameObject + "Sortie");
     }
 
-    private void Jump()
-    {
-        velocity.y = jumpForce;
-    }
+    //private void CheckGround()
+    //{
+    //    isGrounded = controller.isGrounded;
+    //    if (isGrounded && velocity.y < 0)
+    //    {
+    //        velocity.y = attractionForce;
+    //    }
+    //}
+    //private void InputGroundCheck()
+    //{
+    //    if (input.Jump && isGrounded)
+    //    {
+    //        input.Jump = false;
+    //        Jump();
+    //    }
+    //}
+
+    //private void Jump()
+    //{
+    //    velocity.y = jumpForce;
+    //}
 
     private void HandleMovement()
     {
