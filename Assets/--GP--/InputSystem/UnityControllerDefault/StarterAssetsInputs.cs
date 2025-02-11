@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
 public class StarterAssetsInputs : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public bool Jump;
     public bool Sprint;
+    public bool DisplayUi;
     public bool Interaction;
     public bool LeftMouse;
 
@@ -18,12 +18,16 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool CursorLocked = true;
     public bool CursorInputForLook = true;
 
+    //A supp qu'on on aura plus de box et rayon
     [SerializeField] private TriggerBox triggerBox;
     [SerializeField] private ShelfManager shelfManager;
     [SerializeField] private LitleForward forwardTriggerPlayer;
 
+    [SerializeField] private Paper paperScript;
+
     //Each Action
     private InputAction interactionAction;
+    private InputAction displayUi;
     private InputAction sprintAction;
     private InputAction jumpAction;
     private InputAction obeyAction;
@@ -41,6 +45,7 @@ public class StarterAssetsInputs : MonoBehaviour
         interactionAction = playerInput.actions["Interaction"];
         jumpAction = playerInput.actions["Jump"];
         obeyAction = playerInput.actions["LeftMouse"];
+        displayUi = playerInput.actions["DisplayUi"];
 
         interactionAction.performed += OnInteractionPerformed;
         interactionAction.canceled += OnInteractionCanceled;
@@ -53,12 +58,15 @@ public class StarterAssetsInputs : MonoBehaviour
 
         obeyAction.performed += OnLeftMousePerformed;
         obeyAction.canceled += OnLeftMouseCanceled;
+
+        displayUi.performed += OnDisplayUIPerformed;
+        displayUi.canceled += OnDisplayUICanceled;
     }
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
         Interaction = true;
-        print("E");
-        print("Qui est stocke ? " + controller.goStocked);
+       print("E");
+       print("Qui est stocke ? " + controller.goStocked);
 
         if(controller.goStocked != null)
         {
@@ -66,6 +74,7 @@ public class StarterAssetsInputs : MonoBehaviour
             controller.goStocked.Interact();
         }
 
+        //A supp qu'on on aura plus de box et rayon
         if(triggerBox != null )
         {
             triggerBox.IsTakenBox();
@@ -79,6 +88,23 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {
         Interaction = false;
+    }
+    private void OnDisplayUIPerformed(InputAction.CallbackContext context)
+    {
+        DisplayUi = true;
+        print(paperScript + " il est nul ?");
+        print(paperScript.CanDisplay() + " paperScript.CanDisplay()");
+        if(paperScript != null && paperScript.CanDisplay())
+        {
+            print("F est peut show");
+            paperScript.DisplayPaper();
+        }
+        print("F est peut pas show");
+    }
+    private void OnDisplayUICanceled(InputAction.CallbackContext context)
+    {
+        DisplayUi = false;
+        print(DisplayUi);
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext context)

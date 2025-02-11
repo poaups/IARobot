@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class NotificationMovement : MonoBehaviour
@@ -20,54 +19,13 @@ public class NotificationMovement : MonoBehaviour
         canMove = true;
         _originalPos = transform.position;
     }
-
-    void Update()
-    {
-        WaitForFunction();
-        if (canReturn)
-        {
-            ReturnOriginalPoint();
-        }
-
-        #region Input Test Function
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    canReturn = true;
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.Y))
-        //{
-        //    canReturn = false;
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.U))
-        //{
-        //    DisableSelf();
-        //}
-      
-
-        //print(canReturn);
-        #endregion
-    }
     //GO going toward target
     public IEnumerator MoveNotification()
     {
-        print(Vector3.Distance(transform.position, target.position));
         while(Vector3.Distance(transform.position, target.position) >= 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             yield return null;
-        }
-    }
-
-
-    //Wait seconde before moving
-    void WaitForFunction()
-    {
-        timer += Time.deltaTime;
-        if (timer >= secondsBeforeNotification && canMove)
-        {
-            //MoveNotification();
         }
     }
 

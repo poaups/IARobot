@@ -1,22 +1,18 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Lights : MonoBehaviour, IInteraction
+public class Begin : MonoBehaviour, IInteraction
 {
-    [SerializeField] private List<Light> lightsToAble;
+    [SerializeField] private GameObject blackScreen;
     [SerializeField] private NotificationMovement notification;
 
     public void OnInteract()
     {
         print("J'interagis la" + this.gameObject.name);
-        DisableLights();
+        DisableImage();
     }
-    void DisableLights()
+    void DisableImage()
     {
-        foreach (Light light in lightsToAble)
-        {
-            light.enabled = true;
-        }
+        blackScreen.SetActive(false);
         Gamemanager.instance.AbleControllerCamera();
         StartCoroutine(notification.MoveNotification());
     }

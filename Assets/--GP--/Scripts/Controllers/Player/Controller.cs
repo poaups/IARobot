@@ -65,9 +65,9 @@ public class Controller : MonoBehaviour
         if(interactable != null)
         {
             goStocked = interactable;
-            print(goStocked.gameObject);
+          //  print(goStocked.gameObject);
         }
-        print(other.gameObject + "Entree");
+      //  print(other.gameObject + "Entree");
     }
 
     private void OnTriggerExit(Collider other)
