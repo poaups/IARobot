@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -48,6 +49,17 @@ public class NotificationMovement : MonoBehaviour
         //print(canReturn);
         #endregion
     }
+    //GO going toward target
+    public IEnumerator MoveNotification()
+    {
+        print(Vector3.Distance(transform.position, target.position));
+        while(Vector3.Distance(transform.position, target.position) >= 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
 
     //Wait seconde before moving
     void WaitForFunction()
@@ -55,18 +67,10 @@ public class NotificationMovement : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= secondsBeforeNotification && canMove)
         {
-            MoveNotification();
+            //MoveNotification();
         }
     }
-    //GO going toward target
-    void MoveNotification()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, target.position) <= 0.1f)
-        {
-            canMove = false;
-        }
-    }
+
     //GO going toward position at begining
     void ReturnOriginalPoint()
     {

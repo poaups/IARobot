@@ -22,7 +22,7 @@ public class TriggerBox : MonoBehaviour
     {
         if(other != null && other.GetComponent<Controller>())
         {
-            print(other.name + "je touche la");
+            //print(other.name + "je touche la");
             goTriggered = other.gameObject;
         }
     }
@@ -30,7 +30,7 @@ public class TriggerBox : MonoBehaviour
     {
         if (other != null && other.GetComponent<Controller>())
         {
-            print(other.name + "je sors la");
+           // print(other.name + "je sors la");
             goTriggered = null;
         }  
     }
@@ -42,7 +42,7 @@ public class TriggerBox : MonoBehaviour
             answer = true;
             SetBoxOnPlayer();
         }
-        print(answer + "Prise de la caisse");
+       // print(answer + "Prise de la caisse");
     }
 
     void SetBoxOnPlayer()

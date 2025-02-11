@@ -62,7 +62,7 @@ public class StarterAssetsInputs : MonoBehaviour
 
         if(controller.goStocked != null)
         {
-            print("Stocke nest pas null");
+           // print("Stocke nest pas null");
             controller.goStocked.Interact();
         }
 

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+
+    public Interactable goStocked = null;
+
     [Header("Movement Settings")]
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float multiplySpeedRunning ;
@@ -37,11 +40,10 @@ public class Controller : MonoBehaviour
 
     private void Update()
     {
-        //CheckGround();
+        CheckGround();
         HandleMovement();
         HandleAnimations();
         ShowVelocityTxt();
-        //InputGroundCheck();
     }
 
     private void HandleAnimations()
@@ -49,17 +51,13 @@ public class Controller : MonoBehaviour
         float speed = new Vector2(velocity.x, velocity.z).magnitude;
 
         animator.SetBool("Sprint", input.Sprint);
-        //animator.SetBool("Landing", !isGrounded);
         animator.SetFloat("Speed", speed);
     }
-
     private void ShowVelocityTxt()
     {
         txtSpeedhorizontal.text = $"Hspeed {velocity.x:F1} {velocity.z:F1}";
         txtSpeedVertical.text = $"Vspeed {velocity.y:F1}";
     }
-
-    public Interactable goStocked = null;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -81,28 +79,14 @@ public class Controller : MonoBehaviour
         print(other.gameObject + "Sortie");
     }
 
-    //private void CheckGround()
-    //{
-    //    isGrounded = controller.isGrounded;
-    //    if (isGrounded && velocity.y < 0)
-    //    {
-    //        velocity.y = attractionForce;
-    //    }
-    //}
-    //private void InputGroundCheck()
-    //{
-    //    if (input.Jump && isGrounded)
-    //    {
-    //        input.Jump = false;
-    //        Jump();
-    //    }
-    //}
-
-    //private void Jump()
-    //{
-    //    velocity.y = jumpForce;
-    //}
-
+    private void CheckGround()
+    {
+        isGrounded = controller.isGrounded;
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = attractionForce;
+        }
+    }
     private void HandleMovement()
     {
         float inputX = input.Move.x;

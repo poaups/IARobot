@@ -23,7 +23,7 @@ public class TriggerShelf : MonoBehaviour
         if(other != null && other.GetComponent<Controller>())
         {
             triggered = other.gameObject;
-            print("JE touche le player via le shelf");
+            //print("JE touche le player via le shelf");
         }
     }
 
@@ -32,13 +32,13 @@ public class TriggerShelf : MonoBehaviour
         if (other != null && other.GetComponent<Controller>())
         {
             triggered = null;
-            print("Je sors du player via le shelf");
+           // print("Je sors du player via le shelf");
         }
     }
     public void IsDepositBox()
     {
-        print("already use" + alreadyUse);
-        print("Je vais ici");
+       // print("already use" + alreadyUse);
+       // print("Je vais ici");
         bool answer = false;
         if (triggered != null && !alreadyUse && ItemTPScript.IsNotEmpty() && interactionPlayer.HasBox())
         {
@@ -49,9 +49,9 @@ public class TriggerShelf : MonoBehaviour
         }
         else
         {
-            print("Nooooooooooooooooooooooo");
+            //print("Nooooooooooooooooooooooo");
         }
-        print(answer + "Use object E + collision shelf");
+       // print(answer + "Use object E + collision shelf");
     }
 
 }
