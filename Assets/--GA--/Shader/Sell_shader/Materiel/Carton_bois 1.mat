@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bleu
+  m_Name: Carton_bois 1
   m_Shader: {fileID: -6465566751694194690, guid: a9476b7cddc7b524ca7f994badb38ecb,
     type: 3}
   m_Parent: {fileID: 0}
@@ -44,11 +44,11 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Shade: 0.26
+    - _Shade: 0.17
     m_Colors:
-    - _Color: {r: 0.1966002, g: 0.49071628, b: 0.8867924, a: 0}
+    - _Color: {r: 0.33962262, g: 0.24850926, b: 0.1714133, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2584355776647202493
+--- !u!114 &4375102287715776102
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
