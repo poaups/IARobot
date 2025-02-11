@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Teste
+  m_Name: j1
   m_Shader: {fileID: -6465566751694194690, guid: c7e657df35de1fb4b8323f8752483218,
     type: 3}
   m_Parent: {fileID: 0}
@@ -65,13 +65,13 @@ Material:
     m_Floats:
     - _Balance: 1.44
     - _Hue_Shift: 0.86
-    - _Opaciter: 0.51
+    - _Opaciter: 0.16
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 0.98
+    - _Scale: 0.2
     - _Shade: 0.28
     - _Transparence: 1
     - _Vertex_Color_Intensity: 0.22
     m_Colors:
-    - _Color: {r: 0.745283, g: 0.18214191, b: 0.116011046, a: 0}
+    - _Color: {r: 0.6509434, g: 0.38407522, b: 0.13203098, a: 0}
   m_BuildTextureStacks: []
