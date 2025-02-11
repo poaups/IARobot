@@ -20,6 +20,9 @@
         },
         {
             "m_Id": "9d22ca8a587946dc9c81857b579e855a"
+        },
+        {
+            "m_Id": "6fc4ba9233ed45c79c4d88070f3bdaba"
         }
     ],
     "m_Keywords": [],
@@ -116,6 +119,9 @@
         },
         {
             "m_Id": "b3883fef2ad34558ab4a7e4a86f75ecf"
+        },
+        {
+            "m_Id": "31b9ef7511f34a2698575eaf976e8e2a"
         }
     ],
     "m_GroupDatas": [],
@@ -189,6 +195,20 @@
                     "m_Id": "fa5a8f7ac30f4bf1aa38962e8930fb68"
                 },
                 "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "31b9ef7511f34a2698575eaf976e8e2a"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "9ba3a250a35b4446abff06f3f04b1fe8"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -620,6 +640,21 @@
         "m_Guid": ""
     },
     "m_DefaultType": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "081322628a3747779d555b1e18b524e6",
+    "m_Id": 0,
+    "m_DisplayName": "Transparence",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -1096,6 +1131,42 @@
     "m_ShaderOutputName": "Sampler",
     "m_StageCapability": 3,
     "m_BareResource": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "31b9ef7511f34a2698575eaf976e8e2a",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 74.52285766601563,
+            "y": 751.312255859375,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "081322628a3747779d555b1e18b524e6"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "6fc4ba9233ed45c79c4d88070f3bdaba"
+    }
 }
 
 {
@@ -1888,6 +1959,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "6fc4ba9233ed45c79c4d88070f3bdaba",
+    "m_Guid": {
+        "m_GuidSerialized": "66fb0c69-30b3-44b7-92f7-0114202bfd38"
+    },
+    "m_Name": "Transparence",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Transparence",
+    "m_DefaultReferenceName": "_Transparence",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "7122d5f102084d9cb2b8f4cc5ee2eaca",
@@ -1965,6 +2064,9 @@
         },
         {
             "m_Id": "026619c7f9aa4a14adde62615526e95d"
+        },
+        {
+            "m_Id": "6fc4ba9233ed45c79c4d88070f3bdaba"
         }
     ]
 }
@@ -2277,9 +2379,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -357.99981689453127,
-            "y": 963.0001220703125,
-            "width": 208.00001525878907,
+            "x": -358.0,
+            "y": 531.0,
+            "width": 207.99998474121095,
             "height": 278.0
         }
     },
@@ -2715,10 +2817,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 64.00000762939453,
-            "y": 321.0,
-            "width": 208.00006103515626,
-            "height": 302.00006103515627
+            "x": 62.0,
+            "y": 283.0,
+            "width": 207.99996948242188,
+            "height": 302.0
         }
     },
     "m_Slots": [
