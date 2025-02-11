@@ -116,7 +116,7 @@ Material:
     - _Hue_Shift: 4.43
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.11
+    - _Opacity: 0.09
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
