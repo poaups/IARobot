@@ -13,7 +13,7 @@ public class Gamemanager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        DisableControllerCamera();
+        //DisableControllerCamera();
     }
 
     public void DisableControllerCamera()
