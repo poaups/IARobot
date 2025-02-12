@@ -8,13 +8,14 @@ public class ParentItems : MonoBehaviour
 
     [SerializeField] private List<TextMeshProUGUI> txtItems = new List<TextMeshProUGUI>();
     [SerializeField] private string texte;
+    [SerializeField] private int tolerance;
 
     private int minumumForFinish;
-
+    private bool isFinish;
     private void Awake()
     {
-        minumumForFinish = Items.Count -2;
-        print(minumumForFinish);
+        isFinish = false;
+        tolerance += 1;
         SetupTxt();
     }
     void SetupTxt()
@@ -37,12 +38,32 @@ public class ParentItems : MonoBehaviour
         print("Change bool");
         Items[index] = true;
         txtItems[index].color = Color.red;
+
+        if(!isFinish && IfSucces())
+        {
+            EndPickUp();
+        }
     }
 
-    void VerifyIfAllBool()
+    bool IfSucces()
     {
-        for (int i = 0; i < Items.Count; i++)
+        int ItemForFinish = Items.Count - tolerance;
+        print(ItemForFinish);
+
+        print(ItemForFinish);
+        for (int i = 0; i < ItemForFinish; i++)
         {
+            if (Items[i] != true)
+            {
+                return false;
+            }
         }
+        return true;
+    }
+
+    void EndPickUp()
+    {
+        isFinish = true;
+        print("Fini debut gpe chien");
     }
 }

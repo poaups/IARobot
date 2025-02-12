@@ -17,7 +17,6 @@ public class GlitchDoor : MonoBehaviour
         while (true) 
         {
             int mat = Random.Range(0, materials.Count);
-            print(materials[mat].name);
             localMaterial.material = materials[mat];
 
             TimeBetwenColor = Random.Range(0f, 1f); 

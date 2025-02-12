@@ -65,8 +65,8 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
         Interaction = true;
-       print("E");
-       print("Qui est stocke ? " + controller.goStocked);
+       //print("E");
+       //print("Qui est stocke ? " + controller.goStocked);
 
         if(controller.goStocked != null)
         {

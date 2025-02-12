@@ -76,7 +76,7 @@ public class Controller : MonoBehaviour
         {
             goStocked = null;
         }
-        print(other.gameObject + "Sortie");
+       // print(other.gameObject + "Sortie");
     }
 
     private void CheckGround()
