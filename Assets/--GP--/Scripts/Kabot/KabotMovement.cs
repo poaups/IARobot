@@ -30,7 +30,7 @@ public class KabotMovement : MonoBehaviour
 
     void Start()
     {
-        player = Gamemanager.instance.Player;
+        player = Gamemanager.instance.PlayerController;
         Debug.Log(player.name);
         agent = GetComponent<NavMeshAgent>();
         nearTrigger = GetComponent<SphereCollider>();
