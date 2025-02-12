@@ -38,7 +38,7 @@ public class StarterAssetsInputs : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<Controller>();
-        kabotMovement = Gamemanager.instance.KabotMovementScript;
+        //kabotMovement = Gamemanager.instance.KabotMovementScript;
         var playerInput = GetComponent<PlayerInput>();
 
         sprintAction = playerInput.actions["Sprint"];
@@ -143,7 +143,7 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnLeftMousePerformed(InputAction.CallbackContext context)
     {
         LeftMouse = true;
-        kabotMovement.Obey();
+        //kabotMovement.Obey();
     }
     private void OnLeftMouseCanceled(InputAction.CallbackContext context)
     {
