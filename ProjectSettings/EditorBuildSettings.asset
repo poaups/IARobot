@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/--Scenes--/art.unity
     guid: e653768e73781f4439d331313d276681
   - enabled: 1
-    path: Assets/--Scenes--/Theo/SuperMarketActivity.unity
+    path: Assets/--Scenes--/Theo/MainGame.unity
     guid: 95c74a68e9b497943ba853526c2b5669
   - enabled: 1
     path: Assets/--Scenes--/Ines.unity
