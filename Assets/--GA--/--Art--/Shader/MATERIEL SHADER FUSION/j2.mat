@@ -73,5 +73,5 @@ Material:
     - _Transparence: 1
     - _Vertex_Color_Intensity: 0.22
     m_Colors:
-    - _Color: {r: 0.3071787, g: 0.5471698, b: 0.28648984, a: 0}
+    - _Color: {r: 0.5660378, g: 0.2930768, b: 0.20024922, a: 0}
   m_BuildTextureStacks: []
