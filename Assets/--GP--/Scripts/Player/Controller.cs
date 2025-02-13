@@ -65,9 +65,9 @@ public class Controller : MonoBehaviour
         if(interactable != null)
         {
             goStocked = interactable;
-          //  print(goStocked.gameObject);
+            print(goStocked.gameObject);
         }
-      //  print(other.gameObject + "Entree");
+        print(other.gameObject + "Entree");
     }
 
     private void OnTriggerExit(Collider other)
@@ -76,7 +76,7 @@ public class Controller : MonoBehaviour
         {
             goStocked = null;
         }
-       // print(other.gameObject + "Sortie");
+        print(other.gameObject + "Sortie");
     }
 
     private void CheckGround()

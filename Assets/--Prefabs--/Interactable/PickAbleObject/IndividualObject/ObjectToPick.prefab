@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9171805165755458808}
   - component: {fileID: 2121192061134768593}
   - component: {fileID: 5891079414815533799}
+  - component: {fileID: 4595334945716338112}
   m_Layer: 0
   m_Name: ObjectToPick
   m_TagString: Untagged
@@ -120,3 +121,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   indexItem: 0
+--- !u!114 &4595334945716338112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135450377183708138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8a0cb280384014fa4aaf1340ad950c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionScript: {fileID: 5891079414815533799}
