@@ -64,14 +64,16 @@ public class StarterAssetsInputs : MonoBehaviour
     }
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
-        Interaction = true;
+       Interaction = true;
        print("E");
        print("Qui est stocke ? " + controller.goStocked);
 
         if(controller.goStocked != null)
         {
             print("Stocke nest pas null");
+            controller.SetPick(true);
             controller.goStocked.Interact();
+            Gamemanager.instance.DisableControllerCamera();
         }
 
         //A supp qu'on on aura plus de box et rayon
@@ -88,6 +90,8 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {
         Interaction = false;
+        controller.SetPick(false);
+        Gamemanager.instance.AbleControllerCamera();
     }
     private void OnDisplayUIPerformed(InputAction.CallbackContext context)
     {

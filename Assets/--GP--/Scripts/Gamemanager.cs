@@ -11,6 +11,7 @@ public class Gamemanager : MonoBehaviour
     public Controller ControllerPlayer;
     public KabotMovement KabotMovementScript;
     public TPSCameraController CameraMovement;
+    public StarterAssetsInputs starterAssetsInputs;
 
     private void Awake()
     {
@@ -20,14 +21,13 @@ public class Gamemanager : MonoBehaviour
 
     public void DisableControllerCamera()
     {
-        CameraMovement.enabled = false;
-        ControllerPlayer.enabled = false; 
+        print("Oui");
+        starterAssetsInputs.enabled = false; 
     }
 
     public void AbleControllerCamera()
     {
-        CameraMovement.enabled = true;
-        ControllerPlayer.enabled = true;
+        starterAssetsInputs.enabled = true;
     }
 
 }

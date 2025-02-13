@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class Controller : MonoBehaviour
 
     private Vector3 velocity;
     private bool isGrounded;
+    private bool isPick;
 
     private void Awake()
     {
@@ -46,12 +48,17 @@ public class Controller : MonoBehaviour
         ShowVelocityTxt();
     }
 
+    public void SetPick(bool ground)
+    {
+       isPick = ground;
+    }
     private void HandleAnimations()
     {
         float speed = new Vector2(velocity.x, velocity.z).magnitude;
 
         animator.SetBool("Sprint", input.Sprint);
         animator.SetFloat("Speed", speed);
+        animator.SetBool("Pick", isPick);
     }
     private void ShowVelocityTxt()
     {
