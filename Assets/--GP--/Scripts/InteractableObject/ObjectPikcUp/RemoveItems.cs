@@ -9,6 +9,8 @@ public class RemoveItems : MonoBehaviour, IInteraction
     public void OnInteract()
     {
         print("J'interagis avec ");
+        Gamemanager.instance.ControllerPlayer.SetAnimationPick(true);
+        Gamemanager.instance.SetCanMove(false);
         RemoveSelf();
     }
 

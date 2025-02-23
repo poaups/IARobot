@@ -20,7 +20,7 @@ public class TriggerShelf : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other != null && other.GetComponent<Controller>())
+        if(other != null && other.GetComponent<PlayerMovement>())
         {
             triggered = other.gameObject;
             //print("JE touche le player via le shelf");
@@ -29,7 +29,7 @@ public class TriggerShelf : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other != null && other.GetComponent<Controller>())
+        if (other != null && other.GetComponent<PlayerMovement>())
         {
             triggered = null;
            // print("Je sors du player via le shelf");

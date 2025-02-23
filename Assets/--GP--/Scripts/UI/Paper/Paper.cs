@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Paper : MonoBehaviour
 {
-    private bool canShowPaper;
+    [SerializeField] private GameObject canvaPaper;
+
+
+
     private void Awake()
     {
-        canShowPaper = true;
+        canvaPaper.SetActive(false);
     }
-    public void DisplayPaper()
+    public void SetDisplayPaper()
     {
         print("Display");
-        canShowPaper = !canShowPaper;
-    }
-    public bool CanDisplay()
-    {
-        return canShowPaper;
+        canvaPaper.SetActive(!canvaPaper.activeSelf);
     }
 }

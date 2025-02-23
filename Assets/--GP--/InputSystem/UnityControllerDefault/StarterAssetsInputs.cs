@@ -10,7 +10,6 @@ public class StarterAssetsInputs : MonoBehaviour
 
     public bool Jump;
     public bool Sprint;
-    public bool DisplayUi;
     public bool Interaction;
     public bool LeftMouse;
 
@@ -32,12 +31,12 @@ public class StarterAssetsInputs : MonoBehaviour
     private InputAction jumpAction;
     private InputAction obeyAction;
     private KabotMovement kabotMovement;
-    private Controller controller;
+    private PlayerMovement controller;
 
 #if ENABLE_INPUT_SYSTEM
     private void Awake()
     {
-        controller = GetComponent<Controller>();
+        controller = GetComponent<PlayerMovement>();
         //kabotMovement = Gamemanager.instance.KabotMovementScript;
         var playerInput = GetComponent<PlayerInput>();
 
@@ -64,51 +63,37 @@ public class StarterAssetsInputs : MonoBehaviour
     }
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
+        //PlayerMovement
+        //Gamemanager.instance.SetCanMove(false);
+
        Interaction = true;
-       print("E");
-       print("Qui est stocke ? " + controller.goStocked);
 
-        if(controller.goStocked != null)
+        #region Input Debug
+        //print("E");
+        // print("Qui est stocke ? " + controller.goStocked);
+        #endregion
+
+        if (controller.goStocked != null)
         {
-            print("Stocke nest pas null");
-            controller.SetPick(true);
+            //controller.SetPick(true);
             controller.goStocked.Interact();
-            Gamemanager.instance.DisableControllerCamera();
         }
-
-        //A supp qu'on on aura plus de box et rayon
-        if(triggerBox != null )
-        {
-            triggerBox.IsTakenBox();
-        }
-        if(shelfManager != null )
-        {
-            shelfManager.AbleAllShelf();
-        }
-       
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {
         Interaction = false;
-        controller.SetPick(false);
-        Gamemanager.instance.AbleControllerCamera();
+        //controller.SetPick(false);
     }
     private void OnDisplayUIPerformed(InputAction.CallbackContext context)
     {
-        DisplayUi = true;
-        print(paperScript + " il est nul ?");
-        print(paperScript.CanDisplay() + " paperScript.CanDisplay()");
-        if(paperScript != null && paperScript.CanDisplay())
+        if(paperScript != null)
         {
-            print("F est peut show");
-            paperScript.DisplayPaper();
+            paperScript.SetDisplayPaper();
         }
-        print("F est peut pas show");
     }
     private void OnDisplayUICanceled(InputAction.CallbackContext context)
     {
-        DisplayUi = false;
-        print(DisplayUi);
+        //F relased
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext context)

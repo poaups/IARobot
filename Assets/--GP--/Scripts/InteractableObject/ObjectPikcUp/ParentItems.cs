@@ -9,8 +9,7 @@ public class ParentItems : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> txtItems = new List<TextMeshProUGUI>();
     [SerializeField] private string texte;
     [SerializeField] private int tolerance;
-
-    private int minumumForFinish;
+    
     private bool isFinish;
     private void Awake()
     {
@@ -35,7 +34,6 @@ public class ParentItems : MonoBehaviour
     }
     public void ChangeBool(int index)
     {
-        print("Change bool");
         Items[index] = true;
         txtItems[index].color = Color.red;
 

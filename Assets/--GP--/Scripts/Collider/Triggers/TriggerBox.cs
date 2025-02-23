@@ -20,7 +20,7 @@ public class TriggerBox : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other != null && other.GetComponent<Controller>())
+        if(other != null && other.GetComponent<PlayerMovement>())
         {
             //print(other.name + "je touche la");
             goTriggered = other.gameObject;
@@ -28,7 +28,7 @@ public class TriggerBox : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other != null && other.GetComponent<Controller>())
+        if (other != null && other.GetComponent<PlayerMovement>())
         {
            // print(other.name + "je sors la");
             goTriggered = null;

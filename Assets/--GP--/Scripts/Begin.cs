@@ -13,7 +13,7 @@ public class Begin : MonoBehaviour, IInteraction
     void DisableImage()
     {
         blackScreen.SetActive(false);
-        Gamemanager.instance.AbleControllerCamera();
+        //Gamemanager.instance.AbleControllerCamera();
         StartCoroutine(notification.MoveNotification());
     }
 }

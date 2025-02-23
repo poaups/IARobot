@@ -38,7 +38,7 @@ public class KabotMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Controller>() != null)
+        if (other.GetComponent<PlayerMovement>() != null)
         {
             IsPlayerNear = true;
         }
@@ -46,7 +46,7 @@ public class KabotMovement : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Controller>() != null)
+        if (other.GetComponent<PlayerMovement>() != null)
         {
             IsPlayerNear = false;
         }

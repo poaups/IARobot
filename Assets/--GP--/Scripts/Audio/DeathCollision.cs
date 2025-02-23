@@ -21,7 +21,7 @@ public class DeathCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision != null && collision.gameObject.GetComponent<Controller>() != null)
+        if (collision != null && collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             if(!currentlyPlay)
             {

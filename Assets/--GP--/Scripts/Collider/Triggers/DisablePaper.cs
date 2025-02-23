@@ -8,7 +8,7 @@ public class DisablePaper : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Controller>()  != null)
+        if(other.GetComponent<PlayerMovement>()  != null)
         {
             objectToDisable.SetActive(false);
         }

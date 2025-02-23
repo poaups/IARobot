@@ -8,10 +8,12 @@ public class Gamemanager : MonoBehaviour
 
     public StarterAssetsInputs Mapping;
     public PlayerInteraction InteractionPlayer;
-    public Controller ControllerPlayer;
+    public PlayerMovement ControllerPlayer;
     public KabotMovement KabotMovementScript;
     public TPSCameraController CameraMovement;
     public StarterAssetsInputs starterAssetsInputs;
+
+    public bool CanMove;
 
     private void Awake()
     {
@@ -21,10 +23,14 @@ public class Gamemanager : MonoBehaviour
 
     public void DisableControllerCamera()
     {
-        print("Oui");
-        starterAssetsInputs.enabled = false; 
+        print("DisableControllerCamera");
+        //starterAssetsInputs.enabled = false; 
     }
-
+    public void SetCanMove(bool newValue)
+    {
+        CanMove = newValue;
+        print("SetCanMove + new value " + newValue);
+    }
     public void AbleControllerCamera()
     {
         starterAssetsInputs.enabled = true;

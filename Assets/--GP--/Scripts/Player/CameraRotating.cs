@@ -21,14 +21,15 @@ public class TPSCameraController : MonoBehaviour
 
     void Start()
     {
-
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void LateUpdate()
     {
-
-        UpdateCameraRotation();
+        if(Gamemanager.instance.CanMove)
+        {
+            UpdateCameraRotation();
+        }
     }
     private void UpdateCameraRotation()
     {

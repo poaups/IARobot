@@ -1,8 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Controller : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     public Interactable goStocked = null;
@@ -11,8 +10,6 @@ public class Controller : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float multiplySpeedRunning ;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private TextMeshProUGUI txtSpeedhorizontal;
-    [SerializeField] private TextMeshProUGUI txtSpeedVertical;
 
     [Range(0f, -5f)]
     [SerializeField] private float attractionForce; // Staying in floor
@@ -42,13 +39,21 @@ public class Controller : MonoBehaviour
 
     private void Update()
     {
-        CheckGround();
-        HandleMovement();
+        if(Gamemanager.instance.CanMove)
+        {
+            CheckGround();
+            HandleMovement();
+        }
+        else
+        {
+            velocity.x = 0;
+            velocity.y = 0;
+        }
+
         HandleAnimations();
-        ShowVelocityTxt();
     }
 
-    public void SetPick(bool ground)
+    public void SetAnimationPick(bool ground)
     {
        isPick = ground;
     }
@@ -60,21 +65,15 @@ public class Controller : MonoBehaviour
         animator.SetFloat("Speed", speed);
         animator.SetBool("Pick", isPick);
     }
-    private void ShowVelocityTxt()
-    {
-        txtSpeedhorizontal.text = $"Hspeed {velocity.x:F1} {velocity.z:F1}";
-        txtSpeedVertical.text = $"Vspeed {velocity.y:F1}";
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
         if(interactable != null)
         {
             goStocked = interactable;
-            print(goStocked.gameObject);
+            //print(goStocked.gameObject);
         }
-        print(other.gameObject + "Entree");
+        //print(other.gameObject + "Entree");
     }
 
     private void OnTriggerExit(Collider other)
@@ -83,7 +82,7 @@ public class Controller : MonoBehaviour
         {
             goStocked = null;
         }
-        print(other.gameObject + "Sortie");
+        //print(other.gameObject + "Sortie");
     }
 
     private void CheckGround()

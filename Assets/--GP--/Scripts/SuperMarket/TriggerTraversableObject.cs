@@ -7,7 +7,7 @@ public class TriggerTraversableObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other != null && other.GetComponentInChildren<Controller>() != null)
+        if(other != null && other.GetComponentInChildren<PlayerMovement>() != null)
         {
             if(moveObject.GetCanMove())
             {
