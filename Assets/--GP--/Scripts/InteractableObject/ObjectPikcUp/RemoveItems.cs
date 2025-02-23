@@ -7,6 +7,7 @@ public class RemoveItems : MonoBehaviour, IInteraction
     [SerializeField] private Material wireFrameMat;
     [SerializeField] private int indexItem;
     [SerializeField] private float WaitAnimation;
+    [SerializeField] private GameObject txtFeedBack;
 
     private Material awakeMat;
     private MeshRenderer meshRenderer;
@@ -14,6 +15,7 @@ public class RemoveItems : MonoBehaviour, IInteraction
     {
         meshRenderer = GetComponent<MeshRenderer>();
         awakeMat = meshRenderer.material;
+        txtFeedBack.SetActive(false);
     }
     public void OnInteract()
     {
@@ -26,18 +28,17 @@ public class RemoveItems : MonoBehaviour, IInteraction
     void RemoveSelf()
     {
         StartCoroutine(WaitBeforeRemove());
-        print("RemoveSelf");
     }
     public void DisplayEffect()
     {
-        print("DisplayEffect");
         meshRenderer.material = wireFrameMat;
+        txtFeedBack.SetActive(true);
     }
 
     public void UnDisplayEffect()
     {
-        print("UnDisplayEffect");
         meshRenderer.material = awakeMat;
+        txtFeedBack.SetActive(false);
     }
     IEnumerator WaitBeforeRemove()
     {

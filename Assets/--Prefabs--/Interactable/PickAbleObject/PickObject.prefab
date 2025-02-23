@@ -122,6 +122,16 @@ PrefabInstance:
       propertyPath: indexItem
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5891079414815533799, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: wireFrameMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 2331b8c506db46e478f11b76f1728464, type: 2}
+    - target: {fileID: 5891079414815533799, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: WaitAnimation
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7135450377183708138, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
       propertyPath: m_Name
@@ -393,6 +403,16 @@ PrefabInstance:
       propertyPath: indexItem
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5891079414815533799, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: wireFrameMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 2331b8c506db46e478f11b76f1728464, type: 2}
+    - target: {fileID: 5891079414815533799, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: WaitAnimation
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7135450377183708138, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
       propertyPath: m_Name
@@ -497,6 +517,16 @@ PrefabInstance:
       propertyPath: indexItem
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5891079414815533799, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: wireFrameMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 2331b8c506db46e478f11b76f1728464, type: 2}
+    - target: {fileID: 5891079414815533799, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: WaitAnimation
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7135450377183708138, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
       propertyPath: m_Name
@@ -596,6 +626,11 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 2512711551974093144}
+    - target: {fileID: 5891079414815533799, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: WaitAnimation
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7135450377183708138, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
       propertyPath: m_Name
@@ -959,6 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a96f10287f3b844a6e9fd09824d6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvaPaper: {fileID: 4639077574691196497}
 --- !u!114 &8249558802364955146 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2030090392265375840, guid: 9757074c1aa01a94591253059d11e642,
@@ -987,18 +1023,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1199639538501119078, guid: 395dc99f6a6cd9a4bbf59692c4944309,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.388453
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199639538501119078, guid: 395dc99f6a6cd9a4bbf59692c4944309,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3032549
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199639538501119078, guid: 395dc99f6a6cd9a4bbf59692c4944309,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.41993
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199639538501119078, guid: 395dc99f6a6cd9a4bbf59692c4944309,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5
+      value: -1.468
       objectReference: {fileID: 0}
     - target: {fileID: 1199639538501119078, guid: 395dc99f6a6cd9a4bbf59692c4944309,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.93
+      value: -1.351
       objectReference: {fileID: 0}
     - target: {fileID: 1199639538501119078, guid: 395dc99f6a6cd9a4bbf59692c4944309,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.64
+      value: -1.985
       objectReference: {fileID: 0}
     - target: {fileID: 1199639538501119078, guid: 395dc99f6a6cd9a4bbf59692c4944309,
         type: 3}
