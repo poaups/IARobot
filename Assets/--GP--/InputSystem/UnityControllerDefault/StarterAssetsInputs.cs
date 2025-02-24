@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Reflection;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
@@ -16,11 +17,6 @@ public class StarterAssetsInputs : MonoBehaviour
     [Header("Mouse Cursor Settings")]
     public bool CursorLocked = true;
     public bool CursorInputForLook = true;
-
-    //A supp qu'on on aura plus de box et rayon
-    [SerializeField] private TriggerBox triggerBox;
-    [SerializeField] private ShelfManager shelfManager;
-    [SerializeField] private LitleForward forwardTriggerPlayer;
 
     [SerializeField] private Paper paperScript;
 
@@ -89,6 +85,10 @@ public class StarterAssetsInputs : MonoBehaviour
         if(paperScript != null)
         {
             paperScript.SetDisplayPaper();
+        }
+        else
+        {
+            print("Pas de scrit paper");
         }
     }
     private void OnDisplayUICanceled(InputAction.CallbackContext context)

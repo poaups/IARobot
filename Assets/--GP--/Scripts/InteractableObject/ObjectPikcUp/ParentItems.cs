@@ -8,13 +8,13 @@ public class ParentItems : MonoBehaviour
 
     [SerializeField] private List<TextMeshProUGUI> txtItems = new List<TextMeshProUGUI>();
     [SerializeField] private string texte;
-    [SerializeField] private int tolerance;
+    [SerializeField] private string notificationTxt;
+    [SerializeField] private int minPick;
     
     private bool isFinish;
     private void Awake()
     {
         isFinish = false;
-        tolerance += 1;
         SetupTxt();
     }
     void SetupTxt()
@@ -36,32 +36,22 @@ public class ParentItems : MonoBehaviour
     {
         Items[index] = true;
         txtItems[index].color = Color.red;
+        minPick--;
 
-        if(!isFinish && IfSucces())
+        if (!isFinish && minPick == 0)
         {
             EndPickUp();
         }
     }
 
-    bool IfSucces()
-    {
-        int ItemForFinish = Items.Count - tolerance;
-        print(ItemForFinish);
-
-        print(ItemForFinish);
-        for (int i = 0; i < ItemForFinish; i++)
-        {
-            if (Items[i] != true)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    //bool IfSucces()
+    //{
+    //}
 
     void EndPickUp()
     {
         isFinish = true;
+        Gamemanager.instance.NotificationScript.SetNotification(notificationTxt);
         print("Fini debut gpe chien");
     }
 }

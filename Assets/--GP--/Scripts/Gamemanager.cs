@@ -12,6 +12,7 @@ public class Gamemanager : MonoBehaviour
     public KabotMovement KabotMovementScript;
     public TPSCameraController CameraMovement;
     public StarterAssetsInputs starterAssetsInputs;
+    public Notification NotificationScript;
 
     public bool CanMove;
 
@@ -20,16 +21,9 @@ public class Gamemanager : MonoBehaviour
         instance = this;
         //DisableControllerCamera();
     }
-
-    public void DisableControllerCamera()
-    {
-        print("DisableControllerCamera");
-        //starterAssetsInputs.enabled = false; 
-    }
     public void SetCanMove(bool newValue)
     {
         CanMove = newValue;
-        print("SetCanMove + new value " + newValue);
     }
     public void AbleControllerCamera()
     {

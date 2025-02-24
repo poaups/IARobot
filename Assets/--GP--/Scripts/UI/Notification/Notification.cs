@@ -1,10 +1,12 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
-public class NotificationMovement : MonoBehaviour
+public class Notification : MonoBehaviour
 {
     [Header("Notification Parameters")]
     [SerializeField] private float secondsBeforeNotification;
+    [SerializeField] private TextMeshProUGUI notificationTxt;
     [SerializeField] private float speed;
     [SerializeField] private Transform target;
 
@@ -18,10 +20,19 @@ public class NotificationMovement : MonoBehaviour
         canReturn = false;
         canMove = true;
         _originalPos = transform.position;
+        StartCoroutine(MoveNotification());
+    }
+
+    public void SetNotification(string newTxt)
+    {
+        print("SetNotification");
+        notificationTxt.text = newTxt;
     }
     //GO going toward target
     public IEnumerator MoveNotification()
     {
+        yield return new WaitForSeconds(secondsBeforeNotification);
+
         while(Vector3.Distance(transform.position, target.position) >= 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);

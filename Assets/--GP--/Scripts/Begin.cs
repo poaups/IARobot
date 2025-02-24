@@ -3,7 +3,7 @@ using UnityEngine;
 public class Begin : MonoBehaviour, IInteraction
 {
     [SerializeField] private GameObject blackScreen;
-    [SerializeField] private NotificationMovement notification;
+    [SerializeField] private Notification notification;
 
     public void OnInteract()
     {
