@@ -10,6 +10,7 @@ public class ParentItems : MonoBehaviour
     [SerializeField] private string texte;
     [SerializeField] private string notificationTxt;
     [SerializeField] private int minPick;
+    [SerializeField] private Door doorToOpen;
     
     private bool isFinish;
     private void Awake()
@@ -43,14 +44,10 @@ public class ParentItems : MonoBehaviour
             EndPickUp();
         }
     }
-
-    //bool IfSucces()
-    //{
-    //}
-
     void EndPickUp()
     {
         isFinish = true;
+        doorToOpen.SetCanOpen(true);
         Gamemanager.instance.NotificationScript.SetNotification(notificationTxt);
         print("Fini debut gpe chien");
     }
