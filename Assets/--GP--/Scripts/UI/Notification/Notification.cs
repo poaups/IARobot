@@ -25,7 +25,6 @@ public class Notification : MonoBehaviour
 
     public void SetNotification(string newTxt)
     {
-        print("SetNotification");
         notificationTxt.text = newTxt;
     }
     //GO going toward target
