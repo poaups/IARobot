@@ -22,7 +22,6 @@ public class Notification : MonoBehaviour
         _originalPos = transform.position;
         StartCoroutine(MoveNotification());
     }
-
     public void SetNotification(string newTxt)
     {
         notificationTxt.text = newTxt;
@@ -40,12 +39,16 @@ public class Notification : MonoBehaviour
     }
 
     //GO going toward position at begining
-    void ReturnOriginalPoint()
+    public IEnumerator ReturnOriginalPoint()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _originalPos, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, _originalPos) <= 0.1f)
+        print("ReturnOriginalPoint");
+
+        while (Vector3.Distance(transform.position, _originalPos) >= 0.1f)
         {
-            canMove = true;
+            transform.position = Vector3.MoveTowards(transform.position, _originalPos, speed * Time.deltaTime);
+            yield return null;
         }
     }
+
+
 }

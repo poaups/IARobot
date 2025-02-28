@@ -11,6 +11,7 @@ public class DisablePaper : MonoBehaviour
         if(other.GetComponent<PlayerMovement>()  != null)
         {
             objectToDisable.SetActive(false);
+            Gamemanager.instance.starterAssetsInputs.PaperScript = null;
         }
     }
 }

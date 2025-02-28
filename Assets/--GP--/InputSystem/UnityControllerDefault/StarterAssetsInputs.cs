@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class StarterAssetsInputs : MonoBehaviour
 {
+    public Paper PaperScript;
+
     [Header("Character Input Values")]
 
     public Vector2 Move;
@@ -18,7 +20,7 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool CursorLocked = true;
     public bool CursorInputForLook = true;
 
-    [SerializeField] private Paper paperScript;
+
 
     //Each Action
     private InputAction interactionAction;
@@ -82,9 +84,9 @@ public class StarterAssetsInputs : MonoBehaviour
     }
     private void OnDisplayUIPerformed(InputAction.CallbackContext context)
     {
-        if(paperScript != null)
+        if(PaperScript != null)
         {
-            paperScript.SetDisplayPaper();
+            PaperScript.SetDisplayPaper();
         }
         else
         {
