@@ -28,6 +28,22 @@ public class Gamemanager : MonoBehaviour
     public void AbleControllerCamera()
     {
         starterAssetsInputs.enabled = true;
+    } 
+    public void SetCursor(bool newValue)
+    {
+        Cursor.visible = newValue;
     }
 
+    public void SetPause(bool newValue)
+    {
+        if(newValue)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    
+    }
 }

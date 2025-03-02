@@ -4,7 +4,7 @@ using UnityEngine;
 public class TPSCameraController : MonoBehaviour
 {
     [Header("Réglages de la caméra")]
-    [SerializeField] private float _sensitivity = 100f;  // Sensibilité de la souris
+    [SerializeField] private float _sensitivity;  // Sensibilité de la souris
     [SerializeField] private Transform _target;         // Le joueur à suivre
     [SerializeField] private Vector3 _offset;           // Décalage de la caméra par rapport au joueur
     [SerializeField] private float _distance = 5f;      // Distance de la caméra par rapport au joueur
@@ -21,7 +21,7 @@ public class TPSCameraController : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void LateUpdate()
@@ -30,6 +30,11 @@ public class TPSCameraController : MonoBehaviour
         {
             UpdateCameraRotation();
         }
+    }
+
+    public void SetSensitivity(float newSensitivity)
+    {
+        _sensitivity = newSensitivity;
     }
     private void UpdateCameraRotation()
     {

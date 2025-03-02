@@ -6,6 +6,10 @@ public class StarterAssetsInputs : MonoBehaviour
 {
     public Paper PaperScript;
 
+    [Header("Reference")]
+    [SerializeField] private GameObject canvaPause;
+
+
     [Header("Character Input Values")]
 
     public Vector2 Move;
@@ -26,6 +30,7 @@ public class StarterAssetsInputs : MonoBehaviour
     private InputAction interactionAction;
     private InputAction displayUi;
     private InputAction sprintAction;
+    private InputAction Escape;
     private InputAction jumpAction;
     private InputAction obeyAction;
     private KabotMovement kabotMovement;
@@ -43,6 +48,7 @@ public class StarterAssetsInputs : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         obeyAction = playerInput.actions["LeftMouse"];
         displayUi = playerInput.actions["DisplayUi"];
+        Escape = playerInput.actions["ESC"];
 
         interactionAction.performed += OnInteractionPerformed;
         interactionAction.canceled += OnInteractionCanceled;
@@ -58,6 +64,9 @@ public class StarterAssetsInputs : MonoBehaviour
 
         displayUi.performed += OnDisplayUIPerformed;
         displayUi.canceled += OnDisplayUICanceled;
+
+        Escape.performed += OnESCPerformed;
+        Escape.canceled += OnESCCanceled;
     }
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
@@ -96,6 +105,27 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnDisplayUICanceled(InputAction.CallbackContext context)
     {
         //F relased
+    }
+
+    private void OnESCPerformed(InputAction.CallbackContext context)
+    {
+        if (canvaPause != null)
+        {
+            canvaPause.SetActive(!canvaPause.activeSelf);
+            Gamemanager.instance.SetCanMove(!canvaPause.activeSelf);
+
+            Gamemanager.instance.SetCursor(canvaPause.activeSelf);
+            Gamemanager.instance.SetPause(canvaPause.activeSelf);
+        }
+        else
+        {
+            print("Pas d'objet canvaPause");
+        }
+    }
+
+    private void OnESCCanceled(InputAction.CallbackContext context)
+    {
+       //ESC relased
     }
 
     private void OnSprintPerformed(InputAction.CallbackContext context)
@@ -151,10 +181,10 @@ public class StarterAssetsInputs : MonoBehaviour
     }
     private void OnApplicationFocus(bool hasFocus)
     {
-        SetCursorState(CursorLocked);
+        //SetCursorState(CursorLocked);
     }
     private void SetCursorState(bool newState)
     {
-        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+        //Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
     }
 }

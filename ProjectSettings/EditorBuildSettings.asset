@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/--Scenes--/TestTheo.unity
+    guid: b57c804fbc8bb6e48a626f8cfd84f883
+  - enabled: 1
     path: Assets/--Scenes--/MainGame.unity
-    guid: 95c74a68e9b497943ba853526c2b5669
+    guid: dbc2723cf4fdc914985300082125de21
   - enabled: 1
     path: Assets/--Scenes--/Ines.unity
     guid: 011bafc47a34d9341979596c7168b0a8

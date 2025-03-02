@@ -26,7 +26,7 @@ public class FirstPersonController : MonoBehaviour
 #endif
         if (m_MoveWithMouse)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
         }
         m_CharacterController = GetComponent<CharacterController>();
     }
