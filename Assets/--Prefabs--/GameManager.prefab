@@ -45,4 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Dog: {fileID: 0}
+  Kabot: {fileID: 0}
+  PlayerController: {fileID: 0}
+  Mapping: {fileID: 0}
+  InteractionPlayer: {fileID: 0}
+  ControllerPlayer: {fileID: 0}
+  KabotMovementScript: {fileID: 0}
+  CameraMovement: {fileID: 0}
+  starterAssetsInputs: {fileID: 0}
+  NotificationScript: {fileID: 0}
+  CanMove: 1

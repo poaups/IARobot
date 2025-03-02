@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class Keys : MonoBehaviour, IInteraction
 {
     [SerializeField] private Door door;
+    [SerializeField] private TakeObject taking;
     public void OnInteract()
     {
-        Gamemanager.instance.ControllerPlayer.SetAnimationPick(true);
-        Gamemanager.instance.SetCanMove(false);
+        taking.Took();
         door.SetCanOpen(true);
         Destroy(gameObject);
     }

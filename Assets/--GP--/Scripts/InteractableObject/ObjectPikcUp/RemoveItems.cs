@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RemoveItems : MonoBehaviour, IInteraction
 {
+    [SerializeField] private TakeObject taking;
     [SerializeField] private ParentItems parent;
     [SerializeField] private Material wireFrameMat;
     [SerializeField] private int indexItem;
@@ -19,8 +20,9 @@ public class RemoveItems : MonoBehaviour, IInteraction
     }
     public void OnInteract()
     {
-        Gamemanager.instance.ControllerPlayer.SetAnimationPick(true);
-        Gamemanager.instance.SetCanMove(false);
+        taking.Took();
+        //Gamemanager.instance.ControllerPlayer.SetAnimationPick(true);
+        //Gamemanager.instance.SetCanMove(false);
         RemoveSelf();
     }
 

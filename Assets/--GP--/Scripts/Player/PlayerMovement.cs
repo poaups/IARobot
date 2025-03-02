@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private bool isPick;
+    private bool isPickDown;
 
     private void Awake()
     {
@@ -58,6 +59,11 @@ public class PlayerMovement : MonoBehaviour
     {
        isPick = ground;
     }
+
+    public void SetAnimationPickDown(bool ground)
+    {
+        isPickDown = ground;
+    }
     private void HandleAnimations()
     {
         float speed = new Vector2(velocity.x, velocity.z).magnitude;
@@ -65,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Sprint", input.Sprint);
         animator.SetFloat("Speed", speed);
         animator.SetBool("Pick", isPick);
+        animator.SetBool("PickDown", isPickDown);
     }
     private void OnTriggerEnter(Collider other)
     {
