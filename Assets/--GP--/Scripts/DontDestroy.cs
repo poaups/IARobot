@@ -1,19 +1,19 @@
-using UnityEngine;
+//using UnityEngine;
 
-public class DontDestroy : MonoBehaviour
-{
-    [SerializeField] private Sensitivity mouseSettings;
-    //[SerializeField] private TPSCameraController camera;
-    public float value;
+//public class DontDestroy : MonoBehaviour
+//{
+//    [SerializeField] private Sensitivity mouseSettings;
+//    //[SerializeField] private TPSCameraController camera;
+//    public float value;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+//    private void Awake()
+//    {
+//        DontDestroyOnLoad(this);
+//    }
 
-    private void Update()
-    {
-        value = mouseSettings.valueMouse;
-        //camera.SetSensitivity(value);
-    }
-}
+//    private void Update()
+//    {
+//        value = mouseSettings.valueMouse;
+//        //camera.SetSensitivity(value);
+//    }
+//}
