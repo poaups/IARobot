@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class Sensitivity : MonoBehaviour
 {
+    public float valueMouse;
     [SerializeField] private TextMeshProUGUI txtSensitivity;
-    [SerializeField] private TPSCameraController camera;
+    //[SerializeField] private TPSCameraController camera;
     
     private Slider slider;
 
@@ -16,6 +17,13 @@ public class Sensitivity : MonoBehaviour
     private void Update()
     {
         txtSensitivity.text = slider.value.ToString();
-        camera.SetSensitivity(slider.value);
+        valueMouse = slider.value;
+
+        //camera.SetSensitivity(slider.value);
+    }
+
+    public void SetSlider(float newValue)
+    {
+        slider.value = newValue;
     }
 }

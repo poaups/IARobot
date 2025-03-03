@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class Gamemanager : MonoBehaviour
 {
@@ -13,13 +14,49 @@ public class Gamemanager : MonoBehaviour
     public TPSCameraController CameraMovement;
     public StarterAssetsInputs starterAssetsInputs;
     public Notification NotificationScript;
+    public Sensitivity MouseSettings;
 
     public bool CanMove;
+    public float Sensitivity;
+
+    private DontDestroy settings;
 
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
         //DisableControllerCamera();
+    }
+
+    private void Start()
+    {
+        PlayerPrefs.SetFloat("Sensitivity", Sensitivity);
+        PlayerPrefs.Save();
+
+        settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<DontDestroy>();
+
+        if (settings != null)
+        {
+            Debug.Log("Objet avec le tag 'Settings' trouvé : " + settings.name);
+            Sensitivity = settings.value;
+            // Ici tu peux ajouter des actions supplémentaires sur cet objet, comme accéder à ses composants
+        }
+        else
+        {
+            Debug.Log("Aucun objet avec le tag 'Settings' trouvé.");
+        }
+    }
+
+    private void Update()
+    {
+      
+        Sensitivity = settings.value;
+        CameraMovement.SetSensitivity(Sensitivity);
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            MouseSettings.SetSlider(Sensitivity);
+        }
     }
     public void SetCanMove(bool newValue)
     {
