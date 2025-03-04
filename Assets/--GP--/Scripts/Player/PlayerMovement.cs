@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Interactable goStocked = null;
 
     [Header("Movement Settings")]
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float snowSpeed;
     [SerializeField] private float multiplySpeedRunning ;
     [SerializeField] private float rotationSpeed;
 
@@ -43,11 +44,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        #region Input test Snow Movement
         if (Input.GetKeyUp(KeyCode.O))
         {
-            snowingMovement = true;
-            SetMoveSpeed(_moveSpeed/2);
+            SetSnowMovement(true);
+            SetMoveSpeed(snowSpeed);
         }
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            SetSnowMovement(false);
+            SetMoveSpeed(moveSpeed);
+        }
+        #endregion
 
         if (Gamemanager.instance.CanMove)
         {
@@ -63,9 +71,15 @@ public class PlayerMovement : MonoBehaviour
         HandleAnimations();
     }
 
+    public void SetSnowMovement(bool newType)
+    {
+        print("SetSnowMovement");
+        snowingMovement = newType;
+    }
+
     public void SetMoveSpeed(float newValueSpeed)
     {
-        _moveSpeed = newValueSpeed;
+        moveSpeed = newValueSpeed;
     }
 
     public void SetAnimationPick(bool ground)
@@ -82,9 +96,12 @@ public class PlayerMovement : MonoBehaviour
         float speed = new Vector2(velocity.x, velocity.z).magnitude;
 
         animator.SetBool("Sprint", input.Sprint);
+        animator.SetBool("SnowSprint", input.Sprint);
+
         animator.SetFloat("Speed", speed);
         animator.SetBool("Pick", isPick);
         animator.SetBool("PickDown", isPickDown);
+        animator.SetBool("SnowIdle", snowingMovement);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -146,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         right.Normalize();
 
         Vector3 moveDirection = (forward * inputZ + right * inputX).normalized;
-        Vector3 movement = moveDirection * _moveSpeed * (input.Sprint ? multiplySpeedRunning : 1f);
+        Vector3 movement = moveDirection * moveSpeed * (input.Sprint ? multiplySpeedRunning : 1f);
 
         //Movement
         controller.Move(movement * Time.deltaTime);
