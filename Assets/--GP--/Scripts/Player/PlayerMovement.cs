@@ -31,9 +31,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isPick;
     private bool isPickDown;
+    private bool snowingMovement;
 
     private void Awake()
     {
+        snowingMovement = false;
         animator = GetComponent<Animator>();
         input = GetComponentInParent<StarterAssetsInputs>();
         controller = GetComponent<CharacterController>();
@@ -41,7 +43,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if(Gamemanager.instance.CanMove)
+        if (Input.GetKeyUp(KeyCode.O))
+        {
+            snowingMovement = true;
+            SetMoveSpeed(_moveSpeed/2);
+        }
+
+        if (Gamemanager.instance.CanMove)
         {
             CheckGround();
             HandleMovement();
@@ -53,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         HandleAnimations();
+    }
+
+    public void SetMoveSpeed(float newValueSpeed)
+    {
+        _moveSpeed = newValueSpeed;
     }
 
     public void SetAnimationPick(bool ground)

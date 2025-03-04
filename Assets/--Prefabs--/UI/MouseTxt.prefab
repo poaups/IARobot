@@ -86,12 +86,24 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6410094083420535334}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 20
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 4
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7225406866050707547}
+        m_TargetAssemblyTypeName: Sensitivity, Assembly-CSharp
+        m_MethodName: OnChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7225406866050707547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,8 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd6da8ed1ca34a4db9303da58cfd8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueMouse: 0
   txtSensitivity: {fileID: 4253986393978647382}
+  settings: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!1 &485441119465621701
 GameObject:
   m_ObjectHideFlags: 0

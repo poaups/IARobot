@@ -17,14 +17,14 @@ public class Gamemanager : MonoBehaviour
     //public Sensitivity MouseSettings;
 
     public bool CanMove;
-    public float Sensitivity;
-
+    //private Settings settings;
     //private DontDestroy settings;
 
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        //settings = GameObject.FindAnyObjectByType<Settings>();
+        //DontDestroyOnLoad(this.gameObject);
         //DisableControllerCamera();
     }
 
@@ -49,8 +49,11 @@ public class Gamemanager : MonoBehaviour
 
     private void Update()
     {
-      
-        //Sensitivity = settings.value;
+        //if(settings.FinalSensi != null)
+        //{
+        //    CameraMovement.SetSensitivity(settings.FinalSensi);
+        //}
+
         //CameraMovement.SetSensitivity(Sensitivity);
 
         //if (Input.GetKeyDown(KeyCode.I))

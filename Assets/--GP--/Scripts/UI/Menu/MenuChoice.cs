@@ -37,24 +37,20 @@ public class MenuChoice : MonoBehaviour
 
     void Play()
     {
-        print("Play");
         SceneManager.LoadScene(sceneToLoad);
     }
     void Option()
     {
-        print("Option");
         optionMenu.SetActive(true);
         mainMenu.SetActive(false);
     }
     void Back()
     {
-        print("Back");
         optionMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
     void Quit()
     {
-        print("Quit");
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
     }
