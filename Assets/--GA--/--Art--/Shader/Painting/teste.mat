@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _SampleTexture2D_27694658136945849f30cd4ef3705afd_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 4af5babbfc414b14a9399a3387aed7d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7fa989da68456b4583d7830441fdd9f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4a2bbeb748ba4549aaf18bb4423e7542_Texture_1_Texture2D:
@@ -46,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_f3321c2f2975455fb9bb5f623cf21519_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 4af5babbfc414b14a9399a3387aed7d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7fa989da68456b4583d7830441fdd9f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture_object:
@@ -68,16 +68,20 @@ Material:
     m_Ints: []
     m_Floats:
     - _Balance: 0.7
+    - _Intensiter_Normal: 0.6
+    - _Intensiter_Normal_1: 1.5
     - _Intensiter_normal: 0.1
-    - _Opaciter: 0.499
+    - _Opaciter: 0.211
+    - _Painting_Blend: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Sommthness: 0.214
-    - _hue: 0.462
-    - _light_ambiance: 0
+    - _Sommthness: 0
+    - _este: 0.12
+    - _hue: 0.808
+    - _light_ambiance: 0.272
     - _teste: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Shadow: {r: -0.67, g: 1.49, b: 0, a: 0}
+    - _Shadow: {r: -0.13, g: 1.01, b: 0, a: 0}
     - _Vector2: {r: -0.05, g: 0.81, b: 0, a: 0}
   m_BuildTextureStacks: []
