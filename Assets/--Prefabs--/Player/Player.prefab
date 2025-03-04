@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 164208121474942084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0028248976, y: 0.009800001, z: 0.0063802334}
+  m_LocalPosition: {x: 0.0028248976, y: 0.0098, z: 0.0063802334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -659,6 +659,7 @@ MonoBehaviour:
   _rotationUp: {fileID: 8510607079293237914}
   _rotationMaxUp: -89
   _rotationMaxDown: 80
+  powerSensitivity: 0.35
   inputCamera: {fileID: 6374901766900003157}
 --- !u!114 &87479735219523010
 MonoBehaviour:

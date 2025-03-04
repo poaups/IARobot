@@ -46,6 +46,10 @@ public class Sensitivity : MonoBehaviour
     {
         print("AbleSettings");
         settings = GameObject.FindAnyObjectByType<Settings>();
-        SetSlider(settings.FinalSensi);
+        if(settings != null)
+        {
+            SetSlider(settings.FinalSensi);
+        }
+   
     }
 }

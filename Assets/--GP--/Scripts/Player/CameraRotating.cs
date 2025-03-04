@@ -14,6 +14,7 @@ public class TPSCameraController : MonoBehaviour
     [Header("Rotation Limit")]
     [SerializeField, Range(-90, 0)] private float _rotationMaxUp;
     [SerializeField, Range(90, 0)] private float _rotationMaxDown;
+    [SerializeField, Range(0, 1)] private float powerSensitivity;
 
     public StarterAssetsInputs inputCamera;
     private float _cameraRotationX;
@@ -34,7 +35,7 @@ public class TPSCameraController : MonoBehaviour
 
     public void SetSensitivity(float newSensitivity)
     {
-        _sensitivity = newSensitivity;
+        _sensitivity = (newSensitivity * powerSensitivity);
     }
     private void UpdateCameraRotation()
     {
