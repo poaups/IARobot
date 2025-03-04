@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: b2
+  m_Name: ETAGERE 1
   m_Shader: {fileID: -6465566751694194690, guid: 1dd17405a9a322b44b60fa781871f04b,
     type: 3}
   m_Parent: {fileID: 0}
@@ -94,6 +94,6 @@ Material:
     - _hue: 0.428
     - _light_ambiance: 0.28
     m_Colors:
-    - _Color: {r: 0.19744569, g: 0.4074737, b: 0.8207547, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _Shadow: {r: -0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
