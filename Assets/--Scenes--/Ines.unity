@@ -204,7 +204,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a0b741336c64f4144909e755d2862bb1, type: 2}
+      objectReference: {fileID: 2100000, guid: fad09a182e9fcc24d986e56ca9a6aa85, type: 2}
     - target: {fileID: 919132149155446097, guid: 70ff900b79d62d849bcb8d58289b0fd9,
         type: 3}
       propertyPath: m_Name
@@ -277,7 +277,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a0b741336c64f4144909e755d2862bb1, type: 2}
+      objectReference: {fileID: 2100000, guid: 5b9b78f79230dc84d936cff1b8325476, type: 2}
     - target: {fileID: 919132149155446097, guid: e17e047c9988a8549895814fbaa8131c,
         type: 3}
       propertyPath: m_Name
@@ -513,13 +513,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716963367}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23977055, y: -0.8016189, z: 0.29534072, w: 0.46118438}
+  m_LocalRotation: {x: 0.4608808, y: 0.5574919, z: 0.35637206, w: 0.591431}
   m_LocalPosition: {x: 3.15, y: 1.48, z: -2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 44, y: -123.8, z: -8.957}
+  m_LocalEulerAnglesHint: {x: 8.5, y: 92.69, z: 71.05}
 --- !u!114 &1716963370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a0b741336c64f4144909e755d2862bb1, type: 2}
+      objectReference: {fileID: 2100000, guid: 5b9b78f79230dc84d936cff1b8325476, type: 2}
     - target: {fileID: 919132149155446097, guid: 3aa40650a722c9e4996d591282932588,
         type: 3}
       propertyPath: m_Name
@@ -676,7 +676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c0dd6c4ab878ea4cbde33ad58d57516, type: 2}
+  - {fileID: 2100000, guid: 5b9b78f79230dc84d936cff1b8325476, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1053,7 +1053,7 @@ SceneRoots:
   - {fileID: 5215648758868737212}
   - {fileID: 9185259542732160869}
   - {fileID: 6972283751436270606}
-  - {fileID: 1619853599}
   - {fileID: 1881442047}
+  - {fileID: 1619853599}
   - {fileID: 1316414071}
   - {fileID: 1942122008}
