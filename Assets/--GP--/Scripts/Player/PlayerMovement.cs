@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Gamemanager.instance.CanMove)
         {
+            //print("CanMove");
             CheckGround();
             HandleMovement();
         }
@@ -150,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void HandleMovement()
     {
+     //   print(input.Move);
         float inputX = input.Move.x;
         float inputZ = input.Move.y;
 
@@ -164,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 moveDirection = (forward * inputZ + right * inputX).normalized;
         Vector3 movement = moveDirection * moveSpeed * (input.Sprint ? multiplySpeedRunning : 1f);
+        print(movement);
 
         //Movement
         controller.Move(movement * Time.deltaTime);

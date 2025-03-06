@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 164208121474942084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0028248976, y: 0.0098, z: 0.0063802334}
+  m_LocalPosition: {x: 0.0028248976, y: 0.009800001, z: 0.0063802334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -351,7 +351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goStocked: {fileID: 0}
-  _moveSpeed: 3
+  moveSpeed: 3
+  snowSpeed: 1.2
   multiplySpeedRunning: 1.3
   rotationSpeed: 10
   attractionForce: -2
