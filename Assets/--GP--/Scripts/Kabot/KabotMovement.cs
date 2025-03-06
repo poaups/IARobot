@@ -5,8 +5,12 @@ using UnityEngine.Playables;
 
 public class KabotMovement : MonoBehaviour
 {
+    [Header("Target")]
     [SerializeField] private Transform target;
+    [SerializeField] private Transform newTarget;
     [SerializeField] private Transform smoothTarget;
+
+    [Header("Ray")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength = 1.5f;
 
@@ -23,10 +27,17 @@ public class KabotMovement : MonoBehaviour
     {
         FollowPlayer,
         GuidePlayer,
-        Obey
+        Obey,
+        NewTarget,
+        DontMove
     }
 
     public KabotState CurrentState;
+
+    private void Awake()
+    {
+        SetState(KabotState.DontMove);
+    }
 
     void Start()
     {
@@ -59,6 +70,17 @@ public class KabotMovement : MonoBehaviour
         CheckStates();
 
         SetOrientation();
+
+        //Debug
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SetTarget(newTarget);
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            SetState(KabotState.DontMove);
+        }
+
     }
 
     private void MoveSmoothTarget()
@@ -87,11 +109,26 @@ public class KabotMovement : MonoBehaviour
             case KabotState.GuidePlayer:
                 MoveSmoothTargetToTarget();
                 break;
-
+            case KabotState.NewTarget:
+                NewTargetSetup();
+                break;
+            case KabotState.DontMove:
+                NoMovement();
+                break;
             default:
                 Debug.LogWarning("État inconnu !");
                 break;
         }
+    }
+    public void NoMovement()
+    {
+        Speed = 0;
+        //Set animation later
+    }
+
+   public void NewTargetSetup()
+    {
+        smoothTarget.transform.position = newTarget.transform.position;
     }
 
     private void MoveSmoothTargetToTarget()
@@ -124,6 +161,20 @@ public class KabotMovement : MonoBehaviour
             transform.rotation = lastRotation;
         }
     }
+
+    public void SetState(KabotState state)
+    {
+        CurrentState = state;
+    }
+    public void SetTarget(Transform target)
+    {
+        SetState(KabotState.NewTarget);
+    }
+    public void ReturnToPlayer()
+    {
+        smoothTarget = player.transform;
+    }
+
 
     public void Obey()
     {

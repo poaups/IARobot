@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581412477242159905}
   - component: {fileID: 1795248068248201523}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 1596007655182686538}
   - component: {fileID: 1904869152076911839}
   - component: {fileID: 7377334185989711445}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: 10057_wooden_door_frame_v1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2289249950375882427}
   - component: {fileID: 6109474650264531714}
   - component: {fileID: 167268210240188042}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: 10057_wooden_door_v1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525931008069140023}
   - component: {fileID: 5254191603379750298}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,3 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1795248068248201523}
+  canOpen: 0
+  canDoSomething: 0
+  actionAtEnd: {fileID: 0}
+  openOtherDoor: {fileID: 0}
