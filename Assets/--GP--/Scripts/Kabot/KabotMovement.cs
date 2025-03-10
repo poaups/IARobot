@@ -5,7 +5,6 @@ using UnityEngine.Playables;
 
 public class KabotMovement : MonoBehaviour
 {
-    [SerializeField] private bool dontMoveAtBegining = true;
 
     [Header("Target")]
     [SerializeField] private Transform target;
@@ -35,14 +34,6 @@ public class KabotMovement : MonoBehaviour
     }
 
     public KabotState CurrentState;
-
-    private void Awake()
-    {
-        if(dontMoveAtBegining)
-        {
-            SetState(KabotState.DontMove);
-        }
-    }
 
     void Start()
     {

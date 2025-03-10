@@ -9,7 +9,6 @@ public class Gamemanager : MonoBehaviour
     
     [Header("Scripts")]
     public StarterAssetsInputs Mapping;
-    public PlayerInteraction InteractionPlayer;
     public PlayerMovement ControllerPlayer;
     public KabotMovement KabotMovementScript;
     public TPSCameraController CameraMovement;
@@ -18,10 +17,16 @@ public class Gamemanager : MonoBehaviour
 
     [Header("Value")]
     public bool CanMove;
+    public bool Paw;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    public void SetPaw(bool pawValue)
+    {
+        Paw = pawValue;
     }
     public void SetCanMove(bool newValue)
     {

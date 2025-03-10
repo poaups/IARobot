@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Interactable interactable = other.GetComponent<Interactable>();
         removeItems = other.GetComponent<RemoveItems>();
-
+        print(other.name);
         if(interactable != null)
         {
             goStocked = interactable;

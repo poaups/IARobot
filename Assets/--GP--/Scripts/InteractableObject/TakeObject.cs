@@ -5,6 +5,9 @@ using UnityEngine;
 public class TakeObject : MonoBehaviour
 {
     [SerializeField] private bool isUp;
+
+    [Header("Variables")]
+    [SerializeField] private bool keys;
     public void Took()
     {
         if(isUp)
@@ -17,5 +20,14 @@ public class TakeObject : MonoBehaviour
             print("Down");
         }
         Gamemanager.instance.SetCanMove(false);
+        WichVariablesIncrease();
+    }
+
+    void WichVariablesIncrease()
+    {
+        if(keys)
+        {
+            Gamemanager.instance.SetPaw(true);
+        }
     }
 }

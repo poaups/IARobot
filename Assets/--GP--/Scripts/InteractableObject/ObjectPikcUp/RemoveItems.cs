@@ -44,7 +44,10 @@ public class RemoveItems : MonoBehaviour, IInteraction
     IEnumerator WaitBeforeRemove()
     {
         yield return new WaitForSeconds(WaitAnimation);
-        parent.ChangeBool(indexItem);
+        if(parent != null)
+        {
+            parent.ChangeBool(indexItem);
+        }
         Destroy(gameObject);
     }
 }
