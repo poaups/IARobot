@@ -88,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
     {
        isPick = ground;
     }
-
     public void SetAnimationUpdate(bool update)
     {
         isUpdate = update;

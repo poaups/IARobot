@@ -14,14 +14,22 @@ public class Gamemanager : MonoBehaviour
     public TPSCameraController CameraMovement;
     public StarterAssetsInputs starterAssetsInputs;
     public Notification NotificationScript;
+    public UpdatePaw UpdatePawScript;
 
     [Header("Value")]
     public bool CanMove;
     public bool Perk;
+    public bool EndAnimationUpdate = false;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    public void SetEndAnimUpdate(bool newValue)
+    {
+        EndAnimationUpdate = newValue;
+        UpdatePawScript.UpdateDog();
     }
 
     public void SetPerks(bool pawValue)

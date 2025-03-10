@@ -21,6 +21,7 @@ public class EndAnimationUpdate : StateMachineBehaviour
     {
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationUpdate(false);
+        Gamemanager.instance.SetEndAnimUpdate(true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
