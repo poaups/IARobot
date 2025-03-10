@@ -166,7 +166,6 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 moveDirection = (forward * inputZ + right * inputX).normalized;
         Vector3 movement = moveDirection * moveSpeed * (input.Sprint ? multiplySpeedRunning : 1f);
-        print(movement);
 
         //Movement
         controller.Move(movement * Time.deltaTime);
