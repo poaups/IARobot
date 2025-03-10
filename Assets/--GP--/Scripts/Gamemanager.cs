@@ -5,11 +5,11 @@ public class Gamemanager : MonoBehaviour
     public static Gamemanager instance;
     public GameObject Player;
     public GameObject Kabot;
-    public GameObject PlayerController;
+    public GameObject PlayerGO;
     
     [Header("Scripts")]
     public StarterAssetsInputs Mapping;
-    public PlayerMovement ControllerPlayer;
+    public PlayerMovement PlayerMovementScript;
     public KabotMovement KabotMovementScript;
     public TPSCameraController CameraMovement;
     public StarterAssetsInputs starterAssetsInputs;
@@ -17,16 +17,16 @@ public class Gamemanager : MonoBehaviour
 
     [Header("Value")]
     public bool CanMove;
-    public bool Paw;
+    public bool Perk;
 
     private void Awake()
     {
         instance = this;
     }
 
-    public void SetPaw(bool pawValue)
+    public void SetPerks(bool pawValue)
     {
-        Paw = pawValue;
+        Perk = pawValue;
     }
     public void SetCanMove(bool newValue)
     {

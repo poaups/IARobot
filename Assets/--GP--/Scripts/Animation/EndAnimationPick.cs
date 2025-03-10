@@ -20,7 +20,7 @@ public class EndAnimationPick : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Gamemanager.instance.SetCanMove(true);
-        Gamemanager.instance.ControllerPlayer.SetAnimationPick(false);
+        Gamemanager.instance.PlayerMovementScript.SetAnimationPick(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

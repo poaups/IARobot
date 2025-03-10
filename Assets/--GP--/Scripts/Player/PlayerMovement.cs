@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isPick;
     private bool isPickDown;
+    private bool isUpdate;
     private bool snowingMovement;
 
     private void Awake()
@@ -88,6 +89,10 @@ public class PlayerMovement : MonoBehaviour
        isPick = ground;
     }
 
+    public void SetAnimationUpdate(bool update)
+    {
+        isUpdate = update;
+    }
     public void SetAnimationPickDown(bool ground)
     {
         isPickDown = ground;
@@ -103,12 +108,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Pick", isPick);
         animator.SetBool("PickDown", isPickDown);
         animator.SetBool("SnowIdle", snowingMovement);
+        animator.SetBool("Update", isUpdate);
     }
     private void OnTriggerEnter(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
         removeItems = other.GetComponent<RemoveItems>();
-        print(other.name);
         if(interactable != null)
         {
             goStocked = interactable;

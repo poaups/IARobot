@@ -12,11 +12,11 @@ public class TakeObject : MonoBehaviour
     {
         if(isUp)
         {
-            Gamemanager.instance.ControllerPlayer.SetAnimationPick(true);
+            Gamemanager.instance.PlayerMovementScript.SetAnimationPick(true);
         }
         else
         {
-            Gamemanager.instance.ControllerPlayer.SetAnimationPickDown(true);
+            Gamemanager.instance.PlayerMovementScript.SetAnimationPickDown(true);
             print("Down");
         }
         Gamemanager.instance.SetCanMove(false);
@@ -27,7 +27,7 @@ public class TakeObject : MonoBehaviour
     {
         if(keys)
         {
-            Gamemanager.instance.SetPaw(true);
+            Gamemanager.instance.SetPerks(true);
         }
     }
 }

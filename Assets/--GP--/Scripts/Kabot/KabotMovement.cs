@@ -8,12 +8,14 @@ public class KabotMovement : MonoBehaviour
 
     [Header("Target")]
     [SerializeField] private Transform target;
-    [SerializeField] private Transform newTarget;
+    [SerializeField] private Transform targetToFollow;
     [SerializeField] private Transform smoothTarget;
 
     [Header("Ray")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength = 1.5f;
+
+    [SerializeField] private GameObject txtAbove;
 
     [HideInInspector] public float Speed;
     [HideInInspector] public bool IsPlayerNear;
@@ -35,10 +37,13 @@ public class KabotMovement : MonoBehaviour
 
     public KabotState CurrentState;
 
+    private void Awake()
+    {
+        txtAbove.SetActive(false);
+    }
     void Start()
     {
-        player = Gamemanager.instance.PlayerController;
-        Debug.Log(player.name);
+        player = Gamemanager.instance.PlayerGO;
         agent = GetComponent<NavMeshAgent>();
         nearTrigger = GetComponent<SphereCollider>();
     }
@@ -70,7 +75,7 @@ public class KabotMovement : MonoBehaviour
         //Debug
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SetTarget(newTarget);
+            SetState(KabotState.NewTarget);
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -119,12 +124,22 @@ public class KabotMovement : MonoBehaviour
     public void NoMovement()
     {
         Speed = 0;
+        if(Gamemanager.instance.Perk == true)
+        {
+            txtAbove.SetActive(true);
+        }
         //Set animation later
     }
 
    public void NewTargetSetup()
     {
-        smoothTarget.transform.position = newTarget.transform.position;
+        smoothTarget.transform.position = targetToFollow.transform.position;
+
+        if(Vector3.Distance(smoothTarget.transform.position, targetToFollow.transform.position) < 0.1)
+        {
+            print("Kabot on target");
+            SetState(KabotState.DontMove);
+        }
     }
 
     private void MoveSmoothTargetToTarget()
@@ -164,7 +179,9 @@ public class KabotMovement : MonoBehaviour
     }
     public void SetTarget(Transform target)
     {
-        SetState(KabotState.NewTarget);
+        targetToFollow = target;
+        print("SetTarget " + " target " + target +" foolow "+  targetToFollow);
+
     }
     public void ReturnToPlayer()
     {

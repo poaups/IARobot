@@ -44,7 +44,7 @@ public class Sensitivity : MonoBehaviour
     //Between menu and maingame, settings need to be refind and set the value save in menu
     public void AbleSettings()
     {
-        print("AbleSettings");
+        //print("AbleSettings");
         settings = GameObject.FindAnyObjectByType<Settings>();
         if(settings != null)
         {
