@@ -37,10 +37,31 @@ public class ParentItems : MonoBehaviour
         Items[index] = true;
         txtItems[index].color = Color.red;
         minPick--;
-
+        CheckIfTken();
         if (!isFinish && minPick == 0)
         {
             EndPickUp();
+        }
+    }
+
+    public void CheckIfTken()
+    {
+        int currentindex = 0;
+        foreach (bool obj in Items)
+        {
+            if (obj == false)
+            {
+                currentindex++;
+            }
+        }
+
+        if(currentindex == 1)
+        {
+            print("Il reste que un objet");
+        }
+        else
+        {
+            print("Il reste plus d'un objet");
         }
     }
     void EndPickUp()

@@ -9,6 +9,7 @@ public class RemoveItems : MonoBehaviour, IInteraction
     [SerializeField] private int indexItem;
     [SerializeField] private float WaitAnimation;
     [SerializeField] private GameObject txtFeedBack;
+    [SerializeField] private bool unTakenObject = false;
 
     private Material awakeMat;
     private MeshRenderer meshRenderer;
