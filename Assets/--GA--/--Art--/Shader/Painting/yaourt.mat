@@ -50,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture_object:
-        m_Texture: {fileID: 2800000, guid: 7d401d38fd3316644802b101af212ae9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 593278fbd56b6b54ca867e208e4e263c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Triplanar_5de674664a344099b89d8b0f34b998ca_Texture_1_Texture2D:
@@ -75,17 +75,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Intensiter_Normal: 1.057
-    - _Opaciter: 0.206
-    - _Painting_Blend: 0.274
+    - _Intensiter_Normal: 0.463
+    - _Opaciter: 0.303
+    - _Painting_Blend: 0.369
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Sommthness: 0.314
+    - _Sommthness: 0.353
     - _Tile_texture: 0
     - _blend: 1.25
     - _blend_texture: 0
-    - _hue: 0
-    - _light_ambiance: 0.112
+    - _hue: 0.117
+    - _light_ambiance: 0.191
     - _tile: 10.37
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
