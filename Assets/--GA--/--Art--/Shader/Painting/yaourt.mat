@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6736617792877457038
+--- !u!114 &-3185679147531959999
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,14 +20,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: teste
+  m_Name: yaourt
   m_Shader: {fileID: -6465566751694194690, guid: 1dd17405a9a322b44b60fa781871f04b,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -50,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture_object:
-        m_Texture: {fileID: 2800000, guid: 31304484d9989734298d5ef466a8c5b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7d401d38fd3316644802b101af212ae9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Triplanar_5de674664a344099b89d8b0f34b998ca_Texture_1_Texture2D:
@@ -75,23 +75,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Balance: 0.7
-    - _Intensiter_Normal: 1.044
-    - _Intensiter_Normal_1: 1.5
-    - _Intensiter_normal: 0.1
-    - _Opaciter: 0.602
-    - _Painting_Blend: 0.217
+    - _Intensiter_Normal: 1.057
+    - _Opaciter: 0.206
+    - _Painting_Blend: 0.274
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Sommthness: 0.174
-    - _blend: 0
-    - _este: 0.12
-    - _hue: 0.73
-    - _light_ambiance: 0.216
-    - _teste: 1
-    - _tile: 4.7
+    - _Sommthness: 0.314
+    - _Tile_texture: 0
+    - _blend: 1.25
+    - _blend_texture: 0
+    - _hue: 0
+    - _light_ambiance: 0.112
+    - _tile: 10.37
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Shadow: {r: 0.18, g: 0.75, b: 0, a: 0}
-    - _Vector2: {r: -0.05, g: 0.81, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Shadow: {r: 3.5, g: 0.65, b: 0, a: 0}
   m_BuildTextureStacks: []
