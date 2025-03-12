@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: saucisson
+  m_Name: teste ines
   m_Shader: {fileID: -6465566751694194690, guid: 1dd17405a9a322b44b60fa781871f04b,
     type: 3}
   m_Parent: {fileID: 0}
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture_object:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 31304484d9989734298d5ef466a8c5b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Triplanar_5de674664a344099b89d8b0f34b998ca_Texture_1_Texture2D:
@@ -38,6 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Triplanar_a5f217b7381147f6ab5efd62f6d94aa6_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: d7fa989da68456b4583d7830441fdd9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_e52ff659454246c4bf693f5243089a1d_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4c08f612a630c7c4ba68d12801107a48, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -54,9 +58,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Brillance: 0
     - _Intensiter_Normal: 0
-    - _Opaciter: 0.49
-    - _Painting_Blend: 0.1
+    - _Opaciter: 0
+    - _Painting_Blend: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Sommthness: 0
@@ -66,7 +71,7 @@ Material:
     - _tile: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Shadow: {r: -0.05, g: 1, b: 0, a: 0}
+    - _Shadow: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3325681590027376486
 MonoBehaviour:
