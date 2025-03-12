@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4974813033757041409}
   - component: {fileID: 7040865968706877207}
   m_Layer: 0
-  m_Name: "Kab\xF4tTarget"
+  m_Name: KabotTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -19,6 +19,7 @@ public class PathAnimation : MonoBehaviour
         {
             waypoints[i] = transform.GetChild(i);
         }
+        print("test");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +33,7 @@ public class PathAnimation : MonoBehaviour
 
     public void MoveToNextPoint()
     {
+        print("MoveToNextPoint");
         if (kabotMovement.IsPlayerNear)
         {
             currentIndex++;

@@ -29,7 +29,9 @@ public class Gamemanager : MonoBehaviour
     public void SetEndAnimUpdate(bool newValue)
     {
         EndAnimationUpdate = newValue;
-        UpdatePawScript.UpdateDog();
+        if (UpdatePawScript != null) {
+            UpdatePawScript.UpdateDog();
+        }
     }
 
     public void SetPerks(bool pawValue)

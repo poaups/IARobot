@@ -39,11 +39,14 @@ public class KabotMovement : MonoBehaviour
 
     private void Awake()
     {
-        txtAbove.SetActive(false);
+        if (txtAbove != null)
+        {
+            txtAbove.SetActive(false);
+        }
     }
     void Start()
     {
-        player = Gamemanager.instance.PlayerGO;
+        player = Gamemanager.instance.Player;
         agent = GetComponent<NavMeshAgent>();
         nearTrigger = GetComponent<SphereCollider>();
     }
@@ -100,6 +103,8 @@ public class KabotMovement : MonoBehaviour
         {
             case KabotState.FollowPlayer:
                 target.position = player.transform.position;
+                print(target.position);
+                print(player.transform.position);
 
                 if (Vector3.Distance(smoothTarget.transform.position, target.position) > 2f)
                 {
@@ -126,7 +131,10 @@ public class KabotMovement : MonoBehaviour
         Speed = 0;
         if(Gamemanager.instance.Perk == true)
         {
-            txtAbove.SetActive(true);
+            if (txtAbove != null)
+            {
+                txtAbove.SetActive(true);
+            }
         }
         //Set animation later
     }
