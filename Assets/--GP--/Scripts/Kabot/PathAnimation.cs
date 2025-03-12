@@ -19,7 +19,6 @@ public class PathAnimation : MonoBehaviour
         {
             waypoints[i] = transform.GetChild(i);
         }
-        print("test");
     }
 
     private void OnTriggerEnter(Collider other)

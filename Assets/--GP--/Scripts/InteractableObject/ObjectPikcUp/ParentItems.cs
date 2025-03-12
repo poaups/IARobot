@@ -55,9 +55,11 @@ public class ParentItems : MonoBehaviour
             }
         }
 
-        if(currentindex == 1)
+        if(currentindex == 1 && Gamemanager.instance.updateKaboot.Healed == true)
         {
             print("Il reste que un objet");
+            Gamemanager.instance.NotificationScript.SetNotification(Gamemanager.instance.NotificationScript.Outside);
+            //Chien nouvelle target
         }
         else
         {

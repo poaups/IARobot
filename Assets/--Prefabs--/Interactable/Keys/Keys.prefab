@@ -185,7 +185,6 @@ GameObject:
   - component: {fileID: 5583639716974877249}
   - component: {fileID: 8712331744951120555}
   - component: {fileID: 4784718401385969878}
-  - component: {fileID: 2588756516935392362}
   - component: {fileID: 7933140953444977847}
   m_Layer: 0
   m_Name: Keys
@@ -281,19 +280,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2588756516935392362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5975446518735065490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461533661fd6013429f032691d27eaa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 0}
 --- !u!114 &7933140953444977847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,4 +292,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8a0cb280384014fa4aaf1340ad950c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionScript: {fileID: 2588756516935392362}
+  interactionScript: {fileID: 0}

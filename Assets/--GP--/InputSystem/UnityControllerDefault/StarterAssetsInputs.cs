@@ -83,6 +83,7 @@ public class StarterAssetsInputs : MonoBehaviour
         if (controller.goStocked != null)
         {
             //controller.SetPick(true);
+            print(controller.goStocked.name);
             controller.goStocked.Interact();
         }
     }

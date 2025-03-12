@@ -10,6 +10,10 @@ public class Notification : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Transform target;
 
+    //Set in inspecteur, can get , cant set
+    [SerializeField] private string outside;
+    public string Outside => outside;
+
     private float timer;
     private Vector3 _originalPos;
     private bool canReturn;
@@ -24,6 +28,7 @@ public class Notification : MonoBehaviour
     }
     public void SetNotification(string newTxt)
     {
+        print("SetNotification : " + newTxt);
         notificationTxt.text = newTxt;
     }
     //GO going toward target

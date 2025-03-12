@@ -6,6 +6,7 @@ public class Gamemanager : MonoBehaviour
     public GameObject Player;
     public GameObject Kabot;
     public GameObject PlayerGO;
+    public Door doorToOpen;
     
     [Header("Scripts")]
     public StarterAssetsInputs Mapping;
@@ -15,11 +16,15 @@ public class Gamemanager : MonoBehaviour
     public StarterAssetsInputs starterAssetsInputs;
     public Notification NotificationScript;
     public UpdatePaw UpdatePawScript;
+    public ParentItems parentPickObject;
+    public KabootUpdate updateKaboot;
 
     [Header("Value")]
     public bool CanMove;
-    public bool Perk;
+    public bool Keys;
     public bool EndAnimationUpdate = false;
+
+    private bool changeNotif = true;
 
     private void Awake()
     {
@@ -34,9 +39,15 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
-    public void SetPerks(bool pawValue)
+    //public void SetPerks(bool pawValue)
+    //{
+      
+    //}
+
+    public void SetKeys(bool keys)
     {
-        Perk = pawValue;
+        Keys = keys;
+        doorToOpen.SetCanOpen(keys);
     }
     public void SetCanMove(bool newValue)
     {

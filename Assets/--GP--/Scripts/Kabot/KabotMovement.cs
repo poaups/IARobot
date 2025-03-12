@@ -128,14 +128,14 @@ public class KabotMovement : MonoBehaviour
     }
     public void NoMovement()
     {
-        Speed = 0;
-        if(Gamemanager.instance.Perk == true)
-        {
-            if (txtAbove != null)
-            {
-                txtAbove.SetActive(true);
-            }
-        }
+        //Speed = 0;
+        //if(Gamemanager.instance.Perk == true)
+        //{
+        //    if (txtAbove != null)
+        //    {
+        //        txtAbove.SetActive(true);
+        //    }
+        //}
         //Set animation later
     }
 

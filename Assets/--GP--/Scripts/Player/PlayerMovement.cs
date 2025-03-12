@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private StarterAssetsInputs input;
     private Animator animator;
-    private RemoveItems removeItems;
+    private TakeObject takeableObject;
 
     private Vector3 velocity;
     private bool isGrounded;
@@ -112,17 +112,17 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Interactable interactable = other.GetComponent<Interactable>();
-        removeItems = other.GetComponent<RemoveItems>();
+        takeableObject = other.GetComponent<TakeObject>();
+
         if(interactable != null)
         {
             goStocked = interactable;
             //print(goStocked.gameObject);
         }
 
-        if (removeItems != null)
+        if (takeableObject != null)
         {
-            removeItems.DisplayEffect();
-            //print(goStocked.gameObject);
+            takeableObject.DisplayEffect();
         }
 
         //print(other.gameObject + "Entree");
@@ -130,16 +130,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        removeItems = other.GetComponent<RemoveItems>();
+        takeableObject = other.GetComponent<TakeObject>();
 
         if (goStocked != null && other.GetComponent<Interactable>() == goStocked)
         {
             goStocked = null;
         }
 
-        if (removeItems != null)
+        if (takeableObject != null)
         {
-            removeItems.UnDisplayEffect();
+            takeableObject.UnDisplayEffect();
         }
 
         //print(other.gameObject + "Sortie");
