@@ -19,8 +19,7 @@ public class EndAnimationPickDown : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Gamemanager.instance.SetCanMove(true);
-        Gamemanager.instance.PlayerMovementScript.SetAnimationPickDown(false);
+        AnimationManager.instance.PickDown();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

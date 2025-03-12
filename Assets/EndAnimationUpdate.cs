@@ -19,12 +19,7 @@ public class EndAnimationUpdate : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Gamemanager.instance.parentPickObject.CheckIfTken();
-        Gamemanager.instance.updateKaboot.Paw = true;
-        Gamemanager.instance.SetCanMove(true);
-        Gamemanager.instance.PlayerMovementScript.SetAnimationUpdate(false);
-        Gamemanager.instance.SetEndAnimUpdate(true);
-
+        AnimationManager.instance.UpdateDog();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

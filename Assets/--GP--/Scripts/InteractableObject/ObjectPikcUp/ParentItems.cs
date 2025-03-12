@@ -10,12 +10,19 @@ public class ParentItems : MonoBehaviour
     [SerializeField] private string texte;
     [SerializeField] private string notificationTxt;
     [SerializeField] private int minPick;
+    [SerializeField] private Color txtiIFindObject;
+    private Gamemanager gm;
     
     private bool isFinish;
     private void Awake()
     {
         isFinish = false;
         SetupTxt();
+    }
+
+    private void Start()
+    {
+        gm = Gamemanager.instance;
     }
     void SetupTxt()
     {
@@ -35,7 +42,7 @@ public class ParentItems : MonoBehaviour
     public void ChangeBool(int index)
     {
         Items[index] = true;
-        txtItems[index].color = Color.red;
+        txtItems[index].color = txtiIFindObject;
         minPick--;
         CheckIfTken();
         if (!isFinish && minPick == 0)
@@ -58,7 +65,7 @@ public class ParentItems : MonoBehaviour
         if(currentindex == 1 && Gamemanager.instance.updateKaboot.Healed == true)
         {
             print("Il reste que un objet");
-            Gamemanager.instance.NotificationScript.SetNotification(Gamemanager.instance.NotificationScript.Outside);
+            gm.NotificationScript.SetNotification(gm.NotificationScript.Outside);
             //Chien nouvelle target
         }
         else
@@ -69,7 +76,7 @@ public class ParentItems : MonoBehaviour
     void EndPickUp()
     {
         isFinish = true;
-        Gamemanager.instance.NotificationScript.SetNotification(notificationTxt);
+        gm.NotificationScript.SetNotification(notificationTxt);
         print("Fini debut gpe chien");
     }
 }

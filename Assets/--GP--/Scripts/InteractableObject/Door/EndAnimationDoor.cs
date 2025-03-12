@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndAnimationDoor : StateMachineBehaviour
@@ -19,8 +17,8 @@ public class EndAnimationDoor : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("CanOpen", false);
-        animator.enabled = false;
+        Debug.Log("Fin door");
+        AnimationManager.instance.Door(animator);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

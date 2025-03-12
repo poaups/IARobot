@@ -21,9 +21,7 @@ public class UpdatePaw : MonoBehaviour, IInteraction
             gm.updateKaboot.Paw = false;
             gm.parentPickObject.CheckIfTken();
         }
-
     }
-
     public void UpdateDog()
     {
         //New target on the transform in "newtarget" variable

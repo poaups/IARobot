@@ -6,6 +6,7 @@ public class TakeObject : MonoBehaviour, IInteraction
 {
     [Header("Animation")]
     [SerializeField] private bool isUp;
+    [SerializeField] private bool isDown;
     
     [Range(0,5)]
     [SerializeField] private float WaitAnimation;
@@ -22,6 +23,7 @@ public class TakeObject : MonoBehaviour, IInteraction
 
     private Material awakeMat;
     private MeshRenderer meshRenderer;
+    private Gamemanager gm;
 
     private void Awake()
     {
@@ -36,24 +38,32 @@ public class TakeObject : MonoBehaviour, IInteraction
 
     private void Start()
     {
-        parentPickObject = Gamemanager.instance.parentPickObject;
+        gm = Gamemanager.instance;
+        parentPickObject = gm.parentPickObject;
     }
 
     public void OnInteract()
     {
         if (isUp)
         {
-            Gamemanager.instance.PlayerMovementScript.SetAnimationPick(true);
+            gm.PlayerMovementScript.SetAnimationPick(true);
         }
-        else
+        else if (isDown)
         {
-            Gamemanager.instance.PlayerMovementScript.SetAnimationPickDown(true);
+            gm.PlayerMovementScript.SetAnimationPickDown(true);
         }
-        Gamemanager.instance.SetCanMove(false);
+
+        gm.SetCanMove(false);
         WichVariablesIncrease();
         RemoveSelf();
+        SomethingToPlay();
 
-        if(SomethingAtEnd != null)
+    }
+
+    //if need to play something at the end for specific obj
+    void SomethingToPlay()
+    {
+        if (SomethingAtEnd != null)
         {
             IInteraction interaction = SomethingAtEnd as IInteraction;
             interaction.OnInteract();
@@ -72,6 +82,7 @@ public class TakeObject : MonoBehaviour, IInteraction
         }
     }
 
+    //material change if we have trigger enter with it
     public void DisplayEffect()
     {
         if(wireFrameMat != null)
@@ -83,9 +94,8 @@ public class TakeObject : MonoBehaviour, IInteraction
         {
             txtFeedBack.SetActive(true);
         }
-
     }
-
+    //material change to original if we have trigger exit with it
     public void UnDisplayEffect()
     {
         meshRenderer.material = awakeMat;
@@ -99,10 +109,12 @@ public class TakeObject : MonoBehaviour, IInteraction
     IEnumerator WaitBeforeRemove()
     {
         yield return new WaitForSeconds(WaitAnimation);
+
         if (parentPickObject != null)
         {
             parentPickObject.ChangeBool(indexItem);
         }
+
         Destroy(gameObject);
     }
 }
