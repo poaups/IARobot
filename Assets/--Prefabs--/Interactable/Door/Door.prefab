@@ -332,6 +332,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1795248068248201523}
   canOpen: 0
-  canDoSomething: 0
   actionAtEnd: {fileID: 0}
-  openOtherDoor: {fileID: 0}

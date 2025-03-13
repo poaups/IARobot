@@ -79,7 +79,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Intensiter_Normal: 2.52
+    - _Brillance: 0.113
+    - _Intensiter_Normal: 2.11
     - _Opaciter: 0
     - _Painting_Blend: 0
     - _QueueControl: 0
@@ -89,7 +90,7 @@ Material:
     - _blend: 1.25
     - _blend_texture: 0
     - _hue: 0
-    - _light_ambiance: 0
+    - _light_ambiance: 0.493
     - _tile: 0.79
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
