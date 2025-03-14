@@ -79,8 +79,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brillance: 0.061
-    - _Intensiter_Normal: 2.5
+    - _Brillance: 0.321
+    - _Intensiter_Normal: 0.97
     - _Opaciter: 0.303
     - _Painting_Blend: 0.369
     - _QueueControl: 0
