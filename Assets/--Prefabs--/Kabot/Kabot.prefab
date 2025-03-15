@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6523189917155159669}
+  - component: {fileID: 184601292058085982}
+  - component: {fileID: 2189948684631679413}
+  - component: {fileID: 3680255994711980242}
   m_Layer: 0
   m_Name: Kabot
   m_TagString: Untagged
@@ -33,8 +36,102 @@ Transform:
   - {fileID: 1849846803489359061}
   - {fileID: 6493645463765262855}
   - {fileID: 5683869755753344741}
+  - {fileID: 3018505671514310316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &184601292058085982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854716183718335570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8a0cb280384014fa4aaf1340ad950c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionScript: {fileID: 2189948684631679413}
+--- !u!114 &2189948684631679413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854716183718335570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a76434071c873244a35751d6a89cac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetToGo: {fileID: 0}
+--- !u!65 &3680255994711980242
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854716183718335570}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1708174, y: 1.280817, z: 1.5432491}
+  m_Center: {x: -6.385409, y: -11.449592, z: -7.0583754}
+--- !u!1 &3675713587877219924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3018505671514310316}
+  - component: {fileID: 8803232997505987066}
+  m_Layer: 0
+  m_Name: KabootUpdate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3018505671514310316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675713587877219924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6523189917155159669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8803232997505987066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675713587877219924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b298bf1b26db1e4c9ea4614b8f79f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Paw: 0
+  Healed: 0
 --- !u!1001 &3580514514463647201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -170,6 +267,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3580514514463647201}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7538365716211665040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6425842094182231409, guid: a70966e8f88a9ac4d92a17f991a36eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 3580514514463647201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4332021680036772344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259,9 +362,24 @@ PrefabInstance:
       objectReference: {fileID: 1849846803489359061}
     - target: {fileID: 4682043840110471550, guid: 720505df7caa9934392e87a8cf5b3e6b,
         type: 3}
+      propertyPath: txtAbove
+      value: 
+      objectReference: {fileID: 7538365716211665040}
+    - target: {fileID: 4682043840110471550, guid: 720505df7caa9934392e87a8cf5b3e6b,
+        type: 3}
+      propertyPath: CurrentState
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682043840110471550, guid: 720505df7caa9934392e87a8cf5b3e6b,
+        type: 3}
       propertyPath: smoothTarget
       value: 
       objectReference: {fileID: 6493645463765262855}
+    - target: {fileID: 4703436229770977327, guid: 720505df7caa9934392e87a8cf5b3e6b,
+        type: 3}
+      propertyPath: m_Speed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5355862285186028330, guid: 720505df7caa9934392e87a8cf5b3e6b,
         type: 3}
       propertyPath: m_LocalPosition.x
