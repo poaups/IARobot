@@ -16,6 +16,7 @@ public class TakeObject : MonoBehaviour, IInteraction
     [SerializeField] private bool paw;
 
     [SerializeField] private MonoBehaviour SomethingAtEnd;
+    [SerializeField] private bool needToBeDestroy;
     private ParentItems parentPickObject;
     [SerializeField] private Material wireFrameMat;
     [SerializeField] private int indexItem;
@@ -55,7 +56,11 @@ public class TakeObject : MonoBehaviour, IInteraction
 
         gm.SetCanMove(false);
         WichVariablesIncrease();
-        RemoveSelf();
+        if(needToBeDestroy)
+        {
+            RemoveSelf();
+        }
+
         SomethingToPlay();
 
     }

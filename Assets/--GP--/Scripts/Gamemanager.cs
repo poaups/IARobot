@@ -18,6 +18,7 @@ public class Gamemanager : MonoBehaviour
     public UpdatePaw UpdatePawScript;
     public ParentItems parentPickObject;
     public KabootUpdate updateKaboot;
+    public Interaction InteractionPlayer;
 
     [Header("Value")]
     public bool CanMove;

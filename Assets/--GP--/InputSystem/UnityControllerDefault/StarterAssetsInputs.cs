@@ -35,11 +35,13 @@ public class StarterAssetsInputs : MonoBehaviour
     private InputAction obeyAction;
     private KabotMovement kabotMovement;
     private PlayerMovement controller;
+    private Interaction interaction;
 
 #if ENABLE_INPUT_SYSTEM
     private void Awake()
     {
         controller = GetComponent<PlayerMovement>();
+        interaction = Gamemanager.instance.InteractionPlayer;
         //kabotMovement = Gamemanager.instance.KabotMovementScript;
         var playerInput = GetComponent<PlayerInput>();
 
@@ -85,6 +87,11 @@ public class StarterAssetsInputs : MonoBehaviour
             //controller.SetPick(true);
             print(controller.goStocked.name);
             controller.goStocked.Interact();
+        }
+
+        if(interaction.GoToThrow != null)
+        {
+            interaction.Throw();
         }
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
