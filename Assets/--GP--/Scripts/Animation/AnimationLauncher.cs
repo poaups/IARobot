@@ -1,28 +1,11 @@
 using UnityEngine;
 
-public class AnimationManager : MonoBehaviour
+public class AnimationLauncher : MonoBehaviour
 {
-    public static AnimationManager instance;
-
-    private bool something;
-    private void Awake()
-    {
-        instance = this;
-    }
-
     public void PickDown()
     {
-        if(something)
-        {
-            truc();
-        }
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationPickDown(false);
-    }
-
-    void truc()
-    {
-
     }
     public void UpdateDog()
     {

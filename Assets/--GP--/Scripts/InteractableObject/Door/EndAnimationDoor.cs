@@ -17,8 +17,7 @@ public class EndAnimationDoor : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Fin door");
-        AnimationManager.instance.Door(animator);
+        Gamemanager.instance.animation.Door(animator);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
