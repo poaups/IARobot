@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isPickDown;
     private bool isUpdate;
     private bool snowingMovement;
+    private bool isFalling;
 
     private void Awake()
     {
@@ -96,6 +97,10 @@ public class PlayerMovement : MonoBehaviour
     {
         isPickDown = ground;
     }
+    public void SetAnimationFalling(bool falling)
+    {
+        isFalling = falling;
+    }
     private void HandleAnimations()
     {
         float speed = new Vector2(velocity.x, velocity.z).magnitude;
@@ -108,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("PickDown", isPickDown);
         animator.SetBool("SnowIdle", snowingMovement);
         animator.SetBool("Update", isUpdate);
+        animator.SetBool("Fall", isFalling);
     }
     private void OnTriggerEnter(Collider other)
     {

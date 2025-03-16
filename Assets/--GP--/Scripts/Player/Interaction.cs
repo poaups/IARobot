@@ -1,14 +1,14 @@
 using UnityEngine;
 
 /// <summary>
-/// Trow object with GoToThrow, you need to assing go for GoToThrow and call function Throw
+///Trow object with GoToThrow, you need to assing gameObject for GoToThrow and call function Throw
 /// </summary>
 public class Interaction : MonoBehaviour
 {
     public GameObject GoToThrow { get; private set; }
 
     [SerializeField] private float forwardForce = 10f;
-    [SerializeField] private float upwardForce = 3f; 
+    [SerializeField] private float upwardForce = 3f;
 
     public void Throw()
     {

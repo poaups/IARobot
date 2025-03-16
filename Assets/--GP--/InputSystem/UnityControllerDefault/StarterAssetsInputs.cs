@@ -37,6 +37,7 @@ public class StarterAssetsInputs : MonoBehaviour
     private PlayerMovement controller;
     private Interaction interaction;
 
+
 #if ENABLE_INPUT_SYSTEM
     private void Awake()
     {
