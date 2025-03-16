@@ -19,6 +19,7 @@ public class Gamemanager : MonoBehaviour
     public ParentItems parentPickObject;
     public KabootUpdate updateKaboot;
     public Interaction InteractionPlayer;
+    public ObjectSave objectSavePlayer;
 
     [Header("Value")]
     public bool CanMove;
@@ -38,17 +39,6 @@ public class Gamemanager : MonoBehaviour
         if (UpdatePawScript != null) {
             UpdatePawScript.UpdateDog();
         }
-    }
-
-    //public void SetPerks(bool pawValue)
-    //{
-      
-    //}
-
-    public void SetKeys(bool keys)
-    {
-        Keys = keys;
-        doorToOpen.SetCanOpen(keys);
     }
     public void SetCanMove(bool newValue)
     {

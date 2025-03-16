@@ -14,6 +14,7 @@ public class TakeObject : MonoBehaviour, IInteraction
     [Header("Saveable object")]
     [SerializeField] private bool keys;
     [SerializeField] private bool paw;
+    [SerializeField] private bool ladder;
 
     [SerializeField] private MonoBehaviour SomethingAtEnd;
     [SerializeField] private bool needToBeDestroy;
@@ -56,7 +57,8 @@ public class TakeObject : MonoBehaviour, IInteraction
 
         gm.SetCanMove(false);
         WichVariablesIncrease();
-        if(needToBeDestroy)
+        UnDisplayEffect();
+        if (needToBeDestroy)
         {
             RemoveSelf();
         }
@@ -83,7 +85,12 @@ public class TakeObject : MonoBehaviour, IInteraction
 
         if (keys)
         {
-            Gamemanager.instance.SetKeys(true);
+            Gamemanager.instance.objectSavePlayer.Keys = true;
+        }
+
+        if (ladder)
+        {
+            Gamemanager.instance.objectSavePlayer.Ladder = true;
         }
     }
 

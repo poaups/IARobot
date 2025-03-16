@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -6,15 +7,13 @@ public class SetupHeadForThrow : MonoBehaviour, IInteraction
     [SerializeField] private Transform newPosition;
     [SerializeField] private TextMeshPro txtFeedback;
     [SerializeField] private string txtToShow;
+    [SerializeField] private float timeBeforeSetup;
 
-    private bool canSet;
+    [HideInInspector] public bool canSet;
     public void OnInteract()
     {
-        canSet = true;
-        GetComponent<BoxCollider>().enabled = false;
-        txtFeedback.text = txtToShow;
-        Gamemanager.instance.InteractionPlayer.GoToThrow = this.gameObject;
-        Gamemanager.instance.PlayerMovementScript.goStocked = null;
+        StartCoroutine(TimeSetup());
+
     }
 
     private void Update()
@@ -28,5 +27,15 @@ public class SetupHeadForThrow : MonoBehaviour, IInteraction
     void SetPos()
     {
         transform.position = newPosition.position;
+    }
+
+    IEnumerator TimeSetup()
+    {
+        yield return new WaitForSeconds(timeBeforeSetup);
+        canSet = true;
+        GetComponent<BoxCollider>().enabled = false;
+        txtFeedback.text = txtToShow;
+        Gamemanager.instance.InteractionPlayer.SetGoToThrow(this.gameObject);
+        Gamemanager.instance.PlayerMovementScript.goStocked = null;
     }
 }
