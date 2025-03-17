@@ -81,15 +81,15 @@ Material:
     m_Floats:
     - _Brillance: 0
     - _Intensiter_Normal: 0.157
-    - _Opaciter: 0
-    - _Painting_Blend: 0.252
+    - _Opaciter: 0.028
+    - _Painting_Blend: 0.013
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Sommthness: 0.353
     - _Tile_texture: 0
-    - _blend: 0.354
+    - _blend: 0
     - _blend_texture: 0
-    - _hue: 0.11
+    - _hue: 0.093
     - _light_ambiance: 0
     - _tile: 0
     m_Colors:
