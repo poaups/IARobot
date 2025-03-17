@@ -20,7 +20,8 @@ public class Gamemanager : MonoBehaviour
     public KabootUpdate updateKaboot;
     public Interaction InteractionPlayer;
     public ObjectSave objectSavePlayer;
-    public AnimationLauncher animation;
+    public ActionEndAnimation animation;
+    public PlayerAnim PlayerAnimation;
 
     [Header("Value")]
     public bool CanMove;

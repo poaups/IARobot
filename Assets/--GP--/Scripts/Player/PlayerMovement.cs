@@ -151,6 +151,11 @@ public class PlayerMovement : MonoBehaviour
         //print(other.gameObject + "Sortie");
     }
 
+    public void SetTeleportation(Transform desiredPos)
+    {
+        print("SetTeleportation");
+        this.gameObject.transform.position = desiredPos.position;
+    }
     private void CheckGround()
     {
         isGrounded = controller.isGrounded;
