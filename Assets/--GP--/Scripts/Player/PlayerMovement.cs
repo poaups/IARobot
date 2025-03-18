@@ -154,7 +154,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetTeleportation(Transform desiredPos)
     {
         print("SetTeleportation");
-        this.gameObject.transform.position = desiredPos.position;
+
+        controller.enabled = false; // Désactiver le CharacterController
+        transform.position = desiredPos.position;
+        controller.enabled = true; // Réactiver le CharacterController
     }
     private void CheckGround()
     {
