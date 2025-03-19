@@ -1,34 +1,50 @@
 using UnityEngine;
 
 /// <summary>
-///Trow object with GoToThrow, you need to assing gameObject for GoToThrow and call function Throw
+/// Handles object throwing using GoToThrow. 
+/// You need to assign a GameObject to GoToThrow and call the Throw function to throw it.
 /// </summary>
 public class Interaction : MonoBehaviour
 {
+    #region Reference
     public GameObject GoToThrow { get; private set; }
 
     [SerializeField] private float forwardForce = 10f;
     [SerializeField] private float upwardForce = 3f;
 
+    private SetupHeadForThrow throwObj;
+    #endregion
+    #region Throw
     public void Throw()
     {
         if (GoToThrow != null)
         {
-            GoToThrow.GetComponent<SetupHeadForThrow>().canSet = false;
-            Rigidbody rb = GoToThrow.GetComponent<Rigidbody>();
-            if (rb == null)
-            {
-                rb = GoToThrow.AddComponent<Rigidbody>();
-            }
-            rb.velocity = Vector3.zero;
+            throwObj = GoToThrow.GetComponent<SetupHeadForThrow>();
+            throwObj.IsAttachedOnHand = false;
+            throwObj.SetCollider(true);
 
-            Vector3 throwDirection = transform.forward * forwardForce + transform.up * upwardForce;
-            rb.AddForce(throwDirection, ForceMode.Impulse);
+            Rigidbody rb = GoToThrow.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+
+                Vector3 throwDirection = transform.forward * forwardForce + transform.up * upwardForce;
+                rb.AddForce(throwDirection, ForceMode.Impulse);
+            }
+            else
+            {
+                Debug.LogError("Rigidbody missing : " + GoToThrow.name);
+            }
+        }
+        else
+        {
+            Debug.LogError("GoToThrow missing");
         }
     }
 
-    public void SetGoToThrow(GameObject go)
+    public void SetGameOjectThrow(GameObject go)
     {
         GoToThrow = go;
     }
+    #endregion
 }

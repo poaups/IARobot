@@ -1,41 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the interaction for picking up objects.
+/// Implements the IInteraction interface to allow interaction.
+/// - Plays an animation based on whether the object is picked up from above or below.
+/// - Updates variables related to collected items (e.g., keys, paw, ladder).
+/// - Changes the object's material when interacted with for visual feedback.
+/// - Triggers additional actions if needed after pickup.
+/// - Optionally destroys the object after interaction.
+/// </summary>
 public class TakeObject : MonoBehaviour, IInteraction
 {
+    #region Reference
     [Header("Animation")]
     [SerializeField] private bool isUp;
     [SerializeField] private bool isDown;
     
     [Range(0,5)]
-    [SerializeField] private float WaitAnimation;
+    [SerializeField] private float timeAnimation;
 
     [Header("Saveable object")]
     [SerializeField] private bool keys;
     [SerializeField] private bool paw;
     [SerializeField] private bool ladder;
 
+    [Header("Parameters")]
     [SerializeField] private MonoBehaviour SomethingAtEnd;
     [SerializeField] private bool needToBeDestroy;
-    private ParentItems parentPickObject;
-    [SerializeField] private Material wireFrameMat;
     [SerializeField] private int indexItem;
+
+    [Header("Feedback")]
+    [SerializeField] private Material wireFrameMat;
     [SerializeField] private GameObject txtFeedBack;
 
+    private ParentItems parentPickObject;
     private Material awakeMat;
     private MeshRenderer meshRenderer;
     private Gamemanager gm;
 
+    #endregion
     private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-        awakeMat = meshRenderer.material;
-        
-        if (txtFeedBack != null)
-        {
-            txtFeedBack.SetActive(false);
-        }
+        Begin();
     }
 
     private void Start()
@@ -66,8 +73,18 @@ public class TakeObject : MonoBehaviour, IInteraction
         SomethingToPlay();
 
     }
+    void Begin()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+        awakeMat = meshRenderer.material;
 
-    //if need to play something at the end for specific obj
+        if (txtFeedBack != null)
+        {
+            txtFeedBack.SetActive(false);
+        }
+    }
+
+    // Triggers an interaction on the assigned object if it implements the IInteraction interface.
     void SomethingToPlay()
     {
         if (SomethingAtEnd != null)
@@ -94,6 +111,7 @@ public class TakeObject : MonoBehaviour, IInteraction
         }
     }
 
+    #region Visual Effect
     //material change if we have trigger enter with it
     public void DisplayEffect()
     {
@@ -117,10 +135,9 @@ public class TakeObject : MonoBehaviour, IInteraction
     {
         StartCoroutine(WaitBeforeRemove());
     }
-
     IEnumerator WaitBeforeRemove()
     {
-        yield return new WaitForSeconds(WaitAnimation);
+        yield return new WaitForSeconds(timeAnimation);
 
         if (parentPickObject != null)
         {
@@ -129,4 +146,6 @@ public class TakeObject : MonoBehaviour, IInteraction
 
         Destroy(gameObject);
     }
+    #endregion 
+
 }

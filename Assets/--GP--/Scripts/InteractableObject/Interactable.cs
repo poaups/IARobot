@@ -1,5 +1,7 @@
 using UnityEngine;
-
+/// <summary>
+/// Manage interactable objects, usable with other scripts via the OnInteract function.
+/// </summary>
 public class Interactable : MonoBehaviour
 {
     public MonoBehaviour interactionScript;
