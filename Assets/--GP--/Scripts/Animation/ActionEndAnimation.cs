@@ -5,6 +5,7 @@ using UnityEngine;
 public class ActionEndAnimation : MonoBehaviour
 {
     [SerializeField] private Transform finalPosBus;
+    public Transform finalPosFence;
     public void PickDown()
     {
         Gamemanager.instance.SetCanMove(true);
@@ -36,5 +37,10 @@ public class ActionEndAnimation : MonoBehaviour
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationFalling(false);
         Gamemanager.instance.PlayerMovementScript.SetTeleportation(finalPosBus);
+    }
+    public void Fence()
+    {
+        Gamemanager.instance.PlayerAnimation.SetAnimFence(false);
+        Gamemanager.instance.PlayerMovementScript.SetTeleportation(finalPosFence);
     }
 }

@@ -10,8 +10,13 @@ public class PlayerAnim : MonoBehaviour
     }
     public void Falling(bool fall)
     {
-        print("Falling");
         Gamemanager.instance.SetCanMove(!fall);
         animator.SetBool("Fall", fall);
+    }
+
+    public void SetAnimFence(bool fence)
+    {
+        Gamemanager.instance.SetCanMove(!fence);
+        animator.SetBool("Fence", fence);
     }
 }
