@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 /// <summary>
 /// Action at end of any animation when function is called
@@ -27,6 +28,11 @@ public class ActionEndAnimation : MonoBehaviour
 
     public void Pick()
     {
+        ActionBusDriver busDriver = Gamemanager.instance.PlayerMovementScript.goStocked.GetComponent<ActionBusDriver>();
+        if (busDriver != null)
+        {
+            busDriver.ActionEndAnimation();
+        }
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationPick(false);
     }

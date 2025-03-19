@@ -22,6 +22,7 @@ public class Gamemanager : MonoBehaviour
     public ObjectSave objectSavePlayer;
     public ActionEndAnimation animation;
     public PlayerAnim PlayerAnimation;
+    public PowerUpTxt powerUpTxt;
 
     [Header("Value")]
     public bool CanMove;
