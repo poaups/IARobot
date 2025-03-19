@@ -10,6 +10,7 @@ public class Door : MonoBehaviour, IInteraction
 
     public void OnInteract()
     {
+        print("interact");
         if(canOpen)
         {
             OpenDoor();
@@ -18,11 +19,6 @@ public class Door : MonoBehaviour, IInteraction
     void OpenDoor()
     {
         animator.SetBool("CanOpen", true);
-
-        //if(openOtherDoor != null)
-        //{
-        //    openOtherDoor.SetCanOpen(true);
-        //}
 
         if (actionAtEnd!= null)
         {
