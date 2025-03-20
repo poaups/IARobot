@@ -19,4 +19,11 @@ public class PlayerAnim : MonoBehaviour
         Gamemanager.instance.SetCanMove(!fence);
         animator.SetBool("Fence", fence);
     }
+    public void SetAnimMemories(bool card)
+    {
+        print("SetAnimMemories" + animator.GetBool("Memories"));
+
+        Gamemanager.instance.SetCanMove(!card);
+        animator.SetBool("Memories", card);
+    }
 }

@@ -6,6 +6,12 @@ using UnityEngine;
 /// </summary>
 public class Interaction : MonoBehaviour
 {
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     #region Reference
     public GameObject GoToThrow { get; private set; }
 
@@ -47,4 +53,9 @@ public class Interaction : MonoBehaviour
         GoToThrow = go;
     }
     #endregion
+
+    public void Memories(bool newUpgrade)
+    {
+        animator.SetBool("Upgrade", newUpgrade);
+    }
 }

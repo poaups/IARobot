@@ -7,7 +7,10 @@ public class TriggerBusDriver : MonoBehaviour
     {
         if(other != null && other.GetComponent<PlayerMovement>() != null)
         {
-            feedback.SetActive(true);
+            if (feedback != null)
+            {
+                FeedBackEffect(true);
+            }
         }
     }
 
@@ -15,7 +18,20 @@ public class TriggerBusDriver : MonoBehaviour
     {
         if (other != null && other.GetComponent<PlayerMovement>() != null)
         {
-            feedback.SetActive(false);
+            if(feedback != null)
+            {
+                FeedBackEffect(false);
+            }
         }
+    }
+
+    public void DisableFeedback()
+    {
+        FeedBackEffect(false);
+        feedback = null;
+    }
+    void FeedBackEffect(bool active)
+    {
+        feedback.SetActive(active);
     }
 }

@@ -9,7 +9,8 @@ public class PowerUpTxt : MonoBehaviour
     //Each power up have the same string so 
     //instead of assing string in each powerup script, all the script take this string
     [field : SerializeField] public string txtPowerUp { get; private set; }
-    [field : SerializeField] public bool IsActive { get; private set; }
+    [field : SerializeField] public string txtMemories { get; private set; }
+    [field : SerializeField] public bool IsMemories { get; private set; }
 
     [SerializeField] private GameObject txtHolder;
     [SerializeField] private TextMeshProUGUI txt;
@@ -25,14 +26,14 @@ public class PowerUpTxt : MonoBehaviour
         txt.text = newTxt;
     }
 
-    public void DialogueIsActive(bool newActive)
+    public void SetMemories(bool newActive)
     {
-        IsActive = newActive;
+        IsMemories = newActive;
     }
 
     void AssignBegin()
     {
-        IsActive = false;
+        IsMemories = false;
         txtHolder.SetActive(false);
         txt.text = "";
     }

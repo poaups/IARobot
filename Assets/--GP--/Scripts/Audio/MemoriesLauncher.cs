@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class MemoriesLauncher : MonoBehaviour
 {
-    [SerializeField] private List<string> listOfText;
+    [HideInInspector] public List<string> ListOfText;
+
     [SerializeField] private float timeCurrentText;
     [SerializeField] private GameObject txtHodlder;
     [SerializeField] private float speedCurrentTexte;
@@ -13,13 +14,13 @@ public class MemoriesLauncher : MonoBehaviour
 
     private bool currentlyPlay;
 
-    IEnumerator WaitBetweenChar()
+    public IEnumerator WaitBetweenChar()
     {
         SetHolder(true);
         txt.text = string.Empty;
-        for (int i = 0; i < listOfText.Count; i++)
+        for (int i = 0; i < ListOfText.Count; i++)
         {
-            foreach (char c in listOfText[i])
+            foreach (char c in ListOfText[i])
             {
                 txt.text += c;
                 yield return new WaitForSeconds(speedCurrentTexte);

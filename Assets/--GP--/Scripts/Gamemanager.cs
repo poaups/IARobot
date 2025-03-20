@@ -23,6 +23,7 @@ public class Gamemanager : MonoBehaviour
     public ActionEndAnimation animation;
     public PlayerAnim PlayerAnimation;
     public PowerUpTxt powerUpTxt;
+    public MemoriesLauncher Memories;
 
     [Header("Value")]
     public bool CanMove;

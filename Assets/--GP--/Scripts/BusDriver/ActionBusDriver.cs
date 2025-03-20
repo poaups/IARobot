@@ -1,7 +1,13 @@
+using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 
 public class ActionBusDriver : MonoBehaviour, IInteraction
 {
+    [SerializeField] private TriggerBusDriver trigger;
+    [SerializeField] private List<string> listOfText;
+    private bool alreadyTook = false;
+
     private Animator animator;
     private void Awake()
     {
@@ -9,11 +15,17 @@ public class ActionBusDriver : MonoBehaviour, IInteraction
     }
     public void OnInteract()
     {
-        Gamemanager.instance.PlayerMovementScript.SetAnimationPick(true);
-    }
+        if (!alreadyTook)
+        {
+            Gamemanager.instance.PlayerMovementScript.SetAnimationPick(true);
+            Gamemanager.instance.SetCanMove(false);
+            Gamemanager.instance.Memories.ListOfText = listOfText;
+            alreadyTook = true;
+            trigger.DisableFeedback();
+        }
 
-    public void SetAnimationFall(bool newAnim)
-    {
-        animator.SetBool("Fall", newAnim);
+
+        //Destroy(GetComponent<BoxCollider>());
+        //Gamemanager.instance.PlayerMovementScript.goStocked = null;
     }
 }

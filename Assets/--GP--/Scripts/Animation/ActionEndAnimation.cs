@@ -31,15 +31,15 @@ public class ActionEndAnimation : MonoBehaviour
     }
     public void Pick()
     {
+        print("Pick end");
         #region BusDriver
 
         Interactable busDriver = Gamemanager.instance.PlayerMovementScript.goStocked;
         if (busDriver != null)
         {
-            busDriver.GetComponent<ActionBusDriver>().SetAnimationFall(true);
-            Gamemanager.instance.powerUpTxt.SetTxtHolder(true, Gamemanager.instance.powerUpTxt.txtPowerUp);
-            Gamemanager.instance.powerUpTxt.DialogueIsActive(true);
-            Gamemanager.instance.Perks = true;
+            print("!= buss");
+            Gamemanager.instance.powerUpTxt.SetTxtHolder(true, Gamemanager.instance.powerUpTxt.txtMemories);
+            Gamemanager.instance.powerUpTxt.SetMemories(true);
         }
         #endregion
 
@@ -47,9 +47,14 @@ public class ActionEndAnimation : MonoBehaviour
         Gamemanager.instance.PlayerMovementScript.SetAnimationPick(false);
     }
 
+    public void Memories()
+    {
+        print("Memories");
+        Gamemanager.instance.PlayerAnimation.SetAnimMemories(false);
+        Gamemanager.instance.SetCanMove(true);
+    }
     public void Fall()
     {
-        print("Fin anim Fall");
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationFalling(false);
         Gamemanager.instance.PlayerMovementScript.SetTeleportation(finalPosBus);

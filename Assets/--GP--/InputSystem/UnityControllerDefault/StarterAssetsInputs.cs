@@ -86,7 +86,6 @@ public class StarterAssetsInputs : MonoBehaviour
         if (controller.goStocked != null)
         {
             //controller.SetPick(true);
-            print(controller.goStocked.name);
             controller.goStocked.Interact();
         }
 
@@ -94,12 +93,15 @@ public class StarterAssetsInputs : MonoBehaviour
         {
             interaction.Throw();
         }
-        print(Gamemanager.instance.powerUpTxt.IsActive);
-        print(Gamemanager.instance.Perks);
 
-        if(Gamemanager.instance.powerUpTxt.IsActive)
+        //IsMemories start subtitles
+        if (Gamemanager.instance.powerUpTxt.IsMemories)
         {
-            print("E power up");
+            print("E Subtitles");
+            Gamemanager.instance.Memories.StartCoroutine(Gamemanager.instance.Memories.WaitBetweenChar());
+            Gamemanager.instance.PlayerAnimation.SetAnimMemories(true);
+            Gamemanager.instance.powerUpTxt.SetMemories(false);
+            //Gamemanager.instance.PlayerMovementScript.goStocked = null;
         }
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
