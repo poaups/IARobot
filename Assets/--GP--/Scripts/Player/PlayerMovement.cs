@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetAnimationPick(bool ground)
     {
+        print("SetAnimationPick");
        isPick = ground;
     }
     public void SetAnimationUpdate(bool update)

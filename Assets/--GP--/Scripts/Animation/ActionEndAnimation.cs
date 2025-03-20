@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 /// <summary>
 /// Action at end of any animation when function is called
@@ -26,13 +25,23 @@ public class ActionEndAnimation : MonoBehaviour
         animator.enabled = false;
     }
 
+    public void FallingBusDriver(Animator animator)
+    {
+        Destroy(animator);
+    }
     public void Pick()
     {
+        #region BusDriver
         ActionBusDriver busDriver = Gamemanager.instance.PlayerMovementScript.goStocked.GetComponent<ActionBusDriver>();
         if (busDriver != null)
         {
-            busDriver.ActionEndAnimation();
+            busDriver.SetAnimationFall(true);
+            Gamemanager.instance.powerUpTxt.SetTxtHolder(true, Gamemanager.instance.powerUpTxt.txtPowerUp);
+            Gamemanager.instance.powerUpTxt.DialogueIsActive(true);
+            Gamemanager.instance.Perks = true;
         }
+        #endregion
+
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationPick(false);
     }

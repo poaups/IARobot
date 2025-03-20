@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class ActionBusDriver : MonoBehaviour, IInteraction
 {
+    private Animator animator;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     public void OnInteract()
     {
         Gamemanager.instance.PlayerMovementScript.SetAnimationPick(true);
     }
-    public void ActionEndAnimation()
+
+    public void SetAnimationFall(bool newAnim)
     {
-        Gamemanager.instance.powerUpTxt.SetTxtHolder(true, Gamemanager.instance.powerUpTxt.txtPowerUp);
+        animator.SetBool("Fall", newAnim);
     }
 }

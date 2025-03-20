@@ -28,6 +28,7 @@ public class Gamemanager : MonoBehaviour
     public bool CanMove;
     public bool Keys;
     public bool EndAnimationUpdate = false;
+    public bool Perks;
 
     private bool changeNotif = true;
 

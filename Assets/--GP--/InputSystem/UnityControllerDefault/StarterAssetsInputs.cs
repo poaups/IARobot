@@ -94,6 +94,13 @@ public class StarterAssetsInputs : MonoBehaviour
         {
             interaction.Throw();
         }
+        print(Gamemanager.instance.powerUpTxt.IsActive);
+        print(Gamemanager.instance.Perks);
+
+        if(Gamemanager.instance.powerUpTxt.IsActive)
+        {
+            print("E power up");
+        }
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)
     {
