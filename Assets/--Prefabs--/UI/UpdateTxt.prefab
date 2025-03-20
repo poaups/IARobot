@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <txtPowerUp>k__BackingField: E for take power up :)
+  <txtMemories>k__BackingField: 'E for memories : ('
+  <IsMemories>k__BackingField: 0
   txtHolder: {fileID: 7935121157503608500}
   txt: {fileID: 3828880416553539171}
 --- !u!1 &7531403447581546362
