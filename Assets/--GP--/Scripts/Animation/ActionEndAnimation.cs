@@ -32,10 +32,11 @@ public class ActionEndAnimation : MonoBehaviour
     public void Pick()
     {
         #region BusDriver
-        ActionBusDriver busDriver = Gamemanager.instance.PlayerMovementScript.goStocked.GetComponent<ActionBusDriver>();
+
+        Interactable busDriver = Gamemanager.instance.PlayerMovementScript.goStocked;
         if (busDriver != null)
         {
-            busDriver.SetAnimationFall(true);
+            busDriver.GetComponent<ActionBusDriver>().SetAnimationFall(true);
             Gamemanager.instance.powerUpTxt.SetTxtHolder(true, Gamemanager.instance.powerUpTxt.txtPowerUp);
             Gamemanager.instance.powerUpTxt.DialogueIsActive(true);
             Gamemanager.instance.Perks = true;

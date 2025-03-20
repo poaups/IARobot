@@ -158,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.enabled = false; // Désactiver le CharacterController
         transform.position = desiredPos.position;
+        print(desiredPos.position);
         controller.enabled = true; // Réactiver le CharacterController
     }
     private void CheckGround()

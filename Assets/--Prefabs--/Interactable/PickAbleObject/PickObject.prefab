@@ -182,6 +182,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
+      propertyPath: needToBeDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
       propertyPath: parentPickObject
       value: 
       objectReference: {fileID: 2512711551974093144}
@@ -328,6 +333,16 @@ PrefabInstance:
         type: 3}
       propertyPath: Items.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780962521796464180, guid: 3926a33a40a357a489516fd28d7ddb2b,
+        type: 3}
+      propertyPath: txtiIFindObject.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780962521796464180, guid: 3926a33a40a357a489516fd28d7ddb2b,
+        type: 3}
+      propertyPath: txtiIFindObject.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1780962521796464180, guid: 3926a33a40a357a489516fd28d7ddb2b,
         type: 3}
@@ -488,6 +503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
+      propertyPath: needToBeDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
       propertyPath: parentPickObject
       value: 
       objectReference: {fileID: 2512711551974093144}
@@ -612,6 +632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
+      propertyPath: needToBeDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
       propertyPath: parentPickObject
       value: 
       objectReference: {fileID: 2512711551974093144}
@@ -729,6 +754,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1386030045809092690}
     m_Modifications:
+    - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
+        type: 3}
+      propertyPath: needToBeDestroy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 576793680385041279, guid: 9695445654675de4d9d5347b1981ed15,
         type: 3}
       propertyPath: parentPickObject

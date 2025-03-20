@@ -7,9 +7,14 @@ public class ActionFence : MonoBehaviour, IInteraction
     [SerializeField] private Transform finalPosForward;
     [SerializeField] private Transform finalPosBackward;
     [SerializeField] private GameObject otherTrigger;
+
     public void OnInteract()
     {
-        if(forward)
+        // When the animation ends, the script adjusts the transform.
+        // The transform represents the position where the player needs to be teleported, 
+        // so we adjust it accordingly.
+
+        if (forward)
         {
             actionAnim.finalPosFence = finalPosForward;
         }
@@ -21,6 +26,5 @@ public class ActionFence : MonoBehaviour, IInteraction
         Gamemanager.instance.PlayerAnimation.SetAnimFence(true);
         otherTrigger.SetActive(true);
         gameObject.SetActive(false);
-        //Gamemanager.instance.PlayerMovementScript.SetTeleportation(finalPosBus);
     }
 }

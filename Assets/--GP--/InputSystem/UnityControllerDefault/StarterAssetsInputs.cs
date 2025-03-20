@@ -79,8 +79,8 @@ public class StarterAssetsInputs : MonoBehaviour
        Interaction = true;
 
         #region Input Debug
-        //print("E");
-        // print("Qui est stocke ? " + controller.goStocked);
+        print("E");
+        print("Qui est stocke ? " + controller.goStocked);
         #endregion
 
         if (controller.goStocked != null)
