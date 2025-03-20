@@ -91,7 +91,7 @@ Material:
     - _blend_texture: 0
     - _hue: 0.093
     - _light_ambiance: 0
-    - _tile: 0
+    - _tile: 0.034
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shadow: {r: 3.5, g: 0.65, b: 0, a: 0}
