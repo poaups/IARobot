@@ -19,6 +19,7 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool Sprint;
     public bool Interaction;
     public bool LeftMouse;
+    public bool RightMouse;
 
     [Header("Mouse Cursor Settings")]
     public bool CursorLocked = true;
@@ -32,7 +33,8 @@ public class StarterAssetsInputs : MonoBehaviour
     private InputAction sprintAction;
     private InputAction Escape;
     private InputAction jumpAction;
-    private InputAction obeyAction;
+    private InputAction LeftAction;
+    private InputAction RightAction;
     private KabotMovement kabotMovement;
     private PlayerMovement controller;
     private Interaction interaction;
@@ -43,13 +45,14 @@ public class StarterAssetsInputs : MonoBehaviour
     {
         controller = GetComponent<PlayerMovement>();
         interaction = Gamemanager.instance.InteractionPlayer;
-        //kabotMovement = Gamemanager.instance.KabotMovementScript;
+        kabotMovement = Gamemanager.instance.KabotMovementScript;
         var playerInput = GetComponent<PlayerInput>();
 
         sprintAction = playerInput.actions["Sprint"];
         interactionAction = playerInput.actions["Interaction"];
         jumpAction = playerInput.actions["Jump"];
-        obeyAction = playerInput.actions["LeftMouse"];
+        LeftAction = playerInput.actions["LeftMouse"];
+        //RightAction = playerInput.actions["RightMouse"];
         displayUi = playerInput.actions["DisplayUi"];
         Escape = playerInput.actions["ESC"];
 
@@ -62,8 +65,11 @@ public class StarterAssetsInputs : MonoBehaviour
         jumpAction.performed += OnJumpPerformed;
         jumpAction.canceled += OnJumpCanceled;
 
-        obeyAction.performed += OnLeftMousePerformed;
-        obeyAction.canceled += OnLeftMouseCanceled;
+        LeftAction.performed += OnLeftMousePerformed;
+        LeftAction.canceled += OnLeftMouseCanceled;
+
+        //RightAction.performed += OnRightMousePerformed;
+        //RightAction.canceled += OnRightMouseCanceled;
 
         displayUi.performed += OnDisplayUIPerformed;
         displayUi.canceled += OnDisplayUICanceled;
@@ -73,8 +79,6 @@ public class StarterAssetsInputs : MonoBehaviour
     }
     private void OnInteractionPerformed(InputAction.CallbackContext context)
     {
-        //PlayerMovement
-        //Gamemanager.instance.SetCanMove(false);
 
        Interaction = true;
 
@@ -182,12 +186,23 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnLeftMousePerformed(InputAction.CallbackContext context)
     {
         LeftMouse = true;
-        //kabotMovement.Obey();
+        //Gamemanager.instance.KabotMovementScript.Going();
+        kabotMovement.Obey();
     }
     private void OnLeftMouseCanceled(InputAction.CallbackContext context)
     {
         LeftMouse = false;
     }
+
+    //private void OnRightMousePerformed(InputAction.CallbackContext context)
+    //{
+    //    RightMouse = true;
+    //    //kabotMovement.ComeBack();
+    //}
+    //private void OnRightMouseCanceled(InputAction.CallbackContext context)
+    //{
+    //    RightMouse = false;
+    //}
 #endif
     public void MoveInput(Vector2 newMoveDirection)
     {

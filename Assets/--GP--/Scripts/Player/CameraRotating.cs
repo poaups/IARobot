@@ -25,6 +25,11 @@ public class TPSCameraController : MonoBehaviour
         {
             UpdateCameraRotation();
         }
+
+        //if(Input.GetMouseButton(0))
+        //{
+        //    ForwardRay();
+        //}
     }
 
     public void SetSensitivity(float newSensitivity)
@@ -48,4 +53,22 @@ public class TPSCameraController : MonoBehaviour
 
         }
     }
+
+    public Vector3 ForwardRay()
+    {
+        float rayLength = 100f;
+        Vector3 origin = transform.position;
+        Vector3 direction = transform.forward;
+
+        Debug.DrawRay(origin, direction * rayLength, Color.red, 2f);
+
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, rayLength))
+        {
+            print(hit.collider.name);
+         
+        }
+        print(hit.point);
+        return hit.point;
+    }
+
 }

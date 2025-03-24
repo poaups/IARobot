@@ -22,6 +22,11 @@ public class ActionEndAnimation : MonoBehaviour
             Gamemanager.instance.updateKaboot.Paw = false;
             Gamemanager.instance.updateKaboot.Scanner = true;
         }
+        else if (Gamemanager.instance.updateKaboot.Scanner)
+        {
+            Gamemanager.instance.KabotMovementScript.ScannerTarget();
+            Gamemanager.instance.updateKaboot.Scanner = false;
+        }
     }
 
     public void Door(Animator animator)

@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +10,7 @@ public class KabotMovement : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Transform smoothTarget;
     [SerializeField] private Transform door;
+    [SerializeField] private Transform afterScanner;
 
     [Header("Ray")]
     [SerializeField] private LayerMask groundLayer;
@@ -24,7 +26,6 @@ public class KabotMovement : MonoBehaviour
     private GameObject player;
     private Quaternion lastRotation;
     private SphereCollider nearTrigger;
-
     public enum KabotState
     {
         FollowPlayer,
@@ -61,6 +62,7 @@ public class KabotMovement : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             IsPlayerNear = false;
+           
         }
     }
 
@@ -114,9 +116,6 @@ public class KabotMovement : MonoBehaviour
         {
             case KabotState.FollowPlayer:
                 target.position = player.transform.position;
-                print(target.position);
-                print(player.transform.position);
-
                 if (Vector3.Distance(smoothTarget.transform.position, target.position) > 2f)
                 {
                     MoveSmoothTargetToTarget();
@@ -173,11 +172,20 @@ public class KabotMovement : MonoBehaviour
     
     public void DoorTarget()
     {
-        target = door;
+        target.transform.position = door.transform.position;
     }
-
+    public void ScannerTarget()
+    {
+        target.transform.position = afterScanner.transform.position;
+    }
     public void Obey()
     {
-        //print("Obey");
+        print("Obey");
+        target.position = Gamemanager.instance.CameraMovement.ForwardRay();
+    }
+    public void ComeBack()
+    {
+        print("ComeBack");
+        CurrentState = KabotState.FollowPlayer;
     }
 }
