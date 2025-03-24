@@ -64,19 +64,19 @@ public class ParentItems : MonoBehaviour
 
         if(currentindex == 1 && Gamemanager.instance.updateKaboot.Healed == true)
         {
-            print("Il reste que un objet");
+           // print("Il reste que un objet");
             gm.NotificationScript.SetNotification(gm.NotificationScript.Outside);
             //Chien nouvelle target
         }
         else
         {
-            print("Il reste plus d'un objet");
+           // print("Il reste plus d'un objet");
         }
     }
     void EndPickUp()
     {
         isFinish = true;
         gm.NotificationScript.SetNotification(notificationTxt);
-        print("Fini debut gpe chien");
+        //("Fini debut gpe chien");
     }
 }

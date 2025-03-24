@@ -15,9 +15,9 @@ public class Gamemanager : MonoBehaviour
     public TPSCameraController CameraMovement;
     public StarterAssetsInputs starterAssetsInputs;
     public Notification NotificationScript;
-    public UpdatePaw UpdatePawScript;
+    public UpgradeKaboot UpdatePawScript;
     public ParentItems parentPickObject;
-    public KabootUpdate updateKaboot;
+    public UpgradeKaboot updateKaboot;
     public Interaction InteractionPlayer;
     public ObjectSave objectSavePlayer;
     public ActionEndAnimation animation;
@@ -36,14 +36,6 @@ public class Gamemanager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    public void SetEndAnimUpdate(bool newValue)
-    {
-        EndAnimationUpdate = newValue;
-        if (UpdatePawScript != null) {
-            UpdatePawScript.UpdateDog();
-        }
     }
     public void SetCanMove(bool newValue)
     {

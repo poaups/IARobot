@@ -79,8 +79,8 @@ public class StarterAssetsInputs : MonoBehaviour
        Interaction = true;
 
         #region Input Debug
-        print("E");
-        print("Qui est stocke ? " + controller.goStocked);
+       // print("E");
+       // print("Qui est stocke ? " + controller.goStocked);
         #endregion
 
         if (controller.goStocked != null)
@@ -97,7 +97,7 @@ public class StarterAssetsInputs : MonoBehaviour
         //IsMemories start subtitles
         if (Gamemanager.instance.powerUpTxt.IsMemories)
         {
-            print("E Subtitles");
+          //  print("E Subtitles");
             Gamemanager.instance.Memories.StartCoroutine(Gamemanager.instance.Memories.WaitBetweenChar());
             Gamemanager.instance.PlayerAnimation.SetAnimMemories(true);
             Gamemanager.instance.powerUpTxt.SetMemories(false);
@@ -117,7 +117,7 @@ public class StarterAssetsInputs : MonoBehaviour
         }
         else
         {
-            print("Pas de scrit paper");
+           // print("Pas de scrit paper");
         }
     }
     private void OnDisplayUICanceled(InputAction.CallbackContext context)

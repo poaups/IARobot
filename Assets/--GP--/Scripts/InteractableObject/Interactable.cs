@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
             IInteraction interaction = interactionScript as IInteraction;
             if (interaction != null)
             {
-                print(interaction);
+                //print(interaction);
                 interaction.OnInteract();
             }
             else

@@ -1,15 +1,14 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Playables;
 
 public class KabotMovement : MonoBehaviour
 {
+    [HideInInspector] public bool onTarget = false;
 
     [Header("Target")]
     [SerializeField] private Transform target;
-    [SerializeField] private Transform targetToFollow;
     [SerializeField] private Transform smoothTarget;
+    [SerializeField] private Transform door;
 
     [Header("Ray")]
     [SerializeField] private LayerMask groundLayer;
@@ -30,9 +29,7 @@ public class KabotMovement : MonoBehaviour
     {
         FollowPlayer,
         GuidePlayer,
-        Obey,
-        NewTarget,
-        DontMove
+        Obey
     }
 
     public KabotState CurrentState;
@@ -73,18 +70,32 @@ public class KabotMovement : MonoBehaviour
 
         CheckStates();
 
+        CheckOnTarget();
+
         SetOrientation();
 
         //Debug
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SetState(KabotState.NewTarget);
+           // target = testTarget;
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            SetState(KabotState.DontMove);
+           // SetState(KabotState.DontMove);
         }
+    }
 
+    private void CheckOnTarget()
+    {
+        print(onTarget);
+        if(Vector3.Distance(transform.position, target.position) < 0.5)
+        {
+            onTarget = true;
+        }
+        else
+        {
+            onTarget= false;
+        }
     }
 
     private void MoveSmoothTarget()
@@ -111,42 +122,12 @@ public class KabotMovement : MonoBehaviour
                     MoveSmoothTargetToTarget();
                 }
                 break;
-
             case KabotState.GuidePlayer:
                 MoveSmoothTargetToTarget();
-                break;
-            case KabotState.NewTarget:
-                NewTargetSetup();
-                break;
-            case KabotState.DontMove:
-                NoMovement();
                 break;
             default:
                 Debug.LogWarning("État inconnu !");
                 break;
-        }
-    }
-    public void NoMovement()
-    {
-        //Speed = 0;
-        //if(Gamemanager.instance.Perk == true)
-        //{
-        //    if (txtAbove != null)
-        //    {
-        //        txtAbove.SetActive(true);
-        //    }
-        //}
-        //Set animation later
-    }
-
-   public void NewTargetSetup()
-    {
-        smoothTarget.transform.position = targetToFollow.transform.position;
-
-        if(Vector3.Distance(smoothTarget.transform.position, targetToFollow.transform.position) < 0.1)
-        {
-            print("Kabot on target");
-            SetState(KabotState.DontMove);
         }
     }
 
@@ -185,17 +166,15 @@ public class KabotMovement : MonoBehaviour
     {
         CurrentState = state;
     }
-    public void SetTarget(Transform target)
-    {
-        targetToFollow = target;
-        print("SetTarget " + " target " + target +" foolow "+  targetToFollow);
-
-    }
     public void ReturnToPlayer()
     {
         smoothTarget = player.transform;
     }
-
+    
+    public void DoorTarget()
+    {
+        target = door;
+    }
 
     public void Obey()
     {

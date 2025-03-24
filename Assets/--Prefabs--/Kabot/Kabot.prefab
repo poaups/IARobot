@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6523189917155159669}
-  - component: {fileID: 184601292058085982}
-  - component: {fileID: 2189948684631679413}
   - component: {fileID: 3680255994711980242}
   m_Layer: 0
   m_Name: Kabot
@@ -39,32 +37,6 @@ Transform:
   - {fileID: 3018505671514310316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &184601292058085982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 854716183718335570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8a0cb280384014fa4aaf1340ad950c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionScript: {fileID: 2189948684631679413}
---- !u!114 &2189948684631679413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 854716183718335570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a76434071c873244a35751d6a89cac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetToGo: {fileID: 0}
 --- !u!65 &3680255994711980242
 BoxCollider:
   m_ObjectHideFlags: 0

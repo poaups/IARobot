@@ -13,10 +13,15 @@ public class ActionEndAnimation : MonoBehaviour
     }
     public void UpdateDog()
     {
-        Gamemanager.instance.updateKaboot.Paw = true;
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationUpdate(false);
-        Gamemanager.instance.SetEndAnimUpdate(true);
+
+        if(Gamemanager.instance.updateKaboot.Paw)
+        {
+            Gamemanager.instance.KabotMovementScript.DoorTarget();
+            Gamemanager.instance.updateKaboot.Paw = false;
+            Gamemanager.instance.updateKaboot.Scanner = true;
+        }
     }
 
     public void Door(Animator animator)
