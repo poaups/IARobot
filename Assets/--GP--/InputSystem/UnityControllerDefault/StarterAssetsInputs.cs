@@ -25,8 +25,6 @@ public class StarterAssetsInputs : MonoBehaviour
     public bool CursorLocked = true;
     public bool CursorInputForLook = true;
 
-
-
     //Each Action
     private InputAction interactionAction;
     private InputAction displayUi;
@@ -52,7 +50,7 @@ public class StarterAssetsInputs : MonoBehaviour
         interactionAction = playerInput.actions["Interaction"];
         jumpAction = playerInput.actions["Jump"];
         LeftAction = playerInput.actions["LeftMouse"];
-        //RightAction = playerInput.actions["RightMouse"];
+        RightAction = playerInput.actions["RightMouse"];
         displayUi = playerInput.actions["DisplayUi"];
         Escape = playerInput.actions["ESC"];
 
@@ -68,8 +66,8 @@ public class StarterAssetsInputs : MonoBehaviour
         LeftAction.performed += OnLeftMousePerformed;
         LeftAction.canceled += OnLeftMouseCanceled;
 
-        //RightAction.performed += OnRightMousePerformed;
-        //RightAction.canceled += OnRightMouseCanceled;
+        RightAction.performed += OnRightMousePerformed;
+        RightAction.canceled += OnRightMouseCanceled;
 
         displayUi.performed += OnDisplayUIPerformed;
         displayUi.canceled += OnDisplayUICanceled;
@@ -186,23 +184,28 @@ public class StarterAssetsInputs : MonoBehaviour
     private void OnLeftMousePerformed(InputAction.CallbackContext context)
     {
         LeftMouse = true;
-        //Gamemanager.instance.KabotMovementScript.Going();
-        kabotMovement.Obey();
+        if(Gamemanager.instance.InteractionPlayer.CanObey)
+        {
+            kabotMovement.Obey();
+        }
+
     }
     private void OnLeftMouseCanceled(InputAction.CallbackContext context)
     {
         LeftMouse = false;
+      
     }
 
-    //private void OnRightMousePerformed(InputAction.CallbackContext context)
-    //{
-    //    RightMouse = true;
-    //    //kabotMovement.ComeBack();
-    //}
-    //private void OnRightMouseCanceled(InputAction.CallbackContext context)
-    //{
-    //    RightMouse = false;
-    //}
+    private void OnRightMousePerformed(InputAction.CallbackContext context)
+    {
+        print("OnRightMousePerformed");
+        RightMouse = true;
+        kabotMovement.ComeBack();
+    }
+    private void OnRightMouseCanceled(InputAction.CallbackContext context)
+    {
+        RightMouse = false;
+    }
 #endif
     public void MoveInput(Vector2 newMoveDirection)
     {

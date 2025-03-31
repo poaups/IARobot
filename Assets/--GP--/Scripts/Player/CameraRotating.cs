@@ -9,6 +9,7 @@ public class TPSCameraController : MonoBehaviour
     [SerializeField] private float _distance = 5f; 
     [SerializeField] private Transform _rotationSide;
     [SerializeField] private Transform _rotationUp;
+    [SerializeField] private LayerMask layersToIgnore;
 
     [Header("Rotation Limit")]
     [SerializeField, Range(-90, 0)] private float _rotationMaxUp;
@@ -25,11 +26,6 @@ public class TPSCameraController : MonoBehaviour
         {
             UpdateCameraRotation();
         }
-
-        //if(Input.GetMouseButton(0))
-        //{
-        //    ForwardRay();
-        //}
     }
 
     public void SetSensitivity(float newSensitivity)
@@ -50,10 +46,8 @@ public class TPSCameraController : MonoBehaviour
             _cameraRotationX = Mathf.Clamp(_cameraRotationX, _rotationMaxUp, _rotationMaxDown);
 
             _rotationUp.localEulerAngles = new Vector3(_cameraRotationX, _rotationUp.localEulerAngles.y, 0f);
-
         }
     }
-
     public Vector3 ForwardRay()
     {
         float rayLength = 100f;
@@ -62,13 +56,15 @@ public class TPSCameraController : MonoBehaviour
 
         Debug.DrawRay(origin, direction * rayLength, Color.red, 2f);
 
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, rayLength))
+        int layerMask = ~layersToIgnore.value;
+
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, rayLength, layerMask))
         {
             print(hit.collider.name);
-         
+            return hit.point;
         }
-        print(hit.point);
-        return hit.point;
+        return origin + direction * rayLength;
     }
+
 
 }

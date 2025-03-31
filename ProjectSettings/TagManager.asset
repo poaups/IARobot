@@ -6,11 +6,12 @@ TagManager:
   tags:
   - CinemachineTarget
   - Settings
+  - NavMesh
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NavMesh
   - Water
   - UI
   - Snow

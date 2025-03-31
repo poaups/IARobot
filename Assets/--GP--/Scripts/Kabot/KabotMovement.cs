@@ -170,6 +170,11 @@ public class KabotMovement : MonoBehaviour
         smoothTarget = player.transform;
     }
     
+    public void SetTarget(Transform posToGo)
+    {
+        CurrentState = KabotState.GuidePlayer;
+        target.position = posToGo.position;
+    }
     public void DoorTarget()
     {
         target.transform.position = door.transform.position;
@@ -181,6 +186,7 @@ public class KabotMovement : MonoBehaviour
     public void Obey()
     {
         print("Obey");
+        CurrentState = KabotState.GuidePlayer;  
         target.position = Gamemanager.instance.CameraMovement.ForwardRay();
     }
     public void ComeBack()

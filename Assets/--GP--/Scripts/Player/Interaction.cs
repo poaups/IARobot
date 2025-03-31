@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class Interaction : MonoBehaviour
 {
+    /*[HideInInspector]*/ public bool CanObey = false;
     private Animator animator;
 
     private void Awake()
