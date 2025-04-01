@@ -4,41 +4,28 @@ using UnityEngine;
 
 public class ActionScanTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject objectToCreate;
-    [SerializeField] private Transform spawn;
-    [SerializeField] private Canvas canvaParent;
-    [SerializeField] private int tolerance;
-    [SerializeField] private int spacing;
-
-    private List<GameObject> allInstance = new List<GameObject>();
-    public void Instance(GameObject other)
+    [SerializeField] private GameObject scanUi;
+    [SerializeField] private TextMeshProUGUI scanUiTxt;
+    [SerializeField] private ButtonTake take;
+    public void DisplayScan(GameObject other)
     {
-        GameObject createdObjectUI = Instantiate(objectToCreate, spawn.position,Quaternion.identity);
-        createdObjectUI.transform.SetParent(canvaParent.transform);
-        createdObjectUI.GetComponentInChildren<ButtonTake>().SetObject(other.gameObject);
-        allInstance.Add(createdObjectUI);
+        scanUi.SetActive(true);
+        scanUiTxt.text = other.GetComponent<ScannableObject>().Name;
+        take.SetObject(other.gameObject);
 
+       // GameObject createdObjectUI = Instantiate(objectToCreate, spawn.position,Quaternion.identity);
+       // createdObjectUI.transform.SetParent(canvaParent.transform);
+       // createdObjectUI.GetComponentInChildren<ButtonTake>().SetObject(other.gameObject);
+       // allInstance.Add(createdObjectUI);
 
-        MovingUi();
-        DeleatLast();
-        ModifyInstance(createdObjectUI, other);
+        //DeleatLast();
+        //ModifyInstance(createdObjectUI, other);
     }
 
-    void MovingUi()
+    public void UnDisplay()
     {
-        foreach(GameObject obj in allInstance)
-        {
-            obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y - spacing, obj.transform.position.z);
-        }
-    }
-
-    void DeleatLast()
-    {
-        
-        if(allInstance.Count >= tolerance)
-        {
-            allInstance.Remove(allInstance[0]);
-        }
+        scanUi.SetActive(false);
+        scanUiTxt.text = "";
     }
     void ModifyInstance(GameObject createdObject, GameObject go2)
     {

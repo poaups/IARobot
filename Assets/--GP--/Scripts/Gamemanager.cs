@@ -7,6 +7,7 @@ public class Gamemanager : MonoBehaviour
     public GameObject Kabot;
     public GameObject PlayerGO;
     public Door doorToOpen;
+    public Transform Mouth;
     
     [Header("Scripts")]
     public StarterAssetsInputs Mapping;

@@ -4,19 +4,40 @@ public class ButtonTake : MonoBehaviour
 {
     private GameObject objectToPick;
     private Transform positionObject;
+    private GameObject currentObjectPick;
+    private bool alreadyTook = false;   
     public void Take()
     {
-        Gamemanager.instance.KabotMovementScript.SetTarget(positionObject);
+        if(!alreadyTook)
+        {
+            print("Take if");
+            alreadyTook = true;
+            Gamemanager.instance.KabotMovementScript.SetTarget(positionObject);
+            objectToPick.transform.position = Gamemanager.instance.Mouth.position;
+            objectToPick.transform.SetParent(Gamemanager.instance.Mouth);
+            currentObjectPick = objectToPick;
+        }
+        else
+        {
+            UnTake();
+        }
 
-        //Il faut mettre l'objet dans la geule de kaboot quand il est sur l'objet, mettre un trigger sur les objet et le mettre a true ?
 
-        //print(objectToPick + " objectToPick");
-        //print(positionObject + " positionObject");
     }
 
+    void UnTake()
+    {
+        print("Untake");
+        currentObjectPick.transform.SetParent(null);
+       alreadyTook = false;
+       Take();
+    }
     public void SetObject(GameObject go)
     {
         objectToPick = go;
         positionObject = go.transform;
+
+        print(objectToPick + ": new  objectToPick");
+        print(positionObject + ": new positionObject");
     }
 }
