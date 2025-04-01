@@ -10,7 +10,7 @@ public class ActionScanTrigger : MonoBehaviour
     public void DisplayScan(GameObject other)
     {
         scanUi.SetActive(true);
-        scanUiTxt.text = other.GetComponent<ScannableObject>().Name;
+        ModifyScan(other);
         take.SetObject(other.gameObject);
 
        // GameObject createdObjectUI = Instantiate(objectToCreate, spawn.position,Quaternion.identity);
@@ -27,8 +27,8 @@ public class ActionScanTrigger : MonoBehaviour
         scanUi.SetActive(false);
         scanUiTxt.text = "";
     }
-    void ModifyInstance(GameObject createdObject, GameObject go2)
+    void ModifyScan(GameObject other)
     {
-        createdObject.GetComponentInChildren<TextMeshProUGUI>().text = go2.GetComponent<ScannableObject>().Name;
+        scanUiTxt.text = other.GetComponent<ScannableObject>().Name;
     }
 }

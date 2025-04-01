@@ -5,6 +5,8 @@ using UnityEngine;
 public class ActionEndAnimation : MonoBehaviour
 {
     [SerializeField] private Transform finalPosBus;
+    [SerializeField] private SetParent setParent;
+    [SerializeField] private Transform hand;
     public Transform finalPosFence;
     public void PickDown()
     {
@@ -44,7 +46,7 @@ public class ActionEndAnimation : MonoBehaviour
         print("Pick end");
         #region BusDriver
 
-        Interactable busDriver = Gamemanager.instance.PlayerMovementScript.goStocked;
+        TriggerBusDriver busDriver = Gamemanager.instance.PlayerMovementScript.goStocked.GetComponent<TriggerBusDriver>();
         if (busDriver != null)
         {
             print("!= buss");
@@ -53,6 +55,13 @@ public class ActionEndAnimation : MonoBehaviour
         }
         #endregion
 
+        TakeObject takeObject = Gamemanager.instance.PlayerMovementScript.goStocked.GetComponent<TakeObject>();
+        if (takeObject != null && takeObject.AttachToHand)
+        {
+            print("Fin anim + attach hand");
+            setParent.SetParentObject(Gamemanager.instance.PlayerMovementScript.goStocked.transform, hand);
+            Gamemanager.instance.PlayerMovementScript.goStocked = null;
+        }
         Gamemanager.instance.SetCanMove(true);
         Gamemanager.instance.PlayerMovementScript.SetAnimationPick(false);
     }

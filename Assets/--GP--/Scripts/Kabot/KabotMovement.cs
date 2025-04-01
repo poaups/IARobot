@@ -26,6 +26,7 @@ public class KabotMovement : MonoBehaviour
     private GameObject player;
     private Quaternion lastRotation;
     private SphereCollider nearTrigger;
+    [SerializeField] ButtonTake buttonTake;
     public enum KabotState
     {
         FollowPlayer,
@@ -54,6 +55,7 @@ public class KabotMovement : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             IsPlayerNear = true;
+            IsNear();
         }
     }
 
@@ -62,7 +64,7 @@ public class KabotMovement : MonoBehaviour
         if (other.GetComponent<PlayerMovement>() != null)
         {
             IsPlayerNear = false;
-           
+            IsNear();
         }
     }
 
@@ -87,9 +89,16 @@ public class KabotMovement : MonoBehaviour
         }
     }
 
+    void IsNear()
+    {
+        if(IsPlayerNear && buttonTake.alreadyTook)
+        {
+            buttonTake.GiveObject();
+        }
+    }
     private void CheckOnTarget()
     {
-        print(onTarget);
+       // print(onTarget);
         if(Vector3.Distance(transform.position, target.position) < 0.5)
         {
             onTarget = true;
@@ -185,13 +194,11 @@ public class KabotMovement : MonoBehaviour
     }
     public void Obey()
     {
-        print("Obey");
         CurrentState = KabotState.GuidePlayer;  
         target.position = Gamemanager.instance.CameraMovement.ForwardRay();
     }
     public void ComeBack()
     {
-        print("ComeBack");
         CurrentState = KabotState.FollowPlayer;
     }
 }

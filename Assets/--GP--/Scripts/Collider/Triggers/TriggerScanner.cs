@@ -9,7 +9,6 @@ public class TriggerScanner : MonoBehaviour
     {
         if(other != null && other.GetComponent<ScannableObject>() != null)
         {
-            print("Collision");
             actionScan.DisplayScan(other.gameObject);
             //other.GetComponent<ScannableObject>();
         }

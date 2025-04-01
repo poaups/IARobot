@@ -25,6 +25,7 @@ public class Gamemanager : MonoBehaviour
     public PlayerAnim PlayerAnimation;
     public PowerUpTxt powerUpTxt;
     public MemoriesLauncher Memories;
+    public Pliers PliersScript;
 
     [Header("Value")]
     public bool CanMove;

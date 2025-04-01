@@ -5,7 +5,7 @@ public class ButtonTake : MonoBehaviour
     private GameObject objectToPick;
     private Transform positionObject;
     private GameObject currentObjectPick;
-    private bool alreadyTook = false;   
+    [HideInInspector] public bool alreadyTook = false;   
     public void Take()
     {
         if(!alreadyTook)
@@ -25,6 +25,12 @@ public class ButtonTake : MonoBehaviour
 
     }
 
+    public void GiveObject()
+    {
+        print("GiveObject");
+        currentObjectPick.transform.SetParent(null);
+        print(currentObjectPick.name);
+    }
     void UnTake()
     {
         print("Untake");

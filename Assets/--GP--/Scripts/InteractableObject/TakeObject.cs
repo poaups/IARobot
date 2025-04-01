@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Handles the interaction for picking up objects.
@@ -28,6 +29,8 @@ public class TakeObject : MonoBehaviour, IInteraction
     [Header("Parameters")]
     [SerializeField] private MonoBehaviour SomethingAtEnd;
     [SerializeField] private bool needToBeDestroy;
+    [SerializeField] private bool canBeReTake;
+    public bool AttachToHand;
     [SerializeField] private int indexItem;
 
     [Header("Feedback")]
@@ -62,6 +65,11 @@ public class TakeObject : MonoBehaviour, IInteraction
             gm.PlayerMovementScript.SetAnimationPickDown(true);
         }
 
+        if(!canBeReTake)
+        { 
+            Destroy(GetComponent<BoxCollider>());
+           
+        }
         gm.SetCanMove(false);
         WichVariablesIncrease();
         UnDisplayEffect();
@@ -129,7 +137,10 @@ public class TakeObject : MonoBehaviour, IInteraction
     public void UnDisplayEffect()
     {
         meshRenderer.material = awakeMat;
-        txtFeedBack.SetActive(false);
+        if (txtFeedBack != null)
+        {
+            txtFeedBack.SetActive(false);
+        }
     }
     void RemoveSelf()
     {

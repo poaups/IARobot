@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetSnowMovement(bool newType)
     {
-        print("SetSnowMovement");
+       // print("SetSnowMovement");
         snowingMovement = newType;
     }
 
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetAnimationPick(bool ground)
     {
-        print("SetAnimationPick");
+        //print("SetAnimationPick");
        isPick = ground;
     }
     public void SetAnimationUpdate(bool update)
@@ -154,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetTeleportation(Transform desiredPos)
     {
-        print("SetTeleportation");
+       // print("SetTeleportation");
 
         controller.enabled = false; // Désactiver le CharacterController
         transform.position = desiredPos.position;
