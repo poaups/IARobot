@@ -44,6 +44,9 @@ public class ActionEndAnimation : MonoBehaviour
     public void Pick()
     {
         print("Pick end");
+        Gamemanager.instance.SetCanMove(true);
+        Gamemanager.instance.PlayerMovementScript.SetAnimationPick(false);
+
         #region BusDriver
 
         TriggerBusDriver busDriver = Gamemanager.instance.PlayerMovementScript.goStocked.GetComponent<TriggerBusDriver>();
@@ -62,8 +65,6 @@ public class ActionEndAnimation : MonoBehaviour
             setParent.SetParentObject(Gamemanager.instance.PlayerMovementScript.goStocked.transform, hand);
             Gamemanager.instance.PlayerMovementScript.goStocked = null;
         }
-        Gamemanager.instance.SetCanMove(true);
-        Gamemanager.instance.PlayerMovementScript.SetAnimationPick(false);
     }
 
     public void Memories()

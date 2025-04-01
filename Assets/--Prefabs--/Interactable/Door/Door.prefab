@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5254191603379750298}
   - component: {fileID: 4259830107717753421}
   - component: {fileID: 8100111765170734852}
-  m_Layer: 1
+  m_Layer: 3
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3270600568964257393}
   canOpen: 1
-  actionAtEnd: {fileID: 0}
 --- !u!114 &4259830107717753421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +91,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4525931008069140023}
     m_Modifications:
+    - target: {fileID: 1328853903980588459, guid: 1acbb08cd33eb884386c60c805328882,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962469210722372016, guid: 1acbb08cd33eb884386c60c805328882,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693474723584350150, guid: 1acbb08cd33eb884386c60c805328882,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6336908145245180703, guid: 1acbb08cd33eb884386c60c805328882,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -161,6 +175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorV2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6456878297594412751, guid: 1acbb08cd33eb884386c60c805328882,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6499467675816453747, guid: 1acbb08cd33eb884386c60c805328882,
         type: 3}

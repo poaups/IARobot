@@ -10,7 +10,7 @@ public class ButtonTake : MonoBehaviour
     {
         if(!alreadyTook)
         {
-            print("Take if");
+          
             alreadyTook = true;
             Gamemanager.instance.KabotMovementScript.SetTarget(positionObject);
             objectToPick.transform.position = Gamemanager.instance.Mouth.position;
@@ -27,13 +27,13 @@ public class ButtonTake : MonoBehaviour
 
     public void GiveObject()
     {
-        print("GiveObject");
+  
         currentObjectPick.transform.SetParent(null);
         print(currentObjectPick.name);
     }
     void UnTake()
     {
-        print("Untake");
+    
         currentObjectPick.transform.SetParent(null);
        alreadyTook = false;
        Take();
@@ -43,7 +43,6 @@ public class ButtonTake : MonoBehaviour
         objectToPick = go;
         positionObject = go.transform;
 
-        print(objectToPick + ": new  objectToPick");
-        print(positionObject + ": new positionObject");
+      
     }
 }

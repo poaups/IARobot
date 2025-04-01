@@ -106,9 +106,9 @@ public class StarterAssetsInputs : MonoBehaviour
             //Gamemanager.instance.PlayerMovementScript.goStocked = null;
         }
 
-        if(Gamemanager.instance.PliersScript.HasPliers)
+        if(Gamemanager.instance.InteractionPlayer.GetPliers())
         {
-            Gamemanager.instance.PliersScript.UsePliers();
+            Gamemanager.instance.InteractionPlayer.UsePliers();
         }
     }
     private void OnInteractionCanceled(InputAction.CallbackContext context)

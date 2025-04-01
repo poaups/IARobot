@@ -13,18 +13,24 @@ public class ActionFence : MonoBehaviour, IInteraction
         // When the animation ends, the script adjusts the transform.
         // The transform represents the position where the player needs to be teleported, 
         // so we adjust it accordingly.
-
-        if (forward)
+        if(Gamemanager.instance.InteractionPlayer.GetPliers())
         {
-            actionAnim.finalPosFence = finalPosForward;
+            if (forward)
+            {
+                actionAnim.finalPosFence = finalPosForward;
+            }
+            else
+            {
+                actionAnim.finalPosFence = finalPosBackward;
+            }
+
+            Gamemanager.instance.PlayerAnimation.SetAnimFence(true);
+            otherTrigger.SetActive(true);
+            gameObject.SetActive(false);
         }
         else
         {
-            actionAnim.finalPosFence = finalPosBackward;
+            print("No item");
         }
-
-        Gamemanager.instance.PlayerAnimation.SetAnimFence(true);
-        otherTrigger.SetActive(true);
-        gameObject.SetActive(false);
     }
 }

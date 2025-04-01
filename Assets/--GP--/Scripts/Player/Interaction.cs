@@ -6,11 +6,14 @@ using UnityEngine;
 /// </summary>
 public class Interaction : MonoBehaviour
 {
-    /*[HideInInspector]*/ public bool CanObey = false;
+    [HideInInspector] public bool CanObey = false;
+    
+    private bool hasPliers = false;
     private Animator animator;
 
     private void Awake()
     {
+        CanObey = false;
         animator = GetComponent<Animator>();
     }
     #region Reference
@@ -58,5 +61,19 @@ public class Interaction : MonoBehaviour
     public void Memories(bool newUpgrade)
     {
         animator.SetBool("Upgrade", newUpgrade);
+    }
+
+    public void UsePliers()
+    {
+        print("UsePliers");
+    }
+
+    public bool GetPliers()
+    {
+        return hasPliers;
+    }
+    public void SetPliers(bool value)
+    {
+        hasPliers = value;
     }
 }
