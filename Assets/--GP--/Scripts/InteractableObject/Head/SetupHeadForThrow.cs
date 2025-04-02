@@ -34,8 +34,8 @@ public class SetupHeadForThrow : MonoBehaviour, IInteraction
     }
     public void SetCollider(bool newCollider)
     {
-        trigger.enabled = newCollider;
-        collider.enabled = newCollider;
+        //trigger.enabled = newCollider;
+        //collider.enabled = newCollider;
     }
     IEnumerator TimeSetup()
     {
