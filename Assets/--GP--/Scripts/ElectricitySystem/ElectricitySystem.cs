@@ -6,5 +6,5 @@ public class ElectricitySystem : MonoBehaviour
 {
     GameObject Spline;
 
-    void 
+    //void 
 }
